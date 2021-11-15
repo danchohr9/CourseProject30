@@ -1,0 +1,149 @@
+[JavaFX Application Thread] ERROR HelloApplication  - Sorry, the main fxml file could not be loaded.
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedjava.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.internal.util.config.ConfigurationException: Could not locate cfg.xml resource [hibernate.cfg.xml]
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.internal.util.config.ConfigurationException: Could not locate cfg.xml resource [hibernate.cfg.xml]
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - Unknown database 'database'
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - Unknown database 'testconnection'
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.hql.internal.ast.ErrorTracker  - line 1:8: unexpected token: *
+[JavaFX Application Thread] ERROR org.hibernate.hql.internal.ast.ErrorTracker  - line 1:8: unexpected token: *
+line 1:8: unexpected token: *
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.hql.internal.antlr.HqlBaseParser.selectClause(HqlBaseParser.java:1380)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.hql.internal.antlr.HqlBaseParser.selectFrom(HqlBaseParser.java:1142)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.hql.internal.antlr.HqlBaseParser.queryRule(HqlBaseParser.java:825)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.hql.internal.antlr.HqlBaseParser.selectStatement(HqlBaseParser.java:336)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.hql.internal.antlr.HqlBaseParser.statement(HqlBaseParser.java:200)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.hql.internal.ast.QueryTranslatorImpl.parse(QueryTranslatorImpl.java:294)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:189)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:144)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:113)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:73)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:162)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.internal.AbstractSharedSessionContract.getQueryPlan(AbstractSharedSessionContract.java:622)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:734)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:834)
+	at org.hibernate.orm.core@5.6.1.Final/org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:114)
+	at bg.tu_varna.sit.example.courseproject30/bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository.getAll(TaskRepository.java:52)
+	at bg.tu_varna.sit.example.courseproject30/bg.tu_varna.sit.courseproject30.business.services.TaskService.getAllTask(TaskService.java:25)
+	at bg.tu_varna.sit.example.courseproject30/bg.tu_varna.sit.courseproject30.presentation.controllers.HelloController.handle(HelloController.java:35)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3602)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3906)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:557)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:943)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.hql.internal.ast.QuerySyntaxException: unexpected token: * near line 1, column 8 [SELECT * from bg.tu_varna.sit.courseproject30.data.entities.Task t]
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - Unknown database 'testconnection'
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - Access denied for user 'root'@'localhost' (using password: YES)
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - No database selected
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.TaskRepository  - Get task error: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - Unknown database 'testconnection'
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - Unknown database 'test/'
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[test].[users] where 1=0' at line 1
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.access.Connection  - Initial SessionFactory created failedorg.hibernate.exception.SQLGrammarException: Error accessing column metadata: test.users
