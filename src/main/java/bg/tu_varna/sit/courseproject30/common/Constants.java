@@ -2,8 +2,8 @@ package bg.tu_varna.sit.courseproject30.common;
 
 public class Constants {
     public static class View {
-        public static final String HELLO_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/hello-view.fxml";
         public static final String LOGIN_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/login.fxml";
+        public static final String MENU_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/menu.fxml";
     }
 
     public static class Configurations{

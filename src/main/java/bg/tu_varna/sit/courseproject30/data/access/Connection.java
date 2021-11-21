@@ -1,6 +1,5 @@
 package bg.tu_varna.sit.courseproject30.data.access;
 
-import bg.tu_varna.sit.courseproject30.common.Constants;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

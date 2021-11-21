@@ -3,7 +3,7 @@ package bg.tu_varna.sit.courseproject30.data.entities;
 import javax.persistence.*;
 import java.util.Set;
 
-@Table(name = "test.user")
+@Table(name = "library.user")
 @Entity
 public class User {
     @Id

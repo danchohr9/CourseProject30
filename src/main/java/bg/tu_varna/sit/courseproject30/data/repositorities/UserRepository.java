@@ -1,11 +1,13 @@
 package bg.tu_varna.sit.courseproject30.data.repositorities;
 
 import bg.tu_varna.sit.courseproject30.data.access.Connection;
+import bg.tu_varna.sit.courseproject30.data.entities.Task;
 import bg.tu_varna.sit.courseproject30.data.entities.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +15,7 @@ public class UserRepository implements DAORepository<User> {
 
     private static final Logger log = Logger.getLogger(UserRepository.class);
 
-    private static UserRepository getInstance() { return UserRepository.UserRepositoryHolder.INSTANCE;}
+    public static UserRepository getInstance() { return UserRepository.UserRepositoryHolder.INSTANCE;}
 
     private static class UserRepositoryHolder {
         public static final UserRepository INSTANCE = new UserRepository();
@@ -50,7 +52,22 @@ public class UserRepository implements DAORepository<User> {
 
     @Override
     public List<User> getAll() {
-        return null;
+
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<User> users = new LinkedList<>();
+        try {
+            String jpql = "SELECT u FROM User u";
+            users.addAll(session.createQuery(jpql, User.class).getResultList());
+            log.info("Get all tasks");
+        } catch (Exception ex) {
+            log.error("Get Task error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+            Connection.openSessionClose();
+        }
+
+        return users;
     }
 
 

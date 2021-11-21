@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Table(name = "courseproject.product")
+@Table(name = "library.product")
 @Entity
 public class Product {
     @Id

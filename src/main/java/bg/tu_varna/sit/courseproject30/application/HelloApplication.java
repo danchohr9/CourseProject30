@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.courseproject30.application;
 
 import bg.tu_varna.sit.courseproject30.common.Constants;
+import bg.tu_varna.sit.courseproject30.presentation.controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,7 +25,9 @@ public class HelloApplication extends Application {
         URL path = getClass().getResource(Constants.View.LOGIN_VIEW);
 
         if(path != null) {
-            Parent root = FXMLLoader.load(path);
+            FXMLLoader fxmlLoader = new FXMLLoader(path);
+            fxmlLoader.setController(new LoginController(stage));
+            Parent root = fxmlLoader.load(); // = FXMLLoader.load(path);
 
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);
@@ -32,10 +35,6 @@ public class HelloApplication extends Application {
             stage.setTitle(Constants.Values.Title);
             stage.setScene(scene);
             stage.setResizable(false);
-//            stage.setMaxWidth(780);
-//            stage.setMaxHeight(630);
-//            stage.setWidth(320);
-//            stage.setHeight(240);
             stage.show();
         } else {
             log.error("Sorry, the main fxm could not be loaded.");

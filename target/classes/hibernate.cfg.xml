@@ -5,7 +5,7 @@
 
         <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/courseproject30</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">123456789dancho</property>
         <property name="hibernate.show_sql">true</property>
@@ -13,5 +13,14 @@
 
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.User" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Task" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Roles" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Carton" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Client" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Category" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.City" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Product" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.ProductCarton" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteria" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteriaProduct" />
     </session-factory>
 </hibernate-configuration>

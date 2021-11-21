@@ -3,7 +3,7 @@ package bg.tu_varna.sit.courseproject30.data.entities;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "courseproject.client")
+@Table(name = "library.client")
 @Entity
 public class Client {
     @Id
@@ -14,7 +14,7 @@ public class Client {
     @Column(name = "date_of_reg", nullable = false)
     private Date date_of_reg;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "carton_id", nullable = false)
     private Carton carton;
 

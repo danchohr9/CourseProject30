@@ -3,9 +3,14 @@ package bg.tu_varna.sit.courseproject30.data.entities;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "courseproject.product_carton")
+@Table(name = "library.product_carton")
 @Entity
 public class ProductCarton {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
