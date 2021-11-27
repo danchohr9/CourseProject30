@@ -26,6 +26,9 @@ public class ProductCarton {
     @Column(name = "date_added", nullable = false)
     private Date date_added;
 
+    @Column(name = "date_removed", nullable = false)
+    private Date date_removed;
+
     public Product getProduct() {
         return product;
     }
@@ -56,5 +59,13 @@ public class ProductCarton {
 
     public void setDate_added(Date date_added) {
         this.date_added = date_added;
+    }
+
+    public Date getDate_removed() {
+        return date_removed;
+    }
+
+    public void setDate_removed(Date date_removed) {
+        this.date_removed = date_removed;
     }
 }

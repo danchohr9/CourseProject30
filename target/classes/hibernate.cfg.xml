@@ -5,14 +5,13 @@
 
         <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/courseproject30</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/javaproject</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">123456789dancho</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.User" />
-        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Task" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Roles" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Carton" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Client" />
