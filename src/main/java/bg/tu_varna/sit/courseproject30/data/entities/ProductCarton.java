@@ -3,7 +3,7 @@ package bg.tu_varna.sit.courseproject30.data.entities;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "library.product_carton")
+@Table(name = "javaproject.product_carton")
 @Entity
 public class ProductCarton {
 

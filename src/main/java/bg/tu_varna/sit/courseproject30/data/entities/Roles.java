@@ -3,7 +3,7 @@ package bg.tu_varna.sit.courseproject30.data.entities;
 import javax.persistence.*;
 import java.util.Set;
 
-@Table(name = "library.roles")
+@Table(name = "javaproject.roles")
 @Entity
 public class Roles {
     @Id

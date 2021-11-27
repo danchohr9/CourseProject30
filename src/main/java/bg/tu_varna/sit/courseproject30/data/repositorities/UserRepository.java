@@ -1,7 +1,6 @@
 package bg.tu_varna.sit.courseproject30.data.repositorities;
 
 import bg.tu_varna.sit.courseproject30.data.access.Connection;
-import bg.tu_varna.sit.courseproject30.data.entities.Task;
 import bg.tu_varna.sit.courseproject30.data.entities.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;

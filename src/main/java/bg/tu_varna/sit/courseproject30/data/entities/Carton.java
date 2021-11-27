@@ -3,7 +3,7 @@ package bg.tu_varna.sit.courseproject30.data.entities;
 import javax.persistence.*;
 import java.util.Set;
 
-@Table(name = "library.carton")
+@Table(name = "javaproject.carton")
 @Entity
 public class Carton {
     @Id

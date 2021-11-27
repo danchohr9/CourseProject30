@@ -3,7 +3,7 @@ package bg.tu_varna.sit.courseproject30.data.entities;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "library.scrapcriteria_product")
+@Table(name = "javaproject.scrapcriteria_product")
 @Entity
 public class ScrapCriteriaProduct {
     @Id

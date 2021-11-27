@@ -3,7 +3,7 @@ package bg.tu_varna.sit.courseproject30.data.entities;
 import javax.persistence.*;
 import java.util.Set;
 
-@Table(name = "library.category")
+@Table(name = "javaproject.category")
 @Entity
 public class Category {
     @Id

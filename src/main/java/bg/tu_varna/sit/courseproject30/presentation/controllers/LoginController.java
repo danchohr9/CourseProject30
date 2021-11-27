@@ -1,7 +1,6 @@
 package bg.tu_varna.sit.courseproject30.presentation.controllers;
 
 import bg.tu_varna.sit.courseproject30.application.HelloApplication;
-import bg.tu_varna.sit.courseproject30.business.services.TaskService;
 import bg.tu_varna.sit.courseproject30.business.services.UserService;
 import bg.tu_varna.sit.courseproject30.common.Constants;
 import bg.tu_varna.sit.courseproject30.presentation.models.TaskListViewModel;

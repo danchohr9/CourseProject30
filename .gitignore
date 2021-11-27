@@ -1,2 +1,5 @@
 /.idea
 /src/main/resources/hibernate.cfg.xml
+/src/main/resources/bg/tu_varna/sit/courseproject30/configuration/hibernate.cfg.xml
+/target/classes/bg/tu_varna/sit/courseproject30/configuration/hibernate.cfg.xml
+/application.log

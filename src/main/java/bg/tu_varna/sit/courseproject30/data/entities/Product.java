@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Table(name = "library.product")
+@Table(name = "javaproject.product")
 @Entity
 public class Product {
     @Id

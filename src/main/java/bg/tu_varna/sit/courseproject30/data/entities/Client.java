@@ -3,7 +3,7 @@ package bg.tu_varna.sit.courseproject30.data.entities;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "library.client")
+@Table(name = "javaproject.client")
 @Entity
 public class Client {
     @Id
