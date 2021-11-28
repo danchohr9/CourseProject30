@@ -58,12 +58,12 @@ public class UserRepository implements DAORepository<User> {
         try {
             String jpql = "SELECT u FROM User u";
             users.addAll(session.createQuery(jpql, User.class).getResultList());
-            log.info("Get all tasks");
+            log.info("Get all users");
         } catch (Exception ex) {
-            log.error("Get Task error: " + ex.getMessage());
+            log.error("Get User error: " + ex.getMessage());
         } finally {
             transaction.commit();
-            Connection.openSessionClose();
+            //Connection.openSessionClose();           // pri zatvarqne dava greshka, akso iskame da se log out-nem
         }
 
         return users;

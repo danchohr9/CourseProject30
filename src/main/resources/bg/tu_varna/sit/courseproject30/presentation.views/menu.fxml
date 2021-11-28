@@ -15,5 +15,6 @@
          </font>
       </Label>
       <Button fx:id="addProductBt" layoutX="37.0" layoutY="122.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Add Product" />
+      <Button fx:id="logOutBt" layoutX="461.0" layoutY="342.0" mnemonicParsing="false" onAction="#signOutBtOnAction" prefHeight="26.0" prefWidth="106.0" text="Log Out" />
    </children>
 </AnchorPane>
