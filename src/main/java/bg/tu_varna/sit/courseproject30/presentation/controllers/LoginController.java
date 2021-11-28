@@ -53,8 +53,7 @@ public class LoginController{
     private UserViewModel user;
     private final UserService service = UserService.getInstance();
     ObservableList<UserViewModel> userViewModels = service.getAllTask();
-    boolean state=false;
-    Stage stage = new Stage();
+    Stage stage;
 
     public LoginController(Stage stage){
         this.stage = stage;
@@ -62,27 +61,17 @@ public class LoginController{
 
     public void signInBtOnAction(ActionEvent actionEvent){
 
-        if(usernameTF.getText().isBlank() == false && passwordPF.getText().isBlank() == false){
-            validateLogin();
+        if(!usernameTF.getText().isBlank() && !passwordPF.getText().isBlank()){
+            user = new UserViewModel(usernameTF.getText(),passwordPF.getText());
+            if(UserService.validateLogin(user, userViewModels)){
+                changeScene();
+            }else{
+                infoLbl.setText("Invalid credentials.");
+            }
         }else{
             infoLbl.setText("Please enter username and password.");
         }
     }
-
-    public void validateLogin(){
-        user = new UserViewModel(usernameTF.getText(),passwordPF.getText());
-        for (UserViewModel u:userViewModels){
-            if(u.equals(user)){
-                state=true;
-                user.setEmail(u.getEmail());
-                user.setRole(u.getRole());
-                changeScene();
-                break;
-            }
-        }
-        if(state==false) infoLbl.setText("Invalid credentials.");
-    }
-
 
     public void changeScene(){
 

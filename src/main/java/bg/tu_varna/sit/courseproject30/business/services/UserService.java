@@ -34,5 +34,17 @@ public class UserService {
                         )).collect(Collectors.toList()));
     }
 
+    public static boolean validateLogin(UserViewModel user, ObservableList<UserViewModel> allUsers){
+        boolean state=false;
+        for (UserViewModel u:allUsers){
+            if(u.equals(user)){
+                state=true;
+                user.setEmail(u.getEmail());
+                user.setRole(u.getRole());
+                return state;
+            }
+        }
+        return state;
+    }
 
 }
