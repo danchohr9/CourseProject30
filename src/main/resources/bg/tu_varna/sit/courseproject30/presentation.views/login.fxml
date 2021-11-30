@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-            <!--fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.LoginController"-->
+<AnchorPane prefHeight="400.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.LoginController">
+
    <children>
       <Button fx:id="signInBt" layoutX="181.0" layoutY="298.0" mnemonicParsing="false" onAction="#signInBtOnAction" text="Sign In" textAlignment="CENTER">
          <font>

@@ -6,6 +6,7 @@ import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,8 +17,9 @@ import org.apache.log4j.PropertyConfigurator;
 
 import java.io.IOException;
 import java.net.URL;
+import org.kordamp.bootstrapfx.BootstrapFX;
+public class MenuController extends Controller{
 
-public class MenuController {
 
     @FXML
     private Label welcomeLbl;
@@ -26,45 +28,26 @@ public class MenuController {
     private Button addMolBt;
 
     @FXML
+    private Button homeBt;
+
+    @FXML
     private Button addProductBt;
 
     @FXML
     private Button logOutBt;
 
-    private UserViewModel user;
-    Stage stage;
-
-    public void signOutBtOnAction(ActionEvent actionEvent) {
-        changeScene();
-    }
-
-    public MenuController(Stage stage2, UserViewModel user) {
-        this.stage=stage2;
-        this.user=user;
-    }
-
-    public void changeScene(){
-        try{
-            stage.close();
-            Stage stage2 = new Stage();
-            URL path = getClass().getResource(Constants.View.LOGIN_VIEW);
-            FXMLLoader fxmlLoader = new FXMLLoader(path);
-            fxmlLoader.setController(new LoginController(stage2));
-            Parent root = fxmlLoader.load();
-
-            Scene scene = new Scene(root);
-            scene.setFill(Color.TRANSPARENT);
-            stage2.setTitle(Constants.Values.Title);
-            stage2.setScene(scene);
-            stage2.setResizable(false);
-            stage2.show();
-        }catch (IOException e){
-            e.printStackTrace();
+    @FXML
+    private void handleButtonClicks(javafx.event.ActionEvent mouseEvent) {
+        if (mouseEvent.getSource() == logOutBt) {
+            loadStage(Constants.View.LOGIN_VIEW,mouseEvent);
+        } else if(mouseEvent.getSource() == addProductBt){
+            loadStage(Constants.View.PRODUCTS_VIEW,mouseEvent);
+        }else if(mouseEvent.getSource() == homeBt){
+            loadStage(Constants.View.MENU_VIEW,mouseEvent);
         }
     }
-
     public void  initialize(){
-        welcomeLbl.setText("Welcome, \n"+user.getEmail());
+        welcomeLbl.setText("Welcome, "+user.getEmail());
         if(user.getRole()==1) addMolBt.setVisible(true);
     }
 }

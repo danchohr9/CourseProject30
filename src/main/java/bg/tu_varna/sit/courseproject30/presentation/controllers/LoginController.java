@@ -12,6 +12,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -20,6 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.apache.log4j.PropertyConfigurator;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 import java.net.URL;
@@ -57,48 +59,46 @@ public class LoginController implements Initializable {
     ObservableList<UserViewModel> userViewModels;
     Stage stage;
 
-    public LoginController(Stage stage){
+    public LoginController(){
         service = UserService.getInstance();
         userViewModels = service.getAllTask();
-        this.stage = stage;
     }
-
+    @FXML
     public void signInBtOnAction(ActionEvent actionEvent){
 
         if(!usernameTF.getText().isBlank() && !passwordPF.getText().isBlank()){
+            Stage oldStage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+            oldStage.close();
             user = new UserViewModel(usernameTF.getText(),passwordPF.getText());
             if(UserService.validateLogin(user, userViewModels)){
-                changeScene();
+                HelloApplication.setUser(user);
+                try {
+                    URL path = getClass().getResource(Constants.View.MENU_VIEW);
+                    FXMLLoader fxmlLoader = new FXMLLoader(path);
+                    Parent root = fxmlLoader.load();
+                    Stage stage = new Stage();
+                    /*
+                    MenuController controller = fxmlLoader.getController();
+                    controller.initData();
+                    Could be useful
+                     */
+                    Scene scene = new Scene(root);
+                    stage.setTitle("Dashboard");
+                    scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }else{
                 infoLbl.setText("Invalid credentials.");
             }
         }else{
             infoLbl.setText("Please enter username and password.");
         }
+
     }
 
-    public void changeScene(){
-
-        try{
-            stage.close();
-            Stage stage2 = new Stage();
-            URL path = getClass().getResource(Constants.View.MENU_VIEW);
-            FXMLLoader fxmlLoader = new FXMLLoader(path);
-            fxmlLoader.setController(new MenuController(stage2,user));
-            Parent root = fxmlLoader.load();
-//            URL path = getClass().getResource(Constants.View.MENU_VIEW);
-//            Parent root = FXMLLoader.load(path);
-
-            Scene scene = new Scene(root);
-            scene.setFill(Color.TRANSPARENT);
-            stage2.setTitle(Constants.Values.Title);
-            stage2.setScene(scene);
-            stage2.setResizable(false);
-            stage2.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
