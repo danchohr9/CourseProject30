@@ -6,6 +6,10 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +40,20 @@ public class UserRepository implements DAORepository<User> {
 
     @Override
     public void update(User obj) {
-
+        Session sess = Connection.openSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            //do some work
+            tx.commit();
+        }
+        catch (Exception e) {
+            if (tx!=null) tx.rollback();
+            throw e;
+        }
+        finally {
+            sess.close();
+        }
     }
 
     @Override
@@ -67,6 +84,26 @@ public class UserRepository implements DAORepository<User> {
         }
 
         return users;
+    }
+
+    public User getUserByUsername(String username){
+        User user = null;
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            String hql = " FROM User u WHERE u.username = :username";
+            Query query = session.createQuery(hql);
+            query.setParameter("username", username);
+            List results = query.getResultList();
+
+            if (results != null && !results.isEmpty()) {
+                user = (User) results.get(0);
+                log.info("Get user");
+            }
+        }catch (Exception ex){
+            log.error("Get user error: "+ex.getMessage());
+        }
+        return user;
     }
 
 

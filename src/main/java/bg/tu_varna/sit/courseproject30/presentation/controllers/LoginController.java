@@ -3,12 +3,9 @@ package bg.tu_varna.sit.courseproject30.presentation.controllers;
 import bg.tu_varna.sit.courseproject30.application.HelloApplication;
 import bg.tu_varna.sit.courseproject30.business.services.UserService;
 import bg.tu_varna.sit.courseproject30.common.Constants;
-import bg.tu_varna.sit.courseproject30.presentation.models.TaskListViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,10 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.PasswordField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.apache.log4j.PropertyConfigurator;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
@@ -68,11 +62,12 @@ public class LoginController implements Initializable {
 
         if(!usernameTF.getText().isBlank() && !passwordPF.getText().isBlank()){
             Stage oldStage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-            oldStage.close();
+            //oldStage.close();
             user = new UserViewModel(usernameTF.getText(),passwordPF.getText());
             if(UserService.validateLogin(user, userViewModels)){
                 HelloApplication.setUser(user);
                 try {
+                    oldStage.close();
                     URL path = getClass().getResource(Constants.View.MENU_VIEW);
                     FXMLLoader fxmlLoader = new FXMLLoader(path);
                     Parent root = fxmlLoader.load();

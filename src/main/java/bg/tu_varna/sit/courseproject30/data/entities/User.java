@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.courseproject30.data.entities;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Table(name = "javaproject.user")
@@ -23,6 +24,18 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "roles_id", nullable = false)
     private Roles role;
+
+    public User(Long id, String username, String password, String email, Roles role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
+
+    public User() {
+
+    }
 
     public Long getId() {
         return id;

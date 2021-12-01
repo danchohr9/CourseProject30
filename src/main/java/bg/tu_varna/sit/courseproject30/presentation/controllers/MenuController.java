@@ -44,6 +44,8 @@ public class MenuController extends Controller{
             loadStage(Constants.View.PRODUCTS_VIEW,mouseEvent);
         }else if(mouseEvent.getSource() == homeBt){
             loadStage(Constants.View.MENU_VIEW,mouseEvent);
+        }else if(mouseEvent.getSource() == addMolBt){
+            loadStage(Constants.View.MOL_VIEW,mouseEvent);
         }
     }
     public void  initialize(){

@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.courseproject30.business.services;
 
+import bg.tu_varna.sit.courseproject30.data.entities.Roles;
 import bg.tu_varna.sit.courseproject30.data.entities.User;
 import bg.tu_varna.sit.courseproject30.data.repositorities.UserRepository;
 import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;
@@ -34,6 +35,7 @@ public class UserService {
                         )).collect(Collectors.toList()));
     }
 
+
     public static boolean validateLogin(UserViewModel user, ObservableList<UserViewModel> allUsers){
         boolean state=false;
         for (UserViewModel u:allUsers){
@@ -47,5 +49,22 @@ public class UserService {
         return state;
     }
 
+    public String registerUser(String username, String password, String email){
+        User newUser = new User();
+        Roles role = new Roles();
+        if(!username.isBlank() && !password.isBlank() && !email.isBlank()){
+            if(repository.getUserByUsername(username).getUsername().equals(username)){
+                return "Username is already taken";
+            }
+            if(email.indexOf('@')!=-1){
+//                newUser.setUsername(username);
+//                newUser.setPassword(password);
+//                newUser.setEmail(email);
+            }else return "Incorrect email.";
+        }else{
+            return "Please fill each tab.";
+        }
+        return "";
+    }
 
 }

@@ -46,4 +46,5 @@ public class UserViewModel{
         return username.equals(((UserViewModel)o).username) && password.equals(((UserViewModel)o).password);
     }
 
+
 }
