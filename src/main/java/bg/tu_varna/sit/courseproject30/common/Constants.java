@@ -9,6 +9,10 @@ public class Constants {
 
     }
 
+    public static class Images{
+        public static final String LOGIN_PICTURE = "/bg/tu_varna/sit/courseproject30/presentation.views/loginPicture.png";
+    }
+
     public static class Configurations{
         public static final String LOG4J_PROPERTIES = "/bg/tu_varna/sit/courseproject30/configuration/log4j.properties";
     }

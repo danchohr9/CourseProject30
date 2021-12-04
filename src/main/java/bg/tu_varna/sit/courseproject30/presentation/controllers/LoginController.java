@@ -14,6 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.PasswordField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
@@ -48,8 +50,15 @@ public class LoginController implements Initializable {
     @FXML
     private CheckBox showPassChB;
 
+    @FXML
+    private TextField passwordTF;
+
+    @FXML
+    private ImageView imageId;
+
     private UserViewModel user;
     private final UserService service;
+    Image image;
     ObservableList<UserViewModel> userViewModels;
     Stage stage;
 
@@ -94,9 +103,23 @@ public class LoginController implements Initializable {
 
     }
 
+//    public void togglevisiblePassword(ActionEvent event) {
+//        if (showPassChB.isSelected()) {
+//            passwordTF.setText(passwordPF.getText());
+//            passwordTF.setVisible(true);
+//            passwordPF.setVisible(false);
+//            return;
+//        }
+//        passwordPF.setText(passwordTF.getText());
+//        passwordPF.setVisible(true);
+//        passwordTF.setVisible(false);
+//    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+//        this.togglevisiblePassword(null);
+        image = new Image(getClass().getResource(Constants.Images.LOGIN_PICTURE).toExternalForm());
+        imageId.setImage(image);
     }
 }

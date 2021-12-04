@@ -17,6 +17,12 @@ public class Roles {
     @OneToMany(mappedBy = "role")
     private Set<User> userSet;
 
+    public Roles(){}
+
+    public Roles(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

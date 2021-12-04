@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 public class MolController extends Controller{
 
@@ -35,6 +36,7 @@ public class MolController extends Controller{
 
     public void registerBtOnAction(ActionEvent actionEvent){
         warningLbl.setText(service.registerUser(usernameTf.getText(),passwordTf.getText(),emailTf.getText()));
+//        if(warningLbl.getText().equals("User successfully registered.")) warningLbl.setTextFill(Color.GREEN);       //pravi i po-natatuchnite suobshteniq zeleni
     }
 
     public void  initialize(){

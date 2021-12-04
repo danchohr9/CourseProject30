@@ -5,35 +5,38 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.LoginController">
 
    <children>
-      <Button fx:id="signInBt" layoutX="181.0" layoutY="298.0" mnemonicParsing="false" onAction="#signInBtOnAction" text="Sign In" textAlignment="CENTER">
+      <Button fx:id="signInBt" layoutX="144.0" layoutY="312.0" mnemonicParsing="false" onAction="#signInBtOnAction" text="Sign In" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="usernameLbl" layoutX="93.0" layoutY="172.0" text="Username:">
+      <Label fx:id="usernameLbl" layoutX="74.0" layoutY="247.0" text="Username:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="passwordLbl" layoutX="95.0" layoutY="202.0" text="Password:">
+      <Label fx:id="passwordLbl" layoutX="76.0" layoutY="277.0" text="Password:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTF" layoutX="168.0" layoutY="169.0" />
-      <CheckBox fx:id="showPassChB" layoutX="212.0" layoutY="243.0" mnemonicParsing="false" text="Show Password" />
-      <Label fx:id="loginLbl" layoutX="147.0" layoutY="82.0" text="Login Menu">
+      <TextField fx:id="usernameTF" layoutX="148.0" layoutY="244.0" prefHeight="26.0" prefWidth="170.0" />
+      <CheckBox fx:id="showPassChB" layoutX="214.0" layoutY="318.0" mnemonicParsing="false" text="Show Password" />
+      <Label fx:id="loginLbl" layoutX="160.0" layoutY="31.0" text="Login Menu">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passwordPF" layoutX="169.0" layoutY="200.0" />
-      <Label fx:id="infoLbl" layoutX="101.0" layoutY="270.0" prefHeight="18.0" prefWidth="221.0" textFill="#d40022"/>
+      <PasswordField fx:id="passwordPF" layoutX="148.0" layoutY="274.0" prefHeight="26.0" prefWidth="170.0" />
+      <Label fx:id="infoLbl" layoutX="111.0" layoutY="349.0" prefHeight="18.0" prefWidth="207.0" textAlignment="RIGHT" textFill="#d40022" />
+      <ImageView fx:id="imageId" fitHeight="170.0" fitWidth="170.0" layoutX="148.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true" />
+      <!--<TextField fx:id="passwordTF" layoutX="169.0" layoutY="200.0" />-->
    </children>
 </AnchorPane>
