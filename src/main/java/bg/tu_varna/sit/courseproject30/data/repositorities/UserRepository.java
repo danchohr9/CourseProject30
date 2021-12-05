@@ -30,7 +30,7 @@ public class UserRepository implements DAORepository<User> {
         Transaction transaction = session.beginTransaction();
         try {
             session.save(obj);
-            log.info("User saved succesfully");
+            log.info("User saved successfully");
         } catch (Exception ex) {
             log.error("User save error" + ex.getMessage());
         } finally {

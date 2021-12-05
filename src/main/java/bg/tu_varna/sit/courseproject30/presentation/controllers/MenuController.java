@@ -34,6 +34,9 @@ public class MenuController extends Controller{
     private Button addProductBt;
 
     @FXML
+    private Button addCriteriaBt;
+
+    @FXML
     private Button logOutBt;
 
     @FXML
@@ -46,7 +49,9 @@ public class MenuController extends Controller{
             loadStage(Constants.View.MENU_VIEW,mouseEvent);
         }else if(mouseEvent.getSource() == addMolBt){
             loadStage(Constants.View.MOL_VIEW,mouseEvent);
-        }
+        }else if(mouseEvent.getSource() == addCriteriaBt){
+        loadStage(Constants.View.CRITERIA_VIEW,mouseEvent);
+    }
     }
     public void  initialize(){
         welcomeLbl.setText("Welcome, "+user.getEmail());

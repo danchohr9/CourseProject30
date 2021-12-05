@@ -8,7 +8,7 @@ import java.util.Set;
 public class ScrapCriteria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tasks_id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "years", nullable = false)
@@ -57,6 +57,15 @@ public class ScrapCriteria {
 
     public Set<ScrapCriteriaProduct> getScrapCriteriaProductSet() {
         return scrapCriteriaProductSet;
+    }
+
+    public ScrapCriteria(){
+    }
+
+    public ScrapCriteria(int years, int month, int depreciation) {
+        this.years = years;
+        this.month = month;
+        this.depreciation = depreciation;
     }
 
     public void setScrapCriteriaProductSet(Set<ScrapCriteriaProduct> scrapCriteriaProductSet) {
