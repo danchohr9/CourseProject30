@@ -35,6 +35,7 @@
          </font>
       </Label>
       <PasswordField fx:id="passwordPF" layoutX="148.0" layoutY="274.0" prefHeight="26.0" prefWidth="170.0" />
+      <TextField fx:id="visiblePassword"  layoutX="148.0" layoutY="274.0" prefHeight="26.0" prefWidth="170.0" text="" />
       <Label fx:id="infoLbl" layoutX="111.0" layoutY="349.0" prefHeight="18.0" prefWidth="207.0" textAlignment="RIGHT" textFill="#d40022" />
       <ImageView fx:id="imageId" fitHeight="170.0" fitWidth="170.0" layoutX="148.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true" />
       <!--<TextField fx:id="passwordTF" layoutX="169.0" layoutY="200.0" />-->

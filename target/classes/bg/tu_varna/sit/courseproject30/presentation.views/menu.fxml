@@ -13,8 +13,7 @@
          <Label fx:id="welcomeLbl" prefHeight="26.0" prefWidth="326.0" text="Welcome," textAlignment="CENTER" />
          <Button fx:id="logOutBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="244.0" text="Log Out" />
          <Button fx:id="homeBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Dashboard" />
-         <Button fx:id="addProductBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Add Product" />
-            <Button fx:id="addCriteriaBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Add Criteria" />
+         <Button fx:id="addProductBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Products" />
          <Button fx:id="addMolBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="312.0" text="Add MOL" visible="false" />
       </children>
       <padding>

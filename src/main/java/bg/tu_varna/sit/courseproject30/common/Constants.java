@@ -6,7 +6,8 @@ public class Constants {
         public static final String MENU_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/main.fxml";
         public static final String PRODUCTS_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/products.fxml";
         public static final String MOL_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/mols.fxml";
-        public static final String CRITERIA_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/criteria.fxml";
+        public static final String ADD_PRODUCT_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/addProduct.fxml";
+
     }
 
     public static class Images{
