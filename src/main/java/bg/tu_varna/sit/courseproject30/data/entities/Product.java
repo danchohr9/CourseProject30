@@ -33,7 +33,7 @@ public class Product {
     @Column(name = "price", nullable = false)
     private double price;
 
-    @Column(name = "date_of_transformation", nullable = false)
+    @Column(name = "date_of_transformation", nullable = true)
     private Date date_of_transformation;
 
     @Column(name = "type", nullable = false)

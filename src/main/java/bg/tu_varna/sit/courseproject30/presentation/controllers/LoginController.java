@@ -45,6 +45,9 @@ public class LoginController implements Initializable {
     private TextField usernameTF;
 
     @FXML
+    private TextField visiblePassword;
+
+    @FXML
     private PasswordField passwordPF;
 
     @FXML
@@ -118,6 +121,11 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        visiblePassword.managedProperty().bind(showPassChB.selectedProperty());
+        visiblePassword.visibleProperty().bind(showPassChB.selectedProperty());
+        passwordPF.managedProperty().bind(showPassChB.selectedProperty().not());
+        passwordPF.visibleProperty().bind(showPassChB.selectedProperty().not());
+        visiblePassword.textProperty().bindBidirectional(passwordPF.textProperty());
 //        this.togglevisiblePassword(null);
         image = new Image(getClass().getResource(Constants.Images.LOGIN_PICTURE).toExternalForm());
         imageId.setImage(image);
