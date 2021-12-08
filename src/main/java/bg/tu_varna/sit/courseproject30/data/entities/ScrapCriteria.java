@@ -9,7 +9,7 @@ public class ScrapCriteria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private int id;
 
     @Column(name = "years", nullable = false)
     private int years;
@@ -23,11 +23,11 @@ public class ScrapCriteria {
     @OneToMany(mappedBy = "scrapCriteria")
     private Set<ScrapCriteriaProduct> scrapCriteriaProductSet;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

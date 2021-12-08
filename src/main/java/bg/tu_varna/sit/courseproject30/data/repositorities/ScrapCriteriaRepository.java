@@ -3,10 +3,12 @@ package bg.tu_varna.sit.courseproject30.data.repositorities;
 import bg.tu_varna.sit.courseproject30.data.access.Connection;
 import bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteria;
 import bg.tu_varna.sit.courseproject30.data.entities.User;
+import bg.tu_varna.sit.courseproject30.presentation.models.ScrapCriteriaViewModel;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.Query;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +32,7 @@ public class ScrapCriteriaRepository implements DAORepository<ScrapCriteria> {
             log.error("Scrap criteria save error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -40,7 +43,26 @@ public class ScrapCriteriaRepository implements DAORepository<ScrapCriteria> {
 
     @Override
     public void delete(ScrapCriteria obj) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            String hql = "DELETE ScrapCriteria sc WHERE sc.years = :years AND sc.month = :month AND sc.depreciation = :depreciation";
+            Query query = session.createQuery(hql);
+            query.setParameter("years", obj.getYears());
+            query.setParameter("month", obj.getMonth());
+            query.setParameter("depreciation", obj.getDepreciation());
+            int result = query.executeUpdate();
 
+            if (result > 0 ) {
+                log.info("Criteria was successfully removed.");
+            }
+        }catch (Exception ex){
+            log.error("Delete criteria error: "+ex.getMessage());
+        }finally {
+            transaction.commit();
+            session.close();
+            //Connection.openSessionClose();           // pri zatvarqne dava greshka, akso iskame da se log out-nem
+        }
     }
 
     @Override
@@ -61,10 +83,37 @@ public class ScrapCriteriaRepository implements DAORepository<ScrapCriteria> {
             log.error("Get Criteria error: " + ex.getMessage());
         } finally {
             transaction.commit();
-            //Connection.openSessionClose();           // pri zatvarqne dava greshka, akso iskame da se log out-nem
+            session.close();
+//            Connection.openSessionClose();           // pri zatvarqne dava greshka, akso iskame da se log out-nem
         }
 
         return criteria;
+    }
+
+    public ScrapCriteria getCriteria(int years, int months, int depreciation){
+        ScrapCriteria scrapCriteria = null;
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            String hql = " FROM ScrapCriteria sc WHERE sc.years = :years AND sc.month = :month AND sc.depreciation = :depreciation";
+            Query query = session.createQuery(hql);
+            query.setParameter("years", years);
+            query.setParameter("month", months);
+            query.setParameter("depreciation", depreciation);
+            List results = query.getResultList();
+
+            if (results != null && !results.isEmpty()) {
+                scrapCriteria = (ScrapCriteria) results.get(0);
+                log.info("Get criteria");
+            }
+        }catch (Exception ex){
+            log.error("Get criteria error: "+ex.getMessage());
+        }finally {
+        transaction.commit();
+//        session.close();
+//            Connection.openSessionClose();           // pri zatvarqne dava greshka, akso iskame da se log out-nem
+    }
+        return scrapCriteria;
     }
 
 }

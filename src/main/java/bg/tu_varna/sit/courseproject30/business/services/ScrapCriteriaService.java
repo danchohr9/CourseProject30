@@ -25,12 +25,12 @@ public class ScrapCriteriaService{
         public static final ScrapCriteriaService INSTANCE = new ScrapCriteriaService();
     }
 
-    public String createCriteria(int years, int months, int depreciation){
+    public String createCriteria(int years, int months, int depreciation, ObservableList<ScrapCriteriaViewModel> criteriaViewModels){
         ScrapCriteriaViewModel newCriteria = new ScrapCriteriaViewModel(years, months, depreciation);
         if(years!=0 && months!=0 && depreciation!=0) {
             if (years > 100 || months > 1000) return "Years/months out of limit.";
             if(depreciation > 75) return "Depreciation is too much.";
-            if(!checkIfExists(newCriteria)){
+            if(repository.getCriteria(years,months,depreciation)==null){
                 ScrapCriteria scrapCriteria = new ScrapCriteria(years,months,depreciation);
                 repository.save(scrapCriteria);
                 criteria.add(scrapCriteria);
@@ -42,8 +42,16 @@ public class ScrapCriteriaService{
     }
 
 
+    public void removeCriteria(ScrapCriteriaViewModel criteriaModel){
+        ScrapCriteria criteriaToDelete = new ScrapCriteria(criteriaModel.getYears(), criteriaModel.getMonths(),
+                criteriaModel.getDepreciation());
+        repository.delete(criteriaToDelete);
+        criteria.removeAll(criteria);
+        criteria = repository.getAll();
+    }
+
+
     public ObservableList<ScrapCriteriaViewModel> getAllCriteria() {
-        //List<ScrapCriteria> criteria = repository.getAll();       //posle da dobavqm novite sled suzdavaneto
 
         return FXCollections.observableList(
                 criteria
@@ -55,15 +63,4 @@ public class ScrapCriteriaService{
                         )).collect(Collectors.toList()));
     }
 
-    public boolean checkIfExists(ScrapCriteriaViewModel criteria){
-        boolean state=false;
-        ObservableList<ScrapCriteriaViewModel> allCriteria = this.getAllCriteria();
-        for (ScrapCriteriaViewModel c:allCriteria){
-            if(c.equals(criteria)){
-                state=true;
-                return state;
-            }
-        }
-        return state;
-    }
 }
