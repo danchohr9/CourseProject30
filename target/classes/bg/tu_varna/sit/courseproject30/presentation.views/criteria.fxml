@@ -18,7 +18,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="titleLbl" layoutX="173.0" layoutY="14.0" prefHeight="83.0" prefWidth="315.0" text="Entering criteria for scrap" textAlignment="CENTER">
+            <Label fx:id="titleLbl" layoutX="173.0" layoutY="44.0" prefHeight="83.0" prefWidth="315.0" text="Entering criteria for scrap" textAlignment="CENTER">
                <font>
                   <Font size="28.0" />
                </font>
@@ -38,14 +38,15 @@
             <TextField fx:id="depreciationTf" layoutX="93.0" layoutY="369.0" prefHeight="36.0" prefWidth="160.0" promptText="enter depreciation (%)" />
             <Button fx:id="createBt" layoutX="135.0" layoutY="428.0" mnemonicParsing="false" onAction="#createBtOnAction" prefHeight="38.0" prefWidth="75.0" text="Create" />
             <Label fx:id="warningLbl" layoutX="56.0" layoutY="480.0" prefHeight="18.0" prefWidth="234.0" textFill="#d70000" />
-            <TableView fx:id="criteriaTable" layoutX="384.0" layoutY="195.0" prefHeight="234.0" prefWidth="211.0">
+            <TableView fx:id="criteriaTable" layoutX="384.0" layoutY="195.0" prefHeight="211.0" prefWidth="211.0">
               <columns>
                 <TableColumn fx:id="yearsColumn" prefWidth="52.79998779296875" text="years" />
                   <TableColumn fx:id="monthsColumn" prefWidth="52.800079345703125" text="months" />
                   <TableColumn fx:id="deprColumn" prefWidth="98.4000244140625" text=" depreciation(%)" />
               </columns>
             </TableView>
-            <Button fx:id="deleteBt" layoutX="452.0" layoutY="447.0" mnemonicParsing="false" onAction="#deleteBtOnAction" prefHeight="38.0" prefWidth="75.0" text="Delete" />
+            <Button fx:id="deleteBt" layoutX="452.0" layoutY="428.0" mnemonicParsing="false" onAction="#deleteBtOnAction" prefHeight="38.0" prefWidth="75.0" text="Delete" />
+            <Button fx:id="addBt" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#addBtOnAction" prefHeight="30.0" prefWidth="138.0" text="Add Criteria to Product" />
          </children>
       </AnchorPane>
    </center>

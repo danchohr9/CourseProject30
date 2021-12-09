@@ -3,6 +3,7 @@ package bg.tu_varna.sit.courseproject30.presentation.controllers;
 import bg.tu_varna.sit.courseproject30.business.services.ProductService;
 import bg.tu_varna.sit.courseproject30.business.services.ScrapCriteriaService;
 
+import bg.tu_varna.sit.courseproject30.common.Constants;
 import bg.tu_varna.sit.courseproject30.presentation.models.ProductViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ScrapCriteriaViewModel;
 import javafx.beans.value.ChangeListener;
@@ -35,7 +36,9 @@ public class CriteriaController extends Controller{
     private TextField depreciationTf;
 
     @FXML
-    private Button createBt;
+    private Button addBt;
+
+
 
     @FXML
     private TableView<ScrapCriteriaViewModel> criteriaTable = new TableView<>();
@@ -73,6 +76,13 @@ public class CriteriaController extends Controller{
         criteriaViewModels.remove(removedCriteria);
         service.removeCriteria(removedCriteria);
         criteriaTable.getItems().removeAll(removedCriteria);
+    }
+
+    @FXML
+    private void addBtOnAction(javafx.event.ActionEvent mouseEvent) {
+        if (mouseEvent.getSource() == addBt) {
+            loadStage(Constants.View.ADD_CRITERIA_TO_PRODUCT,mouseEvent);
+        }
     }
 
     public void initialize(){
