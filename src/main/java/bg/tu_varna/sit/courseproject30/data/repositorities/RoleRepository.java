@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class RoleRepository implements DAORepository<Roles>{
 
-    private static final Logger log = Logger.getLogger(UserRepository.class);
+    private static final Logger log = Logger.getLogger(RoleRepository.class);
 
     public static RoleRepository getInstance() { return RoleRepository.RoleRepositoryHolder.INSTANCE;}
 

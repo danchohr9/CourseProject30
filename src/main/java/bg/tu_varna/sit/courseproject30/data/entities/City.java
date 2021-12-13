@@ -15,7 +15,7 @@ public class City {
     private String name;
 
     @OneToMany(mappedBy = "city")
-    private Set<Carton> cartonSet;
+    private Set<Client> cartonSet;
 
     public Long getId() {
         return id;
@@ -33,11 +33,11 @@ public class City {
         this.name = name;
     }
 
-    public Set<Carton> getCartonSet() {
+    public Set<Client> getCartonSet() {
         return cartonSet;
     }
 
-    public void setCartonSet(Set<Carton> cartonSet) {
+    public void setCartonSet(Set<Client> cartonSet) {
         this.cartonSet = cartonSet;
     }
 

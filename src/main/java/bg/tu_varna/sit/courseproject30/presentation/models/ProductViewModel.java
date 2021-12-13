@@ -3,6 +3,7 @@ package bg.tu_varna.sit.courseproject30.presentation.models;
 import javafx.beans.property.*;
 
 public class ProductViewModel {
+    private IntegerProperty id;
     private StringProperty name;
     private StringProperty description;
     private StringProperty full_description;
@@ -19,9 +20,10 @@ public class ProductViewModel {
 
 
     public ProductViewModel(
-            String  name, String description, String full_description, int type, int category_id,int quantity,
+            int id, String  name, String description, String full_description, int type, int category_id,int quantity,
             Double rate,String date_of_registration, String date_of_transformation, Double price, int age
                             ) {
+        this.setId(id);
         this.setName(name);
         this.setDescription(description);
         this.setFull_description(full_description);
@@ -36,6 +38,22 @@ public class ProductViewModel {
         this.setType(type);
         this.setCategory_id(category_id);
     }
+
+    public ProductViewModel(ProductViewModel pvm) {
+        id = pvm.idProperty();
+        name = pvm.nameProperty();
+        description = pvm.descriptionProperty();
+        full_description = pvm.full_descriptionProperty();
+        type = pvm.typeProperty();
+        category_id = pvm.category_idProperty();
+        quantity = pvm.quantityProperty();
+        rate_of_depreciation = pvm.rate_of_depreciationProperty();
+        date_of_registration = pvm.date_of_registrationProperty();
+        date_of_transformation = pvm.date_of_transformationProperty();
+        price = pvm.priceProperty();
+        age = pvm.ageProperty();
+    }
+
 
     public DoubleProperty rate_of_depreciationProperty() {
         return rate_of_depreciation;
@@ -69,6 +87,9 @@ public class ProductViewModel {
     }
     public StringProperty nameProperty() {
         return name;
+    }
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public double getRate_of_depreciation() {
@@ -104,6 +125,7 @@ public class ProductViewModel {
     public String getName() {
         return name.get();
     }
+    public int getId(){return id.get();}
 
     public void setRate_of_depreciation(Double rate) {
         this.rate_of_depreciation = new SimpleDoubleProperty();
@@ -112,6 +134,10 @@ public class ProductViewModel {
     public void setPrice(Double price) {
         this.price = new SimpleDoubleProperty();
         this.price.set(price);
+    }
+    public void setId(int id) {
+        this.id = new SimpleIntegerProperty();
+        this.id.set(id);
     }
     public void setDate_of_registration(String date_of_registration) {
         this.date_of_registration = new SimpleStringProperty();

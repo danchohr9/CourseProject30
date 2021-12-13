@@ -37,6 +37,12 @@ public class MenuController extends Controller{
     private Button addCriteriaBt;
 
     @FXML
+    private Button addClientBt;
+
+    @FXML
+    private Button clientProductBt;
+
+    @FXML
     private Button logOutBt;
 
     @FXML
@@ -50,7 +56,11 @@ public class MenuController extends Controller{
         }else if(mouseEvent.getSource() == addMolBt){
             loadStage(Constants.View.MOL_VIEW,mouseEvent);
         }else if(mouseEvent.getSource() == addCriteriaBt){
-        loadStage(Constants.View.CRITERIA_VIEW,mouseEvent);
+            loadStage(Constants.View.CRITERIA_VIEW,mouseEvent);
+        }else if(mouseEvent.getSource() == addClientBt){
+            loadStage(Constants.View.ADD_CLIENT_VIEW,mouseEvent);
+        }else if(mouseEvent.getSource() == clientProductBt){
+            loadStage(Constants.View.CLIENT_PRODUCT_VIEW,mouseEvent);
     }
     }
     public void  initialize(){

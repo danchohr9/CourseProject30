@@ -30,6 +30,7 @@ public class ProductService {
                 products
                         .stream()
                         .map(u -> new ProductViewModel(
+                                u.getId(),
                                 u.getName(),
                                 u.getDescription(),
                                 u.getFull_description(),
@@ -44,4 +45,30 @@ public class ProductService {
 
                         )).collect(Collectors.toList()));
     }
+
+    public ObservableList<ProductViewModel> getAvailableProducts() {
+        List<Product> products = repository.getAvailableProducts();
+        System.out.println(products.toString());
+
+        return FXCollections.observableList(
+                products
+                        .stream()
+                        .map(u -> new ProductViewModel(
+                                u.getId(),
+                                u.getName(),
+                                u.getDescription(),
+                                u.getFull_description(),
+                                u.getType(),
+                                Math.toIntExact(u.getCategory().getId()),
+                                u.getQuantity(),
+                                u.getRate_of_depreciation(),
+                                u.getDate_of_registration().toString(),
+                                u.getDate_of_transformation() == null ? null : u.getDate_of_transformation().toString(),
+                                u.getPrice(),
+                                u.getAge()
+
+                        )).collect(Collectors.toList()));
+    }
+
+
 }

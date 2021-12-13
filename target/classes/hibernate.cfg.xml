@@ -13,12 +13,11 @@
 
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.User" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Roles" />
-        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Carton" />
-        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Client" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Category" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.City" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Client" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Product" />
-        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.ProductCarton" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.ProductClient" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteria" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteriaProduct" />
     </session-factory>
