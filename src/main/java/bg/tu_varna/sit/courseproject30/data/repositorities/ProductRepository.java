@@ -35,7 +35,24 @@ public class ProductRepository implements DAORepository<Product>{
             session.close();
         }
     }
+    public void updateWithQuantity(Product obj) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            String hql = "UPDATE Product p set p.quantity = : quantity " + "WHERE p.id = :id";
+            Query query = session.createQuery(hql);
+            query.setParameter("quantity", obj.getQuantity());
+            query.setParameter("id", obj.getId());
+            int result = query.executeUpdate();
 
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
     public void update(Product obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();

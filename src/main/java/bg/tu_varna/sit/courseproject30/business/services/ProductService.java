@@ -34,7 +34,7 @@ public class ProductService {
     }
     public void delete(ProductViewModel product){
         Product product1 = new Product();
-        product1.setId((long) product.getId());
+        product1.setId(product.getId());
         repository.delete(product1);
     }
     public void update(Product product){

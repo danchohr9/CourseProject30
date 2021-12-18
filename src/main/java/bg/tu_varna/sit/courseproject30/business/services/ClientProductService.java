@@ -63,7 +63,7 @@ public class ClientProductService {
     }
 
     public void updateProduct(Product product){
-        productRepository.update(product);
+        productRepository.updateWithQuantity(product);
     }
 
     public void addProduct(ClientViewModel client, ProductViewModel product, int quantity){

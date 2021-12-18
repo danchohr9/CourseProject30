@@ -34,7 +34,7 @@ public class UpdateProductController extends AddProductController{
         }
         if (mouseEvent.getSource() == editBtn) {
             Product editedProduct = getProductFromData();
-            editedProduct.setId((long) product.getId());
+            editedProduct.setId(product.getId());
             service.update(editedProduct);
             loadStage(Constants.View.PRODUCTS_VIEW,mouseEvent);
         }
