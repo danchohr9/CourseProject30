@@ -46,8 +46,7 @@ public class ClientProductService {
     }
 
     public Product findProduct(ProductViewModel product){
-        Product product1 = new Product();
-        product1 = productRepository.getById(product.getId());
+        Product product1 = productRepository.getById(product.getId());
         return product1;
     }
 

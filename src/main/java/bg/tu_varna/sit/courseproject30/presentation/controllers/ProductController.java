@@ -6,20 +6,27 @@ import bg.tu_varna.sit.courseproject30.common.Constants;
 import bg.tu_varna.sit.courseproject30.data.entities.Product;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ProductRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.UserRepository;
+import bg.tu_varna.sit.courseproject30.presentation.models.ClientViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ProductViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 
 import java.util.List;
 
 public class ProductController extends Controller{
 
+    public Button editProductBt;
+    public Button deleteProductBt;
+    public Label alerBoxLabel;
+    public Pane alerBoxPane;
     @FXML
     private Button addProductBt;
 
@@ -50,9 +57,21 @@ public class ProductController extends Controller{
 
     @FXML
     private void handleButtonClicks(javafx.event.ActionEvent mouseEvent) {
+        alerBoxPane.getStyleClass().removeAll("alert-danger");
+        alerBoxLabel.setText("");
         if (mouseEvent.getSource() == addProductBt) {
             loadStage(Constants.View.ADD_PRODUCT_VIEW,mouseEvent);
         }
+        if (mouseEvent.getSource() == editProductBt && productsTable.getSelectionModel().getSelectedItem() != null) {
+            this.userData = productsTable.getSelectionModel().getSelectedItem();
+            loadStage(Constants.View.EDIT_PRODUCT_VIEW,mouseEvent);
+        }
+        if (mouseEvent.getSource() == deleteProductBt && productsTable.getSelectionModel().getSelectedItem() != null) {
+            service.delete(productsTable.getSelectionModel().getSelectedItem());
+            initialize();
+        }
+        alerBoxPane.getStyleClass().add("alert-danger");
+        alerBoxLabel.setText("You must select a product.");
     }
     public void  initialize(){
         service = ProductService.getInstance();
@@ -62,9 +81,8 @@ public class ProductController extends Controller{
         nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         descrCol.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
         fullDescrCol.setCellValueFactory(cellData -> cellData.getValue().full_descriptionProperty());
-
         rateOfDepCol.setCellValueFactory(cellData -> cellData.getValue().rate_of_depreciationProperty().asString());
-        dateOfRegCol.setCellValueFactory(cellData -> cellData.getValue().full_descriptionProperty());
+        dateOfRegCol.setCellValueFactory(cellData -> cellData.getValue().date_of_registrationProperty());
         ageCol.setCellValueFactory(cellData -> cellData.getValue().ageProperty().asString());
         priceCol.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asString());
         dateOfTransCol.setCellValueFactory(cellData -> cellData.getValue().date_of_transformationProperty());

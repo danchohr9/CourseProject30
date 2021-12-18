@@ -46,6 +46,9 @@ public class MenuController extends Controller{
     private Button logOutBt;
 
     @FXML
+    public Button categoriesBtn;
+
+    @FXML
     private void handleButtonClicks(javafx.event.ActionEvent mouseEvent) {
         if (mouseEvent.getSource() == logOutBt) {
             loadStage(Constants.View.LOGIN_VIEW,mouseEvent);
@@ -61,7 +64,9 @@ public class MenuController extends Controller{
             loadStage(Constants.View.ADD_CLIENT_VIEW,mouseEvent);
         }else if(mouseEvent.getSource() == clientProductBt){
             loadStage(Constants.View.CLIENT_PRODUCT_VIEW,mouseEvent);
-    }
+        }else if(mouseEvent.getSource() == categoriesBtn){
+            loadStage(Constants.View.CATEGORY_VIEW,mouseEvent);
+        }
     }
     public void  initialize(){
         welcomeLbl.setText("Welcome, "+user.getEmail());

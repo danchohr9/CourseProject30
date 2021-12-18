@@ -9,8 +9,10 @@ public class Constants {
         public static final String ADD_PRODUCT_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/addProduct.fxml";
         public static final String CRITERIA_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/criteria.fxml";
         public static final String ADD_CRITERIA_TO_PRODUCT = "/bg/tu_varna/sit/courseproject30/presentation.views/addCritToProd.fxml";
+        public static final String CATEGORY_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/category.fxml";
         public static final String ADD_CLIENT_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/addClient.fxml";
         public static final String CLIENT_PRODUCT_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/addProdToClient.fxml";
+        public static final String EDIT_PRODUCT_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/updateProduct.fxml";
     }
 
     public static class Images{

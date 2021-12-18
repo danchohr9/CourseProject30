@@ -10,7 +10,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -39,8 +39,8 @@ public class Product {
     @Column(name = "type", nullable = false)
     private int type;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @Column(name = "quantity", nullable = false)
@@ -51,12 +51,28 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     private Set<ProductClient> productCartonSet;
+    public Product(){
 
-    public int getId() {
+    }
+    public Product(String name, String description, String full_description, Double rate,Date date_of_registration, int age,Double price,
+                   Date date_of_transformation,int type,Category category, int quantity){
+        this.name = name;
+        this.description = description;
+        this.full_description = full_description;
+        this.rate_of_depreciation =rate;
+        this.date_of_registration = date_of_registration;
+        this.date_of_transformation=date_of_transformation;
+        this.age = age;
+        this.price = price;
+        this.type = type;
+        this.category = category;
+        this.quantity = quantity;
+    }
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

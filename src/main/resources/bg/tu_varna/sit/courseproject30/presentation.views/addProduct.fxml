@@ -8,47 +8,118 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="679.0" prefWidth="1323.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.AddProductController">
+<BorderPane prefHeight="784.0" prefWidth="1117.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.AddProductController">
     <left>
         <fx:include source="menu.fxml" />
     </left>
     <center>
     </center>
    <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="659.0" prefWidth="712.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="679.0" prefWidth="745.0" spacing="10.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-primary" text="Adding Product">
+               <VBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name:" />
+            <TextField fx:id="nameT" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+            <TextField fx:id="descriptionT" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Full Description" />
+            <TextField fx:id="fullDescriptionTf" prefHeight="190.0" prefWidth="516.0" />
+            <HBox prefHeight="64.0" prefWidth="516.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adding Product">
-                     <VBox.margin>
-                        <Insets left="20.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name:" />
-                  <TextField />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
-                  <TextField />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Full Description" />
-                  <TextField prefHeight="98.0" prefWidth="746.0" />
-                  <Label text="Category" />
-                  <ComboBox prefHeight="28.0" prefWidth="209.0" promptText="Category One" />
-                  <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="122.0" styleClass="bg-primary" text="ADD PRODUCT" />
+                  <VBox prefHeight="100.0" prefWidth="260.0">
+                     <children>
+                        <Label text="Category" />
+                        <ComboBox fx:id="categoryCb" prefHeight="28.0" prefWidth="209.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="100.0" prefWidth="263.0">
+                     <children>
+                        <Label text="Type" />
+                        <ComboBox fx:id="typeCb" prefHeight="28.0" prefWidth="209.0" />
+                     </children>
+                  </VBox>
                </children>
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin>
-            </VBox>
-            <HBox prefHeight="679.0" prefWidth="357.0" spacing="29.0">
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="556.0">
                <children>
-                  <Label prefHeight="18.0" prefWidth="148.0" text="Registration Date" />
-                  <DatePicker prefHeight="26.0" prefWidth="170.0" />
+                  <Label prefHeight="18.0" prefWidth="366.0" text="Price" />
+                  <TextField fx:id="priceTf" prefHeight="26.0" prefWidth="211.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="556.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="366.0" text="Age" />
+                  <TextField fx:id="ageTf" prefHeight="26.0" prefWidth="211.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="556.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="366.0" text="Quantity" />
+                  <TextField fx:id="quantityTf" prefHeight="26.0" prefWidth="211.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="556.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="366.0" text="Rate of depreciation" />
+                  <TextField fx:id="rateTf" prefHeight="26.0" prefWidth="211.0" />
+               </children>
+            </HBox>
+            <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="28.0" prefWidth="122.0" styleClass="bg-primary" text="ADD PRODUCT" />
+            <Pane fx:id="alertPane" prefHeight="46.0" prefWidth="1118.0">
+               <children>
+                  <Label fx:id="alertLabel" layoutX="4.0" layoutY="5.0" prefHeight="32.0" prefWidth="497.0" text="ALERT">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Pane>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </VBox>
+   </center>
+   <right>
+      <VBox prefHeight="679.0" prefWidth="332.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="66.0" prefWidth="332.0" spacing="29.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="172.0" text="Registration Date" />
+                  <DatePicker fx:id="registrationDateDp" prefHeight="26.0" prefWidth="170.0" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <HBox prefHeight="65.0" prefWidth="332.0" spacing="29.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="145.0" text="Date of Transformation" />
+                  <DatePicker fx:id="transformationDateDp" prefHeight="26.0" prefWidth="141.0" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
@@ -58,6 +129,9 @@
                </opaqueInsets>
             </HBox>
          </children>
-      </HBox>
-   </center>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </VBox>
+   </right>
 </BorderPane>

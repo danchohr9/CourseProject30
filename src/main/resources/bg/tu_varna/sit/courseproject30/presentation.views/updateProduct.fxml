@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="784.0" prefWidth="1117.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.AddProductController">
+<BorderPane fx:id="borderPane" prefHeight="784.0" prefWidth="1117.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.UpdateProductController">
     <left>
         <fx:include source="menu.fxml" />
     </left>
@@ -22,7 +22,7 @@
    <center>
       <VBox prefHeight="659.0" prefWidth="712.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-primary" text="Adding Product">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-primary" text="Editing Product">
                <VBox.margin>
                   <Insets left="20.0" top="10.0" />
                </VBox.margin>
@@ -76,7 +76,7 @@
                   <TextField fx:id="rateTf" prefHeight="26.0" prefWidth="211.0" />
                </children>
             </HBox>
-            <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="28.0" prefWidth="122.0" styleClass="bg-primary" text="ADD PRODUCT" />
+            <Button fx:id="editBtn" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="28.0" prefWidth="122.0" styleClass="bg-primary" text="EDIT PRODUCT" />
             <Pane fx:id="alertPane" prefHeight="46.0" prefWidth="1118.0">
                <children>
                   <Label fx:id="alertLabel" layoutX="4.0" layoutY="5.0" prefHeight="32.0" prefWidth="497.0" text="ALERT">

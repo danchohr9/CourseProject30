@@ -52,7 +52,6 @@ public class ScrapCriteriaRepository implements DAORepository<ScrapCriteria> {
             query.setParameter("month", obj.getMonth());
             query.setParameter("depreciation", obj.getDepreciation());
             int result = query.executeUpdate();
-
             if (result > 0 ) {
                 log.info("Criteria was successfully removed.");
             }
@@ -112,7 +111,7 @@ public class ScrapCriteriaRepository implements DAORepository<ScrapCriteria> {
         transaction.commit();
 //        session.close();
 //            Connection.openSessionClose();           // pri zatvarqne dava greshka, akso iskame da se log out-nem
-    }
+        }
         return scrapCriteria;
     }
 

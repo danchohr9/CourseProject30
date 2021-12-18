@@ -1,10 +1,7 @@
 package bg.tu_varna.sit.courseproject30.data.repositorities;
 
 import bg.tu_varna.sit.courseproject30.data.access.Connection;
-import bg.tu_varna.sit.courseproject30.data.entities.Client;
-import bg.tu_varna.sit.courseproject30.data.entities.Product;
-import bg.tu_varna.sit.courseproject30.data.entities.ProductClient;
-import bg.tu_varna.sit.courseproject30.data.entities.User;
+import bg.tu_varna.sit.courseproject30.data.entities.*;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -16,7 +13,7 @@ import java.util.Optional;
 
 public class ProductRepository implements DAORepository<Product>{
 
-    private static final Logger log = Logger.getLogger(UserRepository.class);
+    private static final Logger log = Logger.getLogger(ProductRepository.class);
 
     public static ProductRepository getInstance() { return ProductRepository.ProductRepositoryHolder.INSTANCE;}
 
@@ -30,24 +27,35 @@ public class ProductRepository implements DAORepository<Product>{
         Transaction transaction = session.beginTransaction();
         try {
             session.save(obj);
+            log.info("Product saved successfully");
         } catch (Exception ex) {
+            log.error("Product save error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
-
 
     public void update(Product obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        try {
-            String hql = "UPDATE Product p set p.quantity = : quantity " + "WHERE p.id = :id";
-            Query query = session.createQuery(hql);
-            query.setParameter("quantity", obj.getQuantity());
-            query.setParameter("id", obj.getId());
-            int result = query.executeUpdate();
 
+        Product product = (Product)session.get(Product.class, obj.getId());
+        product.setName(obj.getName());
+        product.setDescription(obj.getDescription());
+        product.setFull_description(obj.getFull_description());
+        product.setCategory(obj.getCategory());
+        product.setPrice(obj.getPrice());
+        product.setType(obj.getType());
+        product.setAge(obj.getAge());
+        product.setQuantity(obj.getQuantity());
+        product.setRate_of_depreciation(obj.getRate_of_depreciation());
+        product.setDate_of_transformation(obj.getDate_of_transformation());
+        product.setDate_of_registration(obj.getDate_of_registration());
+
+        try{
             transaction.commit();
+            session.close();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -55,10 +63,23 @@ public class ProductRepository implements DAORepository<Product>{
             e.printStackTrace();
         }
     }
-
     @Override
     public void delete(Product obj) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
 
+        Product product = (Product)session.get(Product.class, obj.getId());
+        session.delete(product);
+
+        try{
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -108,7 +129,13 @@ public class ProductRepository implements DAORepository<Product>{
 
         return products;
     }
-
+    public Product findById(Long id){
+        Session session = Connection.openSession();
+        Product cat = (Product) session.load(Product.class, id);
+        session.close();
+        return cat;
+    }
+    //TODO:Merge findById and getById in one
     public Product getById(int id){
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();

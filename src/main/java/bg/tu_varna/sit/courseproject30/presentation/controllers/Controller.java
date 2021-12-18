@@ -11,9 +11,11 @@ import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class Controller {
     protected UserViewModel user;
+    protected Object userData = null;
     Controller(){
         user = HelloApplication.getUser();
     }
@@ -26,11 +28,15 @@ public class Controller {
 
             Scene scene = new Scene(root);
             stage.setTitle("Dashboard");
+            stage.setUserData(this.userData);
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    protected void loadData(Object obj){
+        this.userData = obj;
     }
 }
