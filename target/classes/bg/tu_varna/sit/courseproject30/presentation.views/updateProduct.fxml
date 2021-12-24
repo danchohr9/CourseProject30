@@ -52,28 +52,34 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox prefHeight="40.0" prefWidth="556.0">
+            <HBox prefHeight="31.0" prefWidth="506.0">
                <children>
                   <Label prefHeight="18.0" prefWidth="366.0" text="Price" />
                   <TextField fx:id="priceTf" prefHeight="26.0" prefWidth="211.0" />
                </children>
             </HBox>
-            <HBox prefHeight="40.0" prefWidth="556.0">
+            <HBox prefHeight="30.0" prefWidth="506.0">
                <children>
                   <Label prefHeight="18.0" prefWidth="366.0" text="Age" />
                   <TextField fx:id="ageTf" prefHeight="26.0" prefWidth="211.0" />
                </children>
             </HBox>
-            <HBox prefHeight="40.0" prefWidth="556.0">
+            <HBox prefHeight="30.0" prefWidth="506.0">
                <children>
                   <Label prefHeight="18.0" prefWidth="366.0" text="Quantity" />
                   <TextField fx:id="quantityTf" prefHeight="26.0" prefWidth="211.0" />
                </children>
             </HBox>
-            <HBox prefHeight="40.0" prefWidth="556.0">
+            <HBox prefHeight="30.0" prefWidth="506.0">
                <children>
-                  <Label prefHeight="18.0" prefWidth="366.0" text="Rate of depreciation" />
+                  <Label prefHeight="18.0" prefWidth="366.0" text="Rate of depreciation (%)" />
                   <TextField fx:id="rateTf" prefHeight="26.0" prefWidth="211.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="30.0" prefWidth="506.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="366.0" text="Depreciation growth (%)" />
+                  <TextField fx:id="growthTf" prefHeight="26.0" prefWidth="211.0" />
                </children>
             </HBox>
             <Button fx:id="editBtn" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="28.0" prefWidth="122.0" styleClass="bg-primary" text="EDIT PRODUCT" />

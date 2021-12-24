@@ -43,11 +43,21 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "criteria_id")
+    private ScrapCriteria criteria;
+
     @Column(name = "quantity", nullable = false)
     private int quantity;
 
-    @OneToOne(mappedBy = "product")
-    private ScrapCriteriaProduct scrapCriteriaProduct;
+    @Column(name = "currentPrice", nullable = true)
+    private double currentPrice;
+
+    @Column(name = "deprGrowth", nullable =  true)
+    private double deprGrowth;
+
+    @OneToMany(mappedBy = "product")
+    private Set<Scrap> scraps;
 
     @OneToMany(mappedBy = "product")
     private Set<ProductClient> productCartonSet;
@@ -55,7 +65,7 @@ public class Product {
 
     }
     public Product(String name, String description, String full_description, Double rate,Date date_of_registration, int age,Double price,
-                   Date date_of_transformation,int type,Category category, int quantity){
+                   Date date_of_transformation,int type,Category category, int quantity, double growth){
         this.name = name;
         this.description = description;
         this.full_description = full_description;
@@ -67,6 +77,7 @@ public class Product {
         this.type = type;
         this.category = category;
         this.quantity = quantity;
+        this.deprGrowth = growth;
     }
     public int getId() {
         return id;
@@ -164,12 +175,20 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public ScrapCriteriaProduct getScrapCriteriaProduct() {
-        return scrapCriteriaProduct;
+    public ScrapCriteria getCriteria() {
+        return criteria;
     }
 
-    public void setScrapCriteriaProduct(ScrapCriteriaProduct scrapCriteriaProduct) {
-        this.scrapCriteriaProduct = scrapCriteriaProduct;
+    public void setCriteria(ScrapCriteria criteria) {
+        this.criteria = criteria;
+    }
+
+    public Set<Scrap> getScraps() {
+        return scraps;
+    }
+
+    public void setScraps(Set<Scrap> scraps) {
+        this.scraps = scraps;
     }
 
     public Set<ProductClient> getProductCartonSet() {
@@ -178,5 +197,21 @@ public class Product {
 
     public void setProductCartonSet(Set<ProductClient> productCartonSet) {
         this.productCartonSet = productCartonSet;
+    }
+
+    public double getCurrentPrice() {
+        return currentPrice;
+    }
+
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = currentPrice;
+    }
+
+    public double getDeprGrowth() {
+        return deprGrowth;
+    }
+
+    public void setDeprGrowth(double deprGrowth) {
+        this.deprGrowth = deprGrowth;
     }
 }

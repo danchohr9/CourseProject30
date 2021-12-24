@@ -1,22 +1,27 @@
 package bg.tu_varna.sit.courseproject30.presentation.models;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 public class ScrapCriteriaViewModel {
+    private IntegerProperty id;
     private IntegerProperty years;
-    private IntegerProperty months;
-    private IntegerProperty depreciation;
+    private DoubleProperty priceDrop;
+    private DoubleProperty depreciation;
 
-    public ScrapCriteriaViewModel(int years, int months, int depreciation) {
+    public ScrapCriteriaViewModel(int id, int years, double priceDrop, double depreciation) {
+        this.setId(id);
         this.setYears(years);
-        this.setMonths(months);
+        this.setPriceDrop(priceDrop);
         this.setDepreciation(depreciation);
     }
 
     public ScrapCriteriaViewModel(ScrapCriteriaViewModel criteria) {
+        id = criteria.idProperty();
         years = criteria.yearsProperty();
-        months = criteria.monthsProperty();
+        priceDrop = criteria.priceDropProperty();
         depreciation = criteria.depreciationProperty();
     }
 
@@ -27,17 +32,23 @@ public class ScrapCriteriaViewModel {
     public IntegerProperty yearsProperty() {
         return years;
     }
-    public int getMonths() {
-        return months.get();
+    public double getPriceDrop() {
+        return priceDrop.get();
     }
-    public IntegerProperty monthsProperty() {
-        return months;
+    public DoubleProperty priceDropProperty() {
+        return priceDrop;
     }
-    public int getDepreciation() {
+    public double getDepreciation() {
         return depreciation.get();
     }
-    public IntegerProperty depreciationProperty() {
+    public DoubleProperty depreciationProperty() {
         return depreciation;
+    }
+    public int getId() {
+        return id.get();
+    }
+    public IntegerProperty idProperty() {
+        return id;
     }
 
 
@@ -45,23 +56,27 @@ public class ScrapCriteriaViewModel {
         this.years = new SimpleIntegerProperty();
         this.years.set(years);
     }
-    public void setMonths(int months) {
-        this.months = new SimpleIntegerProperty();
-        this.months.set(months);
+    public void setPriceDrop(double priceDrop) {
+        this.priceDrop = new SimpleDoubleProperty();
+        this.priceDrop.set(priceDrop);
     }
-    public void setDepreciation(int depreciation) {
-        this.depreciation = new SimpleIntegerProperty();
+    public void setDepreciation(double depreciation) {
+        this.depreciation = new SimpleDoubleProperty();
         this.depreciation.set(depreciation);
+    }
+    public void setId(int id) {
+        this.id = new SimpleIntegerProperty();
+        this.id.set(id);
     }
 
     @Override
     public String toString() {
-        return  String.format("%s | %s | %s", years ,months,depreciation);
+        return  String.format("%s | %s | %s", years ,priceDrop,depreciation);
     }
 
     public boolean equals(Object o) {
         return years==((ScrapCriteriaViewModel)o).years &&
-                months==((ScrapCriteriaViewModel)o).months &&
+                priceDrop==((ScrapCriteriaViewModel)o).priceDrop &&
                 depreciation==((ScrapCriteriaViewModel)o).depreciation;
     }
 

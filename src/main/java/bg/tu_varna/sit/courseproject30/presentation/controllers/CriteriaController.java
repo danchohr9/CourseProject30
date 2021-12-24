@@ -60,13 +60,14 @@ public class CriteriaController extends Controller{
 
 
     public void createBtOnAction(ActionEvent actionEvent) {
-        int y=0,m=0,d=0;
+        int y=0;
+        double m=0,d=0;
         if(yearsTf.getLength()!=0) y = Integer.parseInt(yearsTf.getText());
-        if(monthsTf.getLength()!=0) m = Integer.parseInt(monthsTf.getText());
-        if(depreciationTf.getLength()!=0) d = Integer.parseInt(depreciationTf.getText());
+        if(monthsTf.getLength()!=0) m = Double.parseDouble(monthsTf.getText());
+        if(depreciationTf.getLength()!=0) d = Double.parseDouble(depreciationTf.getText());
         warningLbl.setText(service.createCriteria(y,m,d, criteriaViewModels));
         if(warningLbl.getText().equals("Scrap criteria successfully added.")) {
-            ScrapCriteriaViewModel newCriteria = new ScrapCriteriaViewModel(y, m, d);
+            ScrapCriteriaViewModel newCriteria = new ScrapCriteriaViewModel(0,y, m, d);
             criteriaViewModels.add(newCriteria);
         }
     }
@@ -78,13 +79,6 @@ public class CriteriaController extends Controller{
         criteriaTable.getItems().removeAll(removedCriteria);
     }
 
-    @FXML
-    private void addBtOnAction(javafx.event.ActionEvent mouseEvent) {
-        if (mouseEvent.getSource() == addBt) {
-            loadStage(Constants.View.ADD_CRITERIA_TO_PRODUCT,mouseEvent);
-        }
-    }
-
     public void initialize(){
 
         service = ScrapCriteriaService.getInstance();
@@ -92,9 +86,10 @@ public class CriteriaController extends Controller{
         criteriaTable.setItems(criteriaViewModels);
 
         yearsColumn.setCellValueFactory(cellData -> cellData.getValue().yearsProperty().asString());
-        monthsColumn.setCellValueFactory(cellData -> cellData.getValue().monthsProperty().asString());
+        monthsColumn.setCellValueFactory(cellData -> cellData.getValue().priceDropProperty().asString());
         deprColumn.setCellValueFactory(cellData -> cellData.getValue().depreciationProperty().asString());
 
+        //TODO: Modify these listeners to accept doubles (except year)
         yearsTf.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,

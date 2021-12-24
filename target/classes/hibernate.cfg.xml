@@ -19,6 +19,6 @@
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Product" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.ProductClient" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteria" />
-        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteriaProduct" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Scrap" />
     </session-factory>
 </hibernate-configuration>

@@ -47,6 +47,7 @@ public class UpdateProductController extends AddProductController{
         ageTf.textProperty().setValue(String.valueOf(product.getAge()));
         priceTf.textProperty().setValue(String.valueOf(product.getPrice()));
         rateTf.textProperty().setValue(String.valueOf(product.getRate_of_depreciation()));
+        growthTf.textProperty().setValue(String.valueOf(product.getDepreciationGrowth()));
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
         registrationDateDp.setValue(LocalDate.parse(product.getDate_of_registration(),dateTimeFormatter));

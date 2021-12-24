@@ -84,7 +84,7 @@ public class ProductController extends Controller{
         rateOfDepCol.setCellValueFactory(cellData -> cellData.getValue().rate_of_depreciationProperty().asString());
         dateOfRegCol.setCellValueFactory(cellData -> cellData.getValue().date_of_registrationProperty());
         ageCol.setCellValueFactory(cellData -> cellData.getValue().ageProperty().asString());
-        priceCol.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asString());
+        priceCol.setCellValueFactory(cellData -> cellData.getValue().currentPriceProperty().asString());
         dateOfTransCol.setCellValueFactory(cellData -> cellData.getValue().date_of_transformationProperty());
 
     }

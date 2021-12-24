@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.courseproject30.data.repositorities;
 
 import bg.tu_varna.sit.courseproject30.data.access.Connection;
+import bg.tu_varna.sit.courseproject30.data.entities.Product;
 import bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteria;
 import bg.tu_varna.sit.courseproject30.data.entities.User;
 import bg.tu_varna.sit.courseproject30.presentation.models.ScrapCriteriaViewModel;
@@ -46,10 +47,10 @@ public class ScrapCriteriaRepository implements DAORepository<ScrapCriteria> {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try{
-            String hql = "DELETE ScrapCriteria sc WHERE sc.years = :years AND sc.month = :month AND sc.depreciation = :depreciation";
+            String hql = "DELETE ScrapCriteria sc WHERE sc.years = :years AND sc.priceDrop = :priceDrop AND sc.depreciation = :depreciation";
             Query query = session.createQuery(hql);
             query.setParameter("years", obj.getYears());
-            query.setParameter("month", obj.getMonth());
+            query.setParameter("priceDrop", obj.getPriceDrop());
             query.setParameter("depreciation", obj.getDepreciation());
             int result = query.executeUpdate();
             if (result > 0 ) {
@@ -89,15 +90,15 @@ public class ScrapCriteriaRepository implements DAORepository<ScrapCriteria> {
         return criteria;
     }
 
-    public ScrapCriteria getCriteria(int years, int months, int depreciation){
+    public ScrapCriteria getCriteria(int years, double priceDrop, double depreciation){
         ScrapCriteria scrapCriteria = null;
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try{
-            String hql = " FROM ScrapCriteria sc WHERE sc.years = :years AND sc.month = :month AND sc.depreciation = :depreciation";
+            String hql = " FROM ScrapCriteria sc WHERE sc.years = :years AND sc.priceDrop = :priceDrop AND sc.depreciation = :depreciation";
             Query query = session.createQuery(hql);
             query.setParameter("years", years);
-            query.setParameter("month", months);
+            query.setParameter("priceDrop", priceDrop);
             query.setParameter("depreciation", depreciation);
             List results = query.getResultList();
 
@@ -109,10 +110,39 @@ public class ScrapCriteriaRepository implements DAORepository<ScrapCriteria> {
             log.error("Get criteria error: "+ex.getMessage());
         }finally {
         transaction.commit();
-//        session.close();
 //            Connection.openSessionClose();           // pri zatvarqne dava greshka, akso iskame da se log out-nem
         }
         return scrapCriteria;
     }
+
+    public ScrapCriteria getById(long id){
+        ScrapCriteria scrapCriteria = null;
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            String hql = " FROM ScrapCriteria sc WHERE sc.id = :id";
+            Query query = session.createQuery(hql);
+            query.setParameter("id", id);
+            List results = query.getResultList();
+
+            if (results != null && !results.isEmpty()) {
+                scrapCriteria = (ScrapCriteria) results.get(0);
+                log.info("Get criteria");
+            }
+        }catch (Exception ex){
+            log.error("Get criteria error: "+ex.getMessage());
+        }finally {
+            transaction.commit();
+//            Connection.openSessionClose();           // pri zatvarqne dava greshka, akso iskame da se log out-nem
+        }
+        return scrapCriteria;
+    }
+
+//    public ScrapCriteria findById(Long id){
+//        Session session = Connection.openSession();
+//        ScrapCriteria cat = (ScrapCriteria) session.load(ScrapCriteria.class, id);
+//        session.close();
+//        return cat;
+//    }
 
 }

@@ -17,12 +17,15 @@ public class ProductViewModel {
     private IntegerProperty type;
     private IntegerProperty category_id;
     private IntegerProperty quantity;
-
+    private StringProperty criteria_id;   //String, zashtoto criteria_id moje da e null ("") i ne e udachno da pishe 0
+    private StringProperty criteria;
+    private DoubleProperty currentPrice;
+    private DoubleProperty depreciationGrowth;
 
     public ProductViewModel(
             int id, String  name, String description, String full_description, int type, int category_id,int quantity,
-            Double rate,String date_of_registration, String date_of_transformation, Double price, int age
-                            ) {
+            Double rate,String date_of_registration, String date_of_transformation, Double price, int age, String criteria_id,
+            String criteria, double currentPrice, double growth                ) {
         this.setId(id);
         this.setName(name);
         this.setDescription(description);
@@ -37,6 +40,10 @@ public class ProductViewModel {
         this.setQuantity(quantity);
         this.setType(type);
         this.setCategory_id(category_id);
+        this.setCriteria_id(criteria_id);
+        this.setCriteria(criteria);
+        this.setCurrentPrice(currentPrice);
+        this.setDepreciationGrowth(growth);
     }
 
     public ProductViewModel(ProductViewModel pvm) {
@@ -52,6 +59,10 @@ public class ProductViewModel {
         date_of_transformation = pvm.date_of_transformationProperty();
         price = pvm.priceProperty();
         age = pvm.ageProperty();
+        criteria_id = pvm.criteria_idProperty();
+        criteria = pvm.criteriaProperty();
+        currentPrice = pvm.currentPriceProperty();
+        depreciationGrowth = pvm.depreciationGrowthProperty();
     }
 
 
@@ -91,6 +102,14 @@ public class ProductViewModel {
     public IntegerProperty idProperty() {
         return id;
     }
+    public StringProperty criteria_idProperty() {
+        return criteria_id;
+    }
+    public StringProperty criteriaProperty() {
+        return criteria;
+    }
+    public DoubleProperty currentPriceProperty(){return currentPrice;}
+    public DoubleProperty depreciationGrowthProperty(){return depreciationGrowth;}
 
     public double getRate_of_depreciation() {
         return rate_of_depreciation.get();
@@ -126,6 +145,10 @@ public class ProductViewModel {
         return name.get();
     }
     public int getId(){return id.get();}
+    public String getCriteria_id(){return criteria_id.get();}
+    public String getCriteria(){return criteria.get();}
+    public double getCurrentPrice(){return currentPrice.get();}
+    public double getDepreciationGrowth(){return depreciationGrowth.get();}
 
     public void setRate_of_depreciation(Double rate) {
         this.rate_of_depreciation = new SimpleDoubleProperty();
@@ -175,5 +198,21 @@ public class ProductViewModel {
     public void setCategory_id(int category_id) {
         this.category_id = new SimpleIntegerProperty();
         this.category_id.set(category_id);
+    }
+    public void setCriteria_id(String criteria_id) {
+        this.criteria_id = new SimpleStringProperty();
+        this.criteria_id.set(criteria_id);
+    }
+    public void setCriteria(String criteria) {
+        this.criteria = new SimpleStringProperty();
+        this.criteria.set(criteria);
+    }
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = new SimpleDoubleProperty();
+        this.currentPrice.set(currentPrice);
+    }
+    public void setDepreciationGrowth(double depreciationGrowth) {
+        this.depreciationGrowth = new SimpleDoubleProperty();
+        this.depreciationGrowth.set(depreciationGrowth);
     }
 }

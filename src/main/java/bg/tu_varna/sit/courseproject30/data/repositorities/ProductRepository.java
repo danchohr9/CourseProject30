@@ -69,6 +69,9 @@ public class ProductRepository implements DAORepository<Product>{
         product.setRate_of_depreciation(obj.getRate_of_depreciation());
         product.setDate_of_transformation(obj.getDate_of_transformation());
         product.setDate_of_registration(obj.getDate_of_registration());
+        product.setCriteria(obj.getCriteria());
+        product.setCurrentPrice(obj.getCurrentPrice());
+        product.setDeprGrowth(obj.getDeprGrowth());
 
         try{
             transaction.commit();
@@ -171,5 +174,71 @@ public class ProductRepository implements DAORepository<Product>{
             log.error("Get product error: "+ex.getMessage());
         }
         return product;
+    }
+
+    public List<Product> getByCriteria(int id) {
+
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Product> products = new LinkedList<>();
+
+        try {
+            String jpql = "SELECT p FROM Product p where p.criteria.id =: id";
+            Query query = session.createQuery(jpql, Product.class);
+            query.setParameter("id",(long)id);
+            products.addAll(query.getResultList());
+            log.info("Get all Products");
+
+        } catch (Exception ex) {
+            log.error("Get Product error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+            //Connection.openSessionClose();
+        }
+        System.out.println("First " + products);
+
+        return products;
+    }
+
+    public List<Product> getMAProducts(){
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Product> products = new LinkedList<>();
+
+        try {
+            String jpql = "SELECT p FROM Product p where p.type = 0 and p.quantity > 0";
+            products.addAll(session.createQuery(jpql, Product.class).getResultList());
+            log.info("Get available Products");
+
+        } catch (Exception ex) {
+            log.error("Get Products error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+            //Connection.openSessionClose();           // pri zatvarqne dava greshka, akso iskame da se log out-nem
+        }
+        System.out.println("First " + products);
+
+        return products;
+    }
+
+    public List<Product> getDMAProducts(){
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Product> products = new LinkedList<>();
+
+        try {
+            String jpql = "SELECT p FROM Product p where p.type = 1";
+            products.addAll(session.createQuery(jpql, Product.class).getResultList());
+            log.info("Get available Products");
+
+        } catch (Exception ex) {
+            log.error("Get Products error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+            //Connection.openSessionClose();           // pri zatvarqne dava greshka, akso iskame da se log out-nem
+        }
+        System.out.println("First " + products);
+
+        return products;
     }
 }

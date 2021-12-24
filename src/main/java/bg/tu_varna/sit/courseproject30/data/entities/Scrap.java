@@ -3,9 +3,9 @@ package bg.tu_varna.sit.courseproject30.data.entities;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "javaproject.scrapcriteria_product")
+@Table(name = "javaproject.scrap")
 @Entity
-public class ScrapCriteriaProduct {
+public class Scrap {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -14,13 +14,20 @@ public class ScrapCriteriaProduct {
     @Column(name = "scrap_date", nullable = false)
     private Date scrap_date;
 
-    @ManyToOne
-    @JoinColumn(name = "criteria_id", nullable = false)
-    private ScrapCriteria scrapCriteria;
+    @Column(name = "quantity", nullable = false)
+    private int quantity;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
+
+    public Scrap(){}
+
+    public Scrap(Date scrap_date, int quantity, Product product) {
+        this.scrap_date = scrap_date;
+        this.quantity = quantity;
+        this.product = product;
+    }
 
     public Long getId() {
         return id;
@@ -38,19 +45,19 @@ public class ScrapCriteriaProduct {
         this.scrap_date = scrap_date;
     }
 
-    public ScrapCriteria getScrapCriteria() {
-        return scrapCriteria;
-    }
-
-    public void setScrapCriteria(ScrapCriteria scrapCriteria) {
-        this.scrapCriteria = scrapCriteria;
-    }
-
     public Product getProduct() {
         return product;
     }
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

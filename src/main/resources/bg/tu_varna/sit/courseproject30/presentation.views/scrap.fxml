@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane prefHeight="537.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.ScrapController">
+    <left>
+        <fx:include source="menu.fxml" />
+    </left>
+   <center>
+      <AnchorPane prefHeight="538.0" prefWidth="542.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="29.0" layoutY="36.0" prefHeight="18.0" prefWidth="198.0" text="Products for scrap:" />
+            <TableView fx:id="productsTable" layoutX="29.0" layoutY="54.0" prefHeight="258.0" prefWidth="356.0">
+               <columns>
+                  <TableColumn fx:id="productCol" prefWidth="207.9999942779541" text="Product" />
+                  <TableColumn fx:id="quantityCol" prefWidth="42.39996337890625" text="Count" />
+                  <TableColumn fx:id="clientCol" prefWidth="102.4000244140625" text="Client" />
+               </columns>
+            </TableView>
+            <TableView fx:id="scrappedTable" layoutX="29.0" layoutY="340.0" prefHeight="130.0" prefWidth="355.0">
+               <columns>
+                  <TableColumn fx:id="productCol1" prefWidth="206.4000186920166" text="Product" />
+                  <TableColumn fx:id="quantityCol1" prefWidth="51.199859619140625" text="Count" />
+                  <TableColumn fx:id="dateScrapped" prefWidth="94.4000244140625" text="Scrapped" />
+               </columns>
+            </TableView>
+            <Label layoutX="29.0" layoutY="322.0" prefHeight="18.0" prefWidth="198.0" text="Scrapped products:" />
+            <Button fx:id="scrapBt" layoutX="29.0" layoutY="478.0" mnemonicParsing="false" onAction="#scrapBtOnAction" prefHeight="30.0" prefWidth="67.0" text="Scrap" />
+            <Pane fx:id="alerBoxPane" layoutX="110.0" layoutY="478.0" prefHeight="30.0" prefWidth="275.0">
+               <children>
+                  <Label fx:id="alerBoxLabel" layoutX="4.0" layoutY="2.0" prefHeight="26.0" prefWidth="267.0" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

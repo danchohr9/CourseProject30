@@ -105,26 +105,6 @@ public class ClientProductRepository implements DAORepository<ProductClient>{
         return productClients;
     }
 
-    public List<ProductClient> getAvailableProducts() {
-
-        Session session = Connection.openSession();
-        Transaction transaction = session.beginTransaction();
-        List<ProductClient> productClients = new LinkedList<>();
-        try {
-            String jpql = "SELECT pc FROM ProductClient pc where pc.date_added = :null";
-            Query query = session.createQuery(jpql, ProductClient.class);
-            query.setParameter("null", null);
-            productClients.addAll(query.getResultList());
-            log.info("Get all ProductClients");
-        } catch (Exception ex) {
-            log.error("Get ProductClient error: " + ex.getMessage());
-        } finally {
-            transaction.commit();
-            //Connection.openSessionClose();
-        }
-        return productClients;
-    }
-
     public ProductClient getById(int id){
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
@@ -143,5 +123,23 @@ public class ClientProductRepository implements DAORepository<ProductClient>{
             log.error("Get productClient error: "+ex.getMessage());
         }
         return productClient;
+    }
+
+    public List<ProductClient> getMAProducts(){
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<ProductClient> productClients = new LinkedList<>();
+        try {
+            String jpql = "SELECT pc FROM ProductClient pc where pc.product.type = 0 and pc.date_removed = null"; //not wrong
+            Query query = session.createQuery(jpql, ProductClient.class);
+            productClients.addAll(query.getResultList());
+            log.info("Get all ProductClients");
+        } catch (Exception ex) {
+            log.error("Get ProductClient error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+            //Connection.openSessionClose();
+        }
+        return productClients;
     }
 }

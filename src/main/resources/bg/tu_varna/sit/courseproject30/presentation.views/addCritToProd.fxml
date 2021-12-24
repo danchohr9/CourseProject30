@@ -6,39 +6,46 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="537.0" prefWidth="891.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.AddCritToProdController">
+<BorderPane prefHeight="537.0" prefWidth="994.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.AddCritToProdController">
     <left>
         <fx:include source="menu.fxml" />
     </left>
     <center>
     </center>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="538.0" prefWidth="712.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="titleLbl" layoutX="186.0" prefHeight="83.0" prefWidth="289.0" text="Add Criteria to Product" textAlignment="CENTER">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
-            <TableView fx:id="criteriaTable" layoutX="29.0" layoutY="103.0" prefHeight="338.0" prefWidth="211.0">
+            <TableView fx:id="criteriaTable" layoutX="29.0" layoutY="103.0" prefHeight="338.0" prefWidth="230.0">
                <columns>
-                  <TableColumn fx:id="yearsColumn" prefWidth="52.79998779296875" text="years" />
-                  <TableColumn fx:id="monthsColumn" prefWidth="52.800079345703125" text="months" />
-                  <TableColumn fx:id="deprColumn" prefWidth="98.4000244140625" text=" depreciation(%)" />
+                  <TableColumn fx:id="yearsColumn" prefWidth="44.00006294250488" text="years" />
+                  <TableColumn fx:id="monthsColumn" prefWidth="82.40001678466797" text="price drop(%)" />
+                  <TableColumn fx:id="deprColumn" prefWidth="99.20001220703125" text=" depreciation(%)" />
                </columns>
             </TableView>
-            <TableView fx:id="productsTable" layoutX="272.0" layoutY="103.0" prefHeight="338.0" prefWidth="376.0">
+            <TableView fx:id="productsTable" layoutX="274.0" layoutY="103.0" prefHeight="338.0" prefWidth="462.0">
                <columns>
                   <TableColumn fx:id="nameCol" prefWidth="105.60000610351562" text="Name" />
                   <TableColumn fx:id="dateOfRegCol" prefWidth="96.0" text="Registered on:" />
-                  <TableColumn fx:id="ageCol" minWidth="0.0" prefWidth="34.4000244140625" text="Age" />
-                  <TableColumn fx:id="priceCol" minWidth="5.5999755859375" prefWidth="47.199981689453125" text="Price" />
-                  <TableColumn fx:id="priceCol1" minWidth="5.5999755859375" prefWidth="89.5999755859375" text="Criteria" />
+                  <TableColumn fx:id="ageCol" minWidth="0.0" prefWidth="68.00003051757812" text="Age" />
+                  <TableColumn fx:id="priceCol" minWidth="5.5999755859375" prefWidth="70.4000244140625" text="Price" />
+                  <TableColumn fx:id="criteriaCol" minWidth="5.5999755859375" prefWidth="120.800048828125" text="Criteria" />
                </columns>
             </TableView>
-            <Button fx:id="addToProductBt" layoutX="212.0" layoutY="457.0" mnemonicParsing="false" onAction="#addBtOnAction" prefHeight="41.0" prefWidth="119.0" text="Add to Product" />
+            <Button fx:id="addToProductBt" layoutX="29.0" layoutY="464.0" mnemonicParsing="false" onAction="#addBtOnAction" prefHeight="41.0" prefWidth="119.0" text="Add to Product" />
+            <Pane fx:id="alerBoxPane" layoutX="162.0" layoutY="461.0" prefHeight="48.0" prefWidth="432.0">
+               <children>
+                  <Label fx:id="alerBoxLabel" layoutX="12.0" layoutY="12.0" prefHeight="23.0" prefWidth="405.0" />
+               </children>
+            </Pane>
+            <Button fx:id="criteriaBt" layoutX="608.0" layoutY="464.0" mnemonicParsing="false" onAction="#criteriaBtOnAction" prefHeight="42.0" prefWidth="127.0" text="Add/Delete Criteria" />
          </children>
       </AnchorPane>
    </center>

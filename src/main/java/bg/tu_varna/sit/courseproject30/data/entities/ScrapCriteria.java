@@ -9,25 +9,25 @@ public class ScrapCriteria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
 
     @Column(name = "years", nullable = false)
     private int years;
 
-    @Column(name = "month", nullable = false)
-    private int month;
-
     @Column(name = "depreciation", nullable = false)
-    private int depreciation;
+    private double depreciation;
 
-    @OneToMany(mappedBy = "scrapCriteria")
-    private Set<ScrapCriteriaProduct> scrapCriteriaProductSet;
+    @Column(name = "price_drop", nullable = false)
+    private double priceDrop;
 
-    public int getId() {
+    @OneToMany(mappedBy = "id")
+    private Set<Product> productSet;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,36 +39,46 @@ public class ScrapCriteria {
         this.years = years;
     }
 
-    public int getMonth() {
-        return month;
+    public double getPriceDrop() {
+        return priceDrop;
     }
 
-    public void setMonth(int month) {
-        this.month = month;
+    public void setPriceDrop(double priceDrop) {
+        this.priceDrop = priceDrop;
     }
 
-    public int getDepreciation() {
+    public double getDepreciation() {
         return depreciation;
     }
 
-    public void setDepreciation(int depreciation) {
+    public void setDepreciation(double depreciation) {
         this.depreciation = depreciation;
     }
 
-    public Set<ScrapCriteriaProduct> getScrapCriteriaProductSet() {
-        return scrapCriteriaProductSet;
-    }
 
     public ScrapCriteria(){
     }
 
-    public ScrapCriteria(int years, int month, int depreciation) {
+    public ScrapCriteria(Long id, int years, double priceDrop, double depreciation) {
+        this.id = id;
         this.years = years;
-        this.month = month;
+        this.priceDrop = priceDrop;
         this.depreciation = depreciation;
     }
 
-    public void setScrapCriteriaProductSet(Set<ScrapCriteriaProduct> scrapCriteriaProductSet) {
-        this.scrapCriteriaProductSet = scrapCriteriaProductSet;
+    public Set<Product> getProductSet() {
+        return productSet;
+    }
+
+    public void setProductSet(Set<Product> productSet) {
+        this.productSet = productSet;
+    }
+
+    @Override
+    public String toString() {
+        return years +
+                "y, " + priceDrop +
+                "%$, " + depreciation +
+                '%';
     }
 }

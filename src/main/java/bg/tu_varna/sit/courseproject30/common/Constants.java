@@ -13,6 +13,7 @@ public class Constants {
         public static final String ADD_CLIENT_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/addClient.fxml";
         public static final String CLIENT_PRODUCT_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/addProdToClient.fxml";
         public static final String EDIT_PRODUCT_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/updateProduct.fxml";
+        public static final String SCRAP_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/scrap.fxml";
     }
 
     public static class Images{

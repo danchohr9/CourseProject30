@@ -34,6 +34,7 @@ public class AddProductController extends Controller{
     public TextField descriptionT;
     public TextField nameT;
     public TextField rateTf;
+    public TextField growthTf;
 
     private final ProductService service = new ProductService();
     private final CategoryService categoryService  = new CategoryService();
@@ -46,6 +47,7 @@ public class AddProductController extends Controller{
         int age = Integer.parseInt(ageTf.getText());
         double price = Double.parseDouble(priceTf.getText());
         double rate = Double.parseDouble(rateTf.getText());
+        double growth = Double.parseDouble(growthTf.getText());
         int type = 0;
         if(typeCb.getValue() == "DMA"){
             type = 1;
@@ -70,7 +72,7 @@ public class AddProductController extends Controller{
         }
 
         return new Product(name,descriptionTText,fullDescriptionTfText,rate,date_of_reg,age,price,
-                date_of_tran,type,category,quantity
+                date_of_tran,type,category,quantity, growth
         );
     }
     @FXML

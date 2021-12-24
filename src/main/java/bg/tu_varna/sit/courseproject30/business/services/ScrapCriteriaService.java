@@ -1,8 +1,10 @@
 package bg.tu_varna.sit.courseproject30.business.services;
 
 
+import bg.tu_varna.sit.courseproject30.data.entities.Product;
 import bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteria;
 import bg.tu_varna.sit.courseproject30.data.entities.User;
+import bg.tu_varna.sit.courseproject30.data.repositorities.ProductRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ScrapCriteriaRepository;
 import bg.tu_varna.sit.courseproject30.presentation.models.ScrapCriteriaViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;
@@ -25,13 +27,13 @@ public class ScrapCriteriaService{
         public static final ScrapCriteriaService INSTANCE = new ScrapCriteriaService();
     }
 
-    public String createCriteria(int years, int months, int depreciation, ObservableList<ScrapCriteriaViewModel> criteriaViewModels){
-        ScrapCriteriaViewModel newCriteria = new ScrapCriteriaViewModel(years, months, depreciation);
-        if(years!=0 && months!=0 && depreciation!=0) {
-            if (years > 100 || months > 1000) return "Years/months out of limit.";
+    public String createCriteria(int years, double priceDrop, double depreciation, ObservableList<ScrapCriteriaViewModel> criteriaViewModels){
+        ScrapCriteriaViewModel newCriteria = new ScrapCriteriaViewModel(0,years, priceDrop, depreciation);
+        if(years!=0 && priceDrop!=0 && depreciation!=0) {
+            if (years > 100 || priceDrop > 1000) return "Years/months out of limit.";
             if(depreciation > 75) return "Depreciation is too much.";
-            if(repository.getCriteria(years,months,depreciation)==null){
-                ScrapCriteria scrapCriteria = new ScrapCriteria(years,months,depreciation);
+            if(repository.getCriteria(years,priceDrop,depreciation)==null){
+                ScrapCriteria scrapCriteria = new ScrapCriteria(0L,years,priceDrop,depreciation);
                 repository.save(scrapCriteria);
                 criteria.add(scrapCriteria);
                 return "Scrap criteria successfully added.";
@@ -43,8 +45,16 @@ public class ScrapCriteriaService{
 
 
     public void removeCriteria(ScrapCriteriaViewModel criteriaModel){
-        ScrapCriteria criteriaToDelete = new ScrapCriteria(criteriaModel.getYears(), criteriaModel.getMonths(),
+        ScrapCriteria criteriaToDelete = new ScrapCriteria((long) criteriaModel.getId(), criteriaModel.getYears(), criteriaModel.getPriceDrop(),
                 criteriaModel.getDepreciation());
+        ProductRepository productRepository = ProductRepository.getInstance();
+        List<Product> products = productRepository.getByCriteria(criteriaModel.getId());
+        if(products!=null) {
+            for (Product product:products) {
+                product.setCriteria(null);
+                productRepository.update(product);
+            }
+        }
         repository.delete(criteriaToDelete);
         criteria.removeAll(criteria);
         criteria = repository.getAll();
@@ -57,8 +67,9 @@ public class ScrapCriteriaService{
                 criteria
                         .stream()
                         .map(c -> new ScrapCriteriaViewModel(
+                                c.getId().intValue(),
                                 c.getYears(),
-                                c.getMonth(),
+                                c.getPriceDrop(),
                                 c.getDepreciation()
                         )).collect(Collectors.toList()));
     }
