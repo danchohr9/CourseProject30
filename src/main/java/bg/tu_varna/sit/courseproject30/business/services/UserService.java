@@ -55,7 +55,7 @@ public class UserService {
         User newUser = new User();
         Roles role = new Roles(2);
         if(!username.isBlank() && !password.isBlank() && !email.isBlank()){
-            if(repository.getUserByUsername(username)!=null){   //moje bi shte go promenq da tursi ot ObservableList<UserViewModel>, no iskah da testvam select-ite
+            if(repository.getUserByUsername(username)!=null){
                 return "Username is already taken";
             }
             if(!validateUsername(username)){
@@ -132,5 +132,6 @@ public class UserService {
             return false;
         }
     }
+
 
 }

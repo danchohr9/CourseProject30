@@ -1,18 +1,17 @@
 package bg.tu_varna.sit.courseproject30.business.services;
 
-import bg.tu_varna.sit.courseproject30.data.entities.Product;
-import bg.tu_varna.sit.courseproject30.data.entities.ProductClient;
-import bg.tu_varna.sit.courseproject30.data.entities.Scrap;
+import bg.tu_varna.sit.courseproject30.data.entities.*;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ClientProductRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ProductRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ScrapRepository;
+import bg.tu_varna.sit.courseproject30.data.repositorities.UserRepository;
 import bg.tu_varna.sit.courseproject30.presentation.models.ScrapViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ToScrapViewModel;
+import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ScrapService {
@@ -22,6 +21,7 @@ public class ScrapService {
     public final ScrapRepository scrapRepository = ScrapRepository.getInstance();
     public final ClientProductRepository clientProductRepository = ClientProductRepository.getInstance();
     public final ProductRepository productRepository = ProductRepository.getInstance();
+    private NotificationService notificationService = NotificationService.getInstance();
     private static class ScrapServiceHolder {
         public static final ScrapService INSTANCE = new ScrapService();
     }
@@ -41,7 +41,7 @@ public class ScrapService {
                         )).collect(Collectors.toList()));
     }
 
-    public void ScrapProduct(ToScrapViewModel toScrap){
+    public void ScrapProduct(ToScrapViewModel toScrap, UserViewModel user){
         Date date = new Date();
         Scrap newScrap;
         if(toScrap.getIdProductClient()!=null){
@@ -56,6 +56,11 @@ public class ScrapService {
             productRepository.update(toEdit);
             newScrap = new Scrap(date, toScrap.getQuantity(), toEdit);
         }
+        String title = toScrap.getProduct() + " was scrapped";
+        String message = toScrap.getProduct() + " was scrapped by user "+user.getEmail()+" on "+date.toString()+".";
+        Notification notification = notificationService.createNotification(title,message,date);
+        notificationService.sendNotifications(notification);
         scrapRepository.save(newScrap);
     }
+
 }

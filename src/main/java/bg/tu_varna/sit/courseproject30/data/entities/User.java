@@ -25,6 +25,9 @@ public class User {
     @JoinColumn(name = "roles_id", nullable = false)
     private Roles role;
 
+    @OneToMany(mappedBy = "user")
+    private Set<UserNotification> userNotificationSet;
+
     public User(Long id, String username, String password, String email, Roles role) {
         this.id = id;
         this.username = username;

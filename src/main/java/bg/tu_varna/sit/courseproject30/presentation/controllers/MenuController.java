@@ -1,23 +1,16 @@
 package bg.tu_varna.sit.courseproject30.presentation.controllers;
 
-import bg.tu_varna.sit.courseproject30.application.HelloApplication;
 import bg.tu_varna.sit.courseproject30.common.Constants;
-import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import org.apache.log4j.PropertyConfigurator;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
-import java.io.IOException;
-import java.net.URL;
-import org.kordamp.bootstrapfx.BootstrapFX;
 public class MenuController extends Controller{
 
 
@@ -52,6 +45,14 @@ public class MenuController extends Controller{
     public Button scrapBt;
 
     @FXML
+    public Button notificationsBt;
+
+    @FXML
+    public ImageView notificationsImage;
+    public Image image;
+
+
+    @FXML
     private void handleButtonClicks(javafx.event.ActionEvent mouseEvent) {
         if (mouseEvent.getSource() == logOutBt) {
             loadStage(Constants.View.LOGIN_VIEW,mouseEvent);
@@ -69,12 +70,21 @@ public class MenuController extends Controller{
             loadStage(Constants.View.CLIENT_PRODUCT_VIEW,mouseEvent);
         }else if(mouseEvent.getSource() == categoriesBtn){
             loadStage(Constants.View.CATEGORY_VIEW,mouseEvent);
-        }else if(mouseEvent.getSource() == scrapBt){
-            loadStage(Constants.View.SCRAP_VIEW,mouseEvent);
-        }
+        }else if(mouseEvent.getSource() == scrapBt) {
+            loadStage(Constants.View.SCRAP_VIEW, mouseEvent);
+        }else if(mouseEvent.getSource() == notificationsBt) {
+        loadStage(Constants.View.NOTIFICATIONS_VIEW, mouseEvent);
     }
+    }
+
+
     public void  initialize(){
         welcomeLbl.setText("Welcome, "+user.getUsername());
         if(user.getRole()==1) addMolBt.setVisible(true);
+
+
+        image = new Image(getClass().getResource(Constants.Images.NOTIFICATIONS_PICTURE).toExternalForm());
+        notificationsImage.setImage(image);
+        notificationsBt.setGraphic(notificationsImage);
     }
 }

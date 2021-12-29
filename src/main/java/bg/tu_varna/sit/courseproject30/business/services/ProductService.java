@@ -1,9 +1,6 @@
 package bg.tu_varna.sit.courseproject30.business.services;
 
-import bg.tu_varna.sit.courseproject30.data.entities.Category;
-import bg.tu_varna.sit.courseproject30.data.entities.Client;
-import bg.tu_varna.sit.courseproject30.data.entities.Product;
-import bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteria;
+import bg.tu_varna.sit.courseproject30.data.entities.*;
 import bg.tu_varna.sit.courseproject30.data.repositorities.CategoryRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ProductRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ScrapCriteriaRepository;
@@ -203,12 +200,18 @@ public class ProductService {
     public Product transform(Product product){
         double percentageDecreased = -100*((product.getCurrentPrice()-product.getPrice())/product.getPrice());
         System.out.println(percentageDecreased);
+        NotificationService notificationService = NotificationService.getInstance();
+        String title;
+        String message;
         if(product.getCriteria().getYears() <= product.getAge() && product.getCriteria().getDepreciation() <= product.getRate_of_depreciation()
         && product.getCriteria().getPriceDrop() <= percentageDecreased){
             product.setType(0);
             Date date = new Date();
             product.setDate_of_transformation(date);
-            System.out.println("The product was transformed to MA");    //v izvestie
+            title = product.getName() + " transformation";
+            message = product.getName() + " was transformed to MA on "+date.toString();
+            Notification notification = notificationService.createNotification(title,message,date);
+            notificationService.sendNotifications(notification);
         }
         return product;
     }

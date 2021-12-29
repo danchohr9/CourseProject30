@@ -14,7 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
-public class ScrapController {
+public class ScrapController extends Controller{
     private ToScrapSevice toScrapSevice;
     private ScrapService scrapService;
     ObservableList<ToScrapViewModel> toScrapViewModels;
@@ -57,7 +57,7 @@ public class ScrapController {
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     toScrap = new ToScrapViewModel(productsTable.getSelectionModel().getSelectedItem());
-                    scrapService.ScrapProduct(toScrap);
+                    scrapService.ScrapProduct(toScrap, user);
                     initializeScrapped();
                     initializeProducts();
                 }

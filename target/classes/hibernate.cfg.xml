@@ -20,5 +20,7 @@
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.ProductClient" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteria" />
         <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Scrap" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.Notification" />
+        <mapping class="bg.tu_varna.sit.courseproject30.data.entities.UserNotification" />
     </session-factory>
 </hibernate-configuration>

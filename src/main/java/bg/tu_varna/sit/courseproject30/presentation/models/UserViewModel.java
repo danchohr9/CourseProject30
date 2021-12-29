@@ -62,14 +62,20 @@ public class UserViewModel{
         emailProperty.set(this.email);
         return emailProperty;
     }
-    @Override
-    public String toString() {
-        return  String.format("%s | %s", username ,email);
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public boolean equals(Object o) {
         return username.equals(((UserViewModel)o).username) && password.equals(((UserViewModel)o).password);
     }
-
-
 }
