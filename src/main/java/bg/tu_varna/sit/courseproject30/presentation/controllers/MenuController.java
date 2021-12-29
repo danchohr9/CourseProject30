@@ -74,7 +74,7 @@ public class MenuController extends Controller{
         }
     }
     public void  initialize(){
-        welcomeLbl.setText("Welcome, "+user.getEmail());
+        welcomeLbl.setText("Welcome, "+user.getUsername());
         if(user.getRole()==1) addMolBt.setVisible(true);
     }
 }

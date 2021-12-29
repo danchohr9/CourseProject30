@@ -12,13 +12,14 @@ import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 public class ProductController extends Controller{
@@ -27,9 +28,14 @@ public class ProductController extends Controller{
     public Button deleteProductBt;
     public Label alerBoxLabel;
     public Pane alerBoxPane;
+    public Button searchBt;
+    public DatePicker dateToDp;
+    public DatePicker dateFromDp;
+    public TextField searchNameTf;
     @FXML
     private Button addProductBt;
-
+    @FXML
+    public TableColumn<ProductViewModel, String> typeCol;
     @FXML
     private TableView<ProductViewModel> productsTable;
     @FXML
@@ -70,6 +76,24 @@ public class ProductController extends Controller{
             service.delete(productsTable.getSelectionModel().getSelectedItem());
             initialize();
         }
+        if (mouseEvent.getSource() == searchBt) {
+            Date dateT = null;
+            Date dateFrm = null;
+
+            if(dateToDp.getValue() != null){
+                LocalDate dateTo = dateToDp.getValue();
+                Instant instant = Instant.from(dateTo.atStartOfDay(ZoneId.systemDefault()));
+                dateT = Date.from(instant);
+            }
+
+            if(dateFromDp.getValue() != null){
+                LocalDate dateFrom = dateFromDp.getValue();
+                Instant instant2 = Instant.from(dateFrom.atStartOfDay(ZoneId.systemDefault()));
+                dateFrm = Date.from(instant2);
+            }
+            productsTable.setItems(service.searchProducts(searchNameTf.getText(),dateFrm,dateT));
+            return;
+        }
         alerBoxPane.getStyleClass().add("alert-danger");
         alerBoxLabel.setText("You must select a product.");
     }
@@ -86,6 +110,6 @@ public class ProductController extends Controller{
         ageCol.setCellValueFactory(cellData -> cellData.getValue().ageProperty().asString());
         priceCol.setCellValueFactory(cellData -> cellData.getValue().currentPriceProperty().asString());
         dateOfTransCol.setCellValueFactory(cellData -> cellData.getValue().date_of_transformationProperty());
-
+        typeCol.setCellValueFactory(cellData -> cellData.getValue().getTypeName());
     }
 }

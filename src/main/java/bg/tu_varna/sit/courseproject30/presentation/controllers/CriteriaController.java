@@ -4,6 +4,7 @@ import bg.tu_varna.sit.courseproject30.business.services.ProductService;
 import bg.tu_varna.sit.courseproject30.business.services.ScrapCriteriaService;
 
 import bg.tu_varna.sit.courseproject30.common.Constants;
+import bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteria;
 import bg.tu_varna.sit.courseproject30.presentation.models.ProductViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ScrapCriteriaViewModel;
 import javafx.beans.value.ChangeListener;
@@ -14,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 public class CriteriaController extends Controller{
+
     @FXML
     private Label titleLbl;
 
@@ -35,9 +37,6 @@ public class CriteriaController extends Controller{
     @FXML
     private TextField depreciationTf;
 
-    @FXML
-    private Button addBt;
-
 
 
     @FXML
@@ -52,6 +51,8 @@ public class CriteriaController extends Controller{
 
     private ScrapCriteriaService service;
     ScrapCriteriaViewModel removedCriteria;
+    ScrapCriteriaViewModel editedCriteria;
+
     ObservableList<ScrapCriteriaViewModel> criteriaViewModels;
 
 //    public CriteriaController(){
@@ -59,7 +60,21 @@ public class CriteriaController extends Controller{
 //    }
 
 
-    public void createBtOnAction(ActionEvent actionEvent) {
+    public void saveBtOnAction(ActionEvent actionEvent) {
+
+        if(editedCriteria != null){
+            int y=0;
+            double m=0,d=0;
+            if(yearsTf.getLength()!=0) y = Integer.parseInt(yearsTf.getText());
+            if(monthsTf.getLength()!=0) m = Double.parseDouble(monthsTf.getText());
+            if(depreciationTf.getLength()!=0) d = Double.parseDouble(depreciationTf.getText());
+            service.updateCriteria(new ScrapCriteria((long) editedCriteria.getId(),y,m,d));
+            criteriaViewModels = service.getAllCriteria();
+            criteriaTable.getItems().clear();
+            criteriaTable.setItems(criteriaViewModels);
+            return;
+        }
+
         int y=0;
         double m=0,d=0;
         if(yearsTf.getLength()!=0) y = Integer.parseInt(yearsTf.getText());
@@ -72,13 +87,27 @@ public class CriteriaController extends Controller{
         }
     }
 
-    public  void deleteBtOnAction(ActionEvent actionEvent){
+    public void deleteBtOnAction(ActionEvent actionEvent){
         removedCriteria = new ScrapCriteriaViewModel(criteriaTable.getSelectionModel().getSelectedItem());
         criteriaViewModels.remove(removedCriteria);
         service.removeCriteria(removedCriteria);
         criteriaTable.getItems().removeAll(removedCriteria);
     }
+    public void createBtOnAction(ActionEvent actionEvent){
+        createCritLbl.setText("Creatе a new criteria");
+        editedCriteria = null;
+        yearsTf.setText("");
+        monthsTf.setText("");
+        depreciationTf.setText("");
+    }
+    public void editBtOnAction(ActionEvent actionEvent){
 
+        editedCriteria = new ScrapCriteriaViewModel(criteriaTable.getSelectionModel().getSelectedItem());
+        createCritLbl.setText("Edit Criteria");
+        yearsTf.textProperty().setValue(String.valueOf(editedCriteria.getYears()));
+        monthsTf.setText(String.valueOf(editedCriteria.getPriceDrop()));
+        depreciationTf.setText(String.valueOf(editedCriteria.getDepreciation()));
+    }
     public void initialize(){
 
         service = ScrapCriteriaService.getInstance();
@@ -89,7 +118,6 @@ public class CriteriaController extends Controller{
         monthsColumn.setCellValueFactory(cellData -> cellData.getValue().priceDropProperty().asString());
         deprColumn.setCellValueFactory(cellData -> cellData.getValue().depreciationProperty().asString());
 
-        //TODO: Modify these listeners to accept doubles (except year)
         yearsTf.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -104,8 +132,8 @@ public class CriteriaController extends Controller{
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
                                 String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    monthsTf.setText(newValue.replaceAll("[^\\d]", ""));
+                if (!newValue.matches(".*\\\\d.*")) {
+                    monthsTf.setText(newValue.replaceAll("[^\\d.]", ""));
                 }
             }
         });
@@ -114,8 +142,9 @@ public class CriteriaController extends Controller{
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
                                 String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    depreciationTf.setText(newValue.replaceAll("[^\\d]", ""));
+
+                if (!newValue.matches(".*\\\\d.*")) {
+                    depreciationTf.setText(newValue.replaceAll("[^\\d.]", ""));
                 }
             }
         });

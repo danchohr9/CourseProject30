@@ -66,6 +66,18 @@ public class ProductViewModel {
     }
 
 
+    public StringProperty getTypeName(){
+        SimpleStringProperty type = new SimpleStringProperty();
+
+
+        if(getType() == 0){
+            type.set("MA");
+        } else {
+            type.set("DMA");
+        }
+        return type;
+    }
+
     public DoubleProperty rate_of_depreciationProperty() {
         return rate_of_depreciation;
     }

@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.courseproject30.data.repositorities;
 
 import bg.tu_varna.sit.courseproject30.data.access.Connection;
+import bg.tu_varna.sit.courseproject30.data.entities.Category;
 import bg.tu_varna.sit.courseproject30.data.entities.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -40,25 +41,44 @@ public class UserRepository implements DAORepository<User> {
 
     @Override
     public void update(User obj) {
-        Session sess = Connection.openSession();
-        Transaction tx = null;
-        try {
-            tx = sess.beginTransaction();
-            //do some work
-            tx.commit();
+
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        User user = (User)session.get(User.class, obj.getId());
+        user.setEmail(obj.getEmail());
+        user.setPassword(obj.getPassword());
+        user.setUsername(obj.getUsername());
+
+        try{
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
         }
-        catch (Exception e) {
-            if (tx!=null) tx.rollback();
-            throw e;
-        }
-        finally {
-            sess.close();
-        }
+
     }
 
     @Override
     public void delete(User obj) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
 
+        User user = (User)session.get(User.class, obj.getId());
+        session.delete(user);
+
+        try{
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -85,7 +105,6 @@ public class UserRepository implements DAORepository<User> {
 
         return users;
     }
-
     public User getUserByUsername(String username){
         User user = null;
         Session session = Connection.openSession();

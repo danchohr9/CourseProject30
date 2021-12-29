@@ -12,9 +12,11 @@ import bg.tu_varna.sit.courseproject30.presentation.models.ScrapCriteriaViewMode
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -86,7 +88,31 @@ public class ProductService {
                                 u.getDeprGrowth()
                         )).collect(Collectors.toList()));
     }
-
+    public ObservableList<ProductViewModel> searchProducts(String name, Date dateFrom, Date dateTo) {
+        List<Product> products = repository.searchProducts(name,dateFrom,dateTo);
+        System.out.println(products.toString());
+        return FXCollections.observableList(
+                products
+                        .stream()
+                        .map(u -> new ProductViewModel(
+                                Math.toIntExact(u.getId()),
+                                u.getName(),
+                                u.getDescription(),
+                                u.getFull_description(),
+                                u.getType(),
+                                Math.toIntExact(u.getCategory().getId()),
+                                u.getQuantity(),
+                                u.getRate_of_depreciation(),
+                                u.getDate_of_registration().toString(),
+                                u.getDate_of_transformation() == null ? null : u.getDate_of_transformation().toString(),
+                                u.getPrice(),
+                                u.getAge(),
+                                u.getCriteria() == null ? null : u.getCriteria().getId().toString(),
+                                u.getCriteria() == null ? null : u.getCriteria().toString(),
+                                u.getCurrentPrice(),
+                                u.getDeprGrowth()
+                        )).collect(Collectors.toList()));
+    }
     public ObservableList<ProductViewModel> getAvailableProducts() {
         List<Product> products = repository.getAvailableProducts();
         System.out.println(products.toString());
@@ -194,6 +220,10 @@ public class ProductService {
         product.setCriteria(criteria);
         product = transform(product);
         repository.update(product);
+    }
+    public int getTotalProducts(){
+        Long count = repository.getTotalProducts();
+        return count.intValue();
     }
 
 }

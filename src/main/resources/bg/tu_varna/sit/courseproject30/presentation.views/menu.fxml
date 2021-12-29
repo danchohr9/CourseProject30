@@ -10,16 +10,16 @@
 <children>
    <VBox prefHeight="506.0" prefWidth="231.0" spacing="5.0">
       <children>
-         <Label fx:id="welcomeLbl" prefHeight="26.0" prefWidth="326.0" text="Welcome," textAlignment="CENTER" />
+         <Label fx:id="welcomeLbl" prefHeight="26.0" prefWidth="326.0" text="Welcome," textAlignment="CENTER" textFill="WHITE" />
          <Button fx:id="logOutBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="244.0" text="Log Out" />
          <Button fx:id="homeBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Dashboard" />
          <Button fx:id="addProductBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Products" />
-            <Button fx:id="addCriteriaBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Add Criteria" />
+            <Button fx:id="addCriteriaBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Criteria" />
             <Button fx:id="addClientBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Add Client" />
             <Button fx:id="clientProductBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Client Products" />
          <Button fx:id="categoriesBtn" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Categories" />
             <Button fx:id="scrapBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Scrap" />
-         <Button fx:id="addMolBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="312.0" text="Add MOL" visible="false" />
+         <Button fx:id="addMolBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="312.0" text="Users" visible="false" />
       </children>
       <padding>
          <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />

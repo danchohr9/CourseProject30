@@ -23,20 +23,20 @@ public class UserService {
         public static final UserService INSTANCE = new UserService();
     }
 
-    public ObservableList<UserViewModel> getAllTask() {
+    public ObservableList<UserViewModel> getAll() {
         List<User> users = repository.getAll();
 
         return FXCollections.observableList(
                 users
                         .stream()
                         .map(u -> new UserViewModel(
+                                Math.toIntExact(u.getId()),
                                 u.getUsername(),
                                 u.getPassword(),
                                 u.getEmail(),
                                 u.getRole().getId()
                         )).collect(Collectors.toList()));
     }
-
 
     public static boolean validateLogin(UserViewModel user, ObservableList<UserViewModel> allUsers){
         boolean state=false;
@@ -101,6 +101,28 @@ public class UserService {
         }
     }
 
+    public void delete(UserViewModel obj){
+        User user = new User();
+        user.setId((long) obj.getId());
+        repository.delete(user);
+    }
+    //TODO:Duplication. Maybe one function for validation.
+    public String update(User user){
+        if(!validateUsername(user.getUsername())){
+            return "Username is not acceptable.";
+        }
+        if(user.getPassword().length()<4) {
+            return "Password is too short.";
+        }
+        if (!validatePassword(user.getPassword())) {
+            return "Password uses disallowed characters.";
+        }
+        if (!validateEmail(user.getEmail())){
+            return "Invalid Email";
+        }
+        repository.update(user);
+        return "User edited.";
+    }
     public boolean validatePassword(String password){
         Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
         Matcher matcher = pattern.matcher(password);

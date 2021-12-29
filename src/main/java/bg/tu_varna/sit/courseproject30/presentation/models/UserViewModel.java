@@ -1,8 +1,11 @@
 package bg.tu_varna.sit.courseproject30.presentation.models;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.util.Comparator;
 
 public class UserViewModel{
+    private int id;
     private String username;
     private String password;
     private String email;
@@ -14,11 +17,24 @@ public class UserViewModel{
     }
 
 
-    public UserViewModel(String username, String password, String email, int role) {
+    public UserViewModel(int id, String username, String password, String email, int role) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getEmail() {
@@ -36,7 +52,16 @@ public class UserViewModel{
     public void setRole(int role) {
         this.role = role;
     }
-
+    public SimpleStringProperty usernameProperty(){
+        SimpleStringProperty username = new SimpleStringProperty();
+        username.set(this.username);
+        return username;
+    }
+    public SimpleStringProperty emailProperty(){
+        SimpleStringProperty emailProperty = new SimpleStringProperty();
+        emailProperty.set(this.email);
+        return emailProperty;
+    }
     @Override
     public String toString() {
         return  String.format("%s | %s", username ,email);

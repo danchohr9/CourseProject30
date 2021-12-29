@@ -39,7 +39,24 @@ public class ScrapCriteriaRepository implements DAORepository<ScrapCriteria> {
 
     @Override
     public void update(ScrapCriteria obj) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
 
+        ScrapCriteria criteria = (ScrapCriteria)session.get(ScrapCriteria.class, obj.getId());
+        criteria.setId(obj.getId());
+        criteria.setDepreciation(obj.getDepreciation());
+        criteria.setPriceDrop(obj.getPriceDrop());
+        criteria.setYears(obj.getYears());
+
+        try{
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     @Override

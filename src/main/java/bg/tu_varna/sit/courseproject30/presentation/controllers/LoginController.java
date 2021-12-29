@@ -67,7 +67,7 @@ public class LoginController implements Initializable {
 
     public LoginController(){
         service = UserService.getInstance();
-        userViewModels = service.getAllTask();
+        userViewModels = service.getAll();
     }
     @FXML
     public void signInBtOnAction(ActionEvent actionEvent){

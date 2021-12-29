@@ -7,9 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.persistence.Query;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class ProductRepository implements DAORepository<Product>{
 
@@ -241,4 +239,55 @@ public class ProductRepository implements DAORepository<Product>{
 
         return products;
     }
-}
+
+    public List<Product> searchProducts(String name, Date dateFrom, Date dateTo) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Product> products = new LinkedList<>();
+
+        if(Objects.equals(name, "") && dateFrom == null && dateTo == null){
+            return  products;
+        }
+        if(dateFrom != null && dateTo != null){
+            String hql = "SELECT p FROM Product p " + "WHERE (p.name LIKE :name) and (p.date_of_registration BETWEEN :stDate AND :edDate)";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", "%"+name+"%");
+            query.setParameter("stDate",dateFrom);
+            query.setParameter("edDate",dateTo);
+            products = query.getResultList();
+        } else if(dateFrom != null && dateTo == null){
+            String hql = "SELECT p FROM Product p " + "WHERE (p.name LIKE :name) and (p.date_of_registration > :stDate)";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", "%"+name+"%");
+            query.setParameter("stDate",dateFrom);
+            products = query.getResultList();
+        } else if(dateFrom == null && dateTo != null){
+            String hql = "SELECT p FROM Product p " + "WHERE (p.name LIKE :name) and (p.date_of_registration < :stDate)";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", "%"+name+"%");
+            query.setParameter("stDate",dateTo);
+            products = query.getResultList();
+        }  else if(dateFrom == null && dateTo == null){
+            String hql = "SELECT p FROM Product p " + "WHERE p.name LIKE :name";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", "%"+name+"%");
+            products = query.getResultList();
+        }
+
+        try {
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return products;
+    }
+
+        public Long getTotalProducts(){
+            Session session = Connection.openSession();
+            return (long)session.createQuery("SELECT COUNT(e) FROM Product e").getSingleResult();
+
+        }
+    }

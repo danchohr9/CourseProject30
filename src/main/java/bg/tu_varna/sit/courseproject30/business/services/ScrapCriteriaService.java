@@ -43,7 +43,9 @@ public class ScrapCriteriaService{
         }
     }
 
-
+    public void updateCriteria(ScrapCriteria obj){
+        repository.update(obj);
+    }
     public void removeCriteria(ScrapCriteriaViewModel criteriaModel){
         ScrapCriteria criteriaToDelete = new ScrapCriteria((long) criteriaModel.getId(), criteriaModel.getYears(), criteriaModel.getPriceDrop(),
                 criteriaModel.getDepreciation());
