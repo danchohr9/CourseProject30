@@ -16,9 +16,9 @@
     <fx:include source="menu.fxml" />
 </left>
    <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="538.0" prefWidth="226.0" spacing="5.0">
+            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="226.0" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
                   <Label fx:id="registerLbl" prefHeight="98.0" prefWidth="221.0" styleClass="text-primary" text="Материално Отговорно Лице (МОЛ)" textAlignment="CENTER" wrapText="true">
                      <font>
@@ -29,14 +29,14 @@
                   <TextField fx:id="usernameTf" prefHeight="36.0" prefWidth="221.0" promptText="enter username" />
                   <TextField fx:id="passwordTf" prefHeight="36.0" prefWidth="221.0" promptText="enter password" />
                   <TextField fx:id="emailTf" prefHeight="36.0" prefWidth="221.0" promptText="enter email" />
-                  <Button fx:id="saveBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="2.0" prefWidth="92.0" styleClass="btn-primary" text="SAVE" />
+                  <Button fx:id="saveBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="2.0" prefWidth="92.0" styleClass="btn, btn-primary" text="SAVE" />
                   <Label fx:id="warningLbl" prefHeight="25.0" prefWidth="434.0" textFill="#d70000" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </VBox>
-            <VBox prefHeight="538.0" prefWidth="437.0">
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="437.0" HBox.hgrow="ALWAYS">
                <children>
                   <Label text="List of Users:" />
                   <TableView fx:id="MolTable" prefHeight="200.0" prefWidth="200.0">

@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,7 +28,9 @@ public class HelloApplication extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource(Constants.View.LOGIN_VIEW));
         stage.setTitle("Login");
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        stage.setScene(scene);
         stage.show();
 /*
         URL path = getClass().getResource(Constants.View.LOGIN_VIEW);

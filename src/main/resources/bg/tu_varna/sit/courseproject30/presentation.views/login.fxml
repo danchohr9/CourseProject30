@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
@@ -7,37 +8,56 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.LoginController">
-
+<VBox alignment="CENTER" prefHeight="446.0" prefWidth="409.0" spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.LoginController">
    <children>
-      <Button fx:id="signInBt" layoutX="144.0" layoutY="312.0" mnemonicParsing="false" onAction="#signInBtOnAction" text="Sign In" textAlignment="CENTER">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Label fx:id="usernameLbl" layoutX="74.0" layoutY="247.0" text="Username:">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="passwordLbl" layoutX="76.0" layoutY="277.0" text="Password:">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="usernameTF" layoutX="148.0" layoutY="244.0" prefHeight="26.0" prefWidth="170.0" />
-      <CheckBox fx:id="showPassChB" layoutX="214.0" layoutY="318.0" mnemonicParsing="false" text="Show Password" />
-      <Label fx:id="loginLbl" layoutX="160.0" layoutY="31.0" text="Login Menu">
+      <Label fx:id="loginLbl" text="Login Menu">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passwordPF" layoutX="148.0" layoutY="274.0" prefHeight="26.0" prefWidth="170.0" />
-      <TextField fx:id="visiblePassword"  layoutX="148.0" layoutY="274.0" prefHeight="26.0" prefWidth="170.0" text="" />
-      <Label fx:id="infoLbl" layoutX="111.0" layoutY="349.0" prefHeight="18.0" prefWidth="207.0" textAlignment="RIGHT" textFill="#d40022" />
-      <ImageView fx:id="imageId" fitHeight="170.0" fitWidth="170.0" layoutX="148.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true" />
-      <!--<TextField fx:id="passwordTF" layoutX="169.0" layoutY="200.0" />-->
+      <ImageView fx:id="imageId" fitHeight="170.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" />
+      <HBox alignment="CENTER" prefHeight="0.0" prefWidth="294.0" spacing="5.0">
+         <children>
+            <Label fx:id="usernameLbl" text="Username:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameTF" prefHeight="26.0" prefWidth="170.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="0.0" prefWidth="294.0" spacing="5.0">
+         <children>
+            <Label fx:id="passwordLbl" text="Password:" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <AnchorPane>
+               <children>
+                  <TextField fx:id="visiblePassword" layoutX="22.0" text="" />
+                  <PasswordField fx:id="passwordPF" layoutX="2.0" prefHeight="26.0" prefWidth="170.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="38.0" prefWidth="294.0" spacing="5.0">
+         <children>
+            <Button fx:id="signInBt" mnemonicParsing="false" onAction="#signInBtOnAction" styleClass="btn, btn-primary" text="Sign In" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <CheckBox fx:id="showPassChB" mnemonicParsing="false" text="Show Password" />
+         </children>
+      </HBox>
+      <Label fx:id="infoLbl" prefHeight="18.0" prefWidth="207.0" textAlignment="RIGHT" textFill="#d40022" />
    </children>
-</AnchorPane>
+   <padding>
+      <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+   </padding>
+</VBox>

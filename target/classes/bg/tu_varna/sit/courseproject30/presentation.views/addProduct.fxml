@@ -82,7 +82,7 @@
                   <TextField fx:id="growthTf" prefHeight="26.0" prefWidth="211.0" />
                </children>
             </HBox>
-            <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="28.0" prefWidth="122.0" styleClass="bg-primary" text="ADD PRODUCT" />
+            <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="28.0" prefWidth="210.0" styleClass="btn, btn-primary" text="ADD PRODUCT" />
             <Pane fx:id="alertPane" prefHeight="46.0" prefWidth="1118.0">
                <children>
                   <Label fx:id="alertLabel" layoutX="6.0" layoutY="7.0" prefHeight="32.0" prefWidth="497.0" text="ALERT">
