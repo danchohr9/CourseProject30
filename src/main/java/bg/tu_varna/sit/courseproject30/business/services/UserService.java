@@ -132,6 +132,9 @@ public class UserService {
             return false;
         }
     }
-
+    public int getTotalUsers(){
+        Long count = repository.getTotalUsers();
+        return count.intValue();
+    }
 
 }

@@ -90,4 +90,8 @@ public class ClientRepository implements DAORepository<Client>{
         }
         return client;
     }
+    public Long getTotalClients(){
+        Session session = Connection.openSession();
+        return (long)session.createQuery("SELECT COUNT(e) FROM Client e").getSingleResult();
+    }
 }

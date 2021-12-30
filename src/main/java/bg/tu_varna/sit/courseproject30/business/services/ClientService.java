@@ -103,5 +103,8 @@ public class ClientService {
                                 c.getCity().getName()
                         )).collect(Collectors.toList()));
     }
-
+    public int getTotalClients(){
+        Long count = clientRepository.getTotalClients();
+        return count.intValue();
+    }
 }

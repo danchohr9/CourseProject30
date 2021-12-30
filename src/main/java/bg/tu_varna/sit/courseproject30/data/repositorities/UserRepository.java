@@ -124,6 +124,9 @@ public class UserRepository implements DAORepository<User> {
         }
         return user;
     }
-
+    public Long getTotalUsers(){
+        Session session = Connection.openSession();
+        return (long)session.createQuery("SELECT COUNT(e) FROM User e").getSingleResult();
+    }
 
 }
