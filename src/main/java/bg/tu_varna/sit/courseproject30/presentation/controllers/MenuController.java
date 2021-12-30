@@ -2,6 +2,7 @@ package bg.tu_varna.sit.courseproject30.presentation.controllers;
 
 import bg.tu_varna.sit.courseproject30.common.Constants;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -77,7 +78,6 @@ public class MenuController extends Controller{
     }
     }
 
-
     public void  initialize(){
         welcomeLbl.setText("Welcome, "+user.getUsername());
         if(user.getRole()==1) addMolBt.setVisible(true);
@@ -85,6 +85,12 @@ public class MenuController extends Controller{
 
         image = new Image(getClass().getResource(Constants.Images.NOTIFICATIONS_PICTURE).toExternalForm());
         notificationsImage.setImage(image);
-        notificationsBt.setGraphic(notificationsImage);
+        notificationsImage.setOnMouseClicked(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                notificationsBt.fire();
+                event.consume();
+            }
+        });
     }
 }

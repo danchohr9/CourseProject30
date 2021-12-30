@@ -16,14 +16,7 @@
          <HBox prefHeight="33.0" prefWidth="210.0">
             <children>
                <Label fx:id="welcomeLbl" prefHeight="35.0" prefWidth="177.0" text="Welcome," textAlignment="CENTER" />
-               <Button fx:id="notificationsBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="30.0" prefWidth="51.0" text="Button">
-                  <contentDisplay>
-                     <ContentDisplay fx:value="GRAPHIC_ONLY" />
-                  </contentDisplay>
-                  <graphic>
-                     <ImageView fx:id="notificationsImage" fitHeight="22.0" fitWidth="27.0" onMouseClicked="#handleButtonClicks" preserveRatio="true" />
-                  </graphic>
-               </Button>
+               <ImageView fx:id="notificationsImage" fitHeight="22.0" fitWidth="27.0" preserveRatio="true" />
             </children>
          </HBox>
          <Button fx:id="logOutBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="244.0" text="Log Out" />
@@ -35,6 +28,7 @@
          <Button fx:id="categoriesBtn" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Categories" />
             <Button fx:id="scrapBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Scrap" />
          <Button fx:id="addMolBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="312.0" text="Users" visible="false" />
+         <Button fx:id="notificationsBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="244.0" visible="false" text="" />
       </children>
       <padding>
          <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
