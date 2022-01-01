@@ -8,17 +8,16 @@ import bg.tu_varna.sit.courseproject30.presentation.models.ClientProductViewMode
 import bg.tu_varna.sit.courseproject30.presentation.models.ClientViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ProductViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ScrapCriteriaViewModel;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 
 import java.util.Date;
 
-public class ClientProductController {
+public class ClientProductController extends Controller{
 
     private ClientService clientService;
     private ClientProductService clientProductService;
@@ -64,6 +63,8 @@ public class ClientProductController {
 
     @FXML
     private Label clientProductsLbl;
+    @FXML
+    private TextField quantityTf;
 
 
     public void initializeClientProductTable(){
@@ -95,7 +96,7 @@ public class ClientProductController {
         availableProductsTable.setItems(clientProductViewModels2);
     }
 
-    public void addBtOnAction(ActionEvent actionEvent){
+    public void addBtOnAction(){
         selectedClient = clientsTable.getSelectionModel().getSelectedItem();
         ProductViewModel selectedProduct = new ProductViewModel(availableProductsTable.getSelectionModel().getSelectedItem());
         if(selectedClient!=null && selectedProduct !=null) {
@@ -106,7 +107,7 @@ public class ClientProductController {
         }
     }
 
-    public void removeBtOnAction(ActionEvent actionEvent){
+    public void removeBtOnAction(){
         selectedClient = new ClientViewModel(clientsTable.getSelectionModel().getSelectedItem());
         ClientProductViewModel selectedProduct = new ClientProductViewModel(clientProductsTable.getSelectionModel().getSelectedItem());
 
@@ -117,6 +118,10 @@ public class ClientProductController {
             initializeProductTable();
         }
 
+    }
+
+    public void queryBtOnAction(ActionEvent actionEvent){
+        loadStage(Constants.View.PRODUCT_CLIENT_QUERY_VIEW, actionEvent);
     }
 
     public void initialize(){
@@ -131,6 +136,16 @@ public class ClientProductController {
         clientsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 initializeClientProductTable();
+            }
+        });
+
+        quantityTf.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    quantityTf.setText(newValue.replaceAll("[^\\d]", ""));
+                }
             }
         });
     }

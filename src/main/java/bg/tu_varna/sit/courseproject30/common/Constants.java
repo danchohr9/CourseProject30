@@ -15,6 +15,8 @@ public class Constants {
         public static final String EDIT_PRODUCT_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/updateProduct.fxml";
         public static final String SCRAP_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/scrap.fxml";
         public static final String NOTIFICATIONS_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/notifications.fxml";
+        public static final String SCRAP_QUERY_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/scrapQuery.fxml";
+        public static final String PRODUCT_CLIENT_QUERY_VIEW = "/bg/tu_varna/sit/courseproject30/presentation.views/productClientQuery.fxml";
     }
 
     public static class Images{

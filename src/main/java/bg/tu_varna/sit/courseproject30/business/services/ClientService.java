@@ -2,6 +2,7 @@ package bg.tu_varna.sit.courseproject30.business.services;
 
 import bg.tu_varna.sit.courseproject30.data.entities.City;
 import bg.tu_varna.sit.courseproject30.data.entities.Client;
+import bg.tu_varna.sit.courseproject30.data.entities.Scrap;
 import bg.tu_varna.sit.courseproject30.data.repositorities.CityRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ClientRepository;
 import bg.tu_varna.sit.courseproject30.presentation.models.ClientViewModel;
@@ -106,5 +107,22 @@ public class ClientService {
     public int getTotalClients(){
         Long count = clientRepository.getTotalClients();
         return count.intValue();
+    }
+
+    public ObservableList<ClientViewModel> searchClients(String name, Date dateFrom, Date dateTo){
+        List<Client> clients = clientRepository.searchClients(name,dateFrom,dateTo);
+
+        return FXCollections.observableList(
+                clients
+                        .stream()
+                        .map(c -> new ClientViewModel(
+                                c.getId(),
+                                c.getFirst_name()+" "+c.getLast_name(),
+                                c.getPhone(),
+                                c.getAddress(),
+                                c.getEgn(),
+                                c.getRegister_date().toString(),
+                                c.getCity().getName()
+                        )).collect(Collectors.toList()));
     }
 }

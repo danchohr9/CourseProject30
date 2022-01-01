@@ -32,7 +32,12 @@
                   <TableColumn fx:id="dateScrapped" prefWidth="94.4000244140625" text="Scrapped" />
                </columns>
             </TableView>
-            <Button fx:id="scrapBt" mnemonicParsing="false" onAction="#scrapBtOnAction" prefHeight="30.0" prefWidth="67.0" styleClass="btn, btn-primary" text="Scrap" />
+            <Pane prefHeight="36.0" prefWidth="414.0">
+               <children>
+                  <Button fx:id="scrapBt" layoutY="-1.0" mnemonicParsing="false" onAction="#scrapBtOnAction" prefHeight="30.0" prefWidth="67.0" styleClass="btn, btn-primary" text="Scrap" />
+                  <Button fx:id="queryBt" layoutX="94.0" layoutY="-1.0" mnemonicParsing="false" onAction="#queryBtOnAction" prefHeight="30.0" prefWidth="67.0" styleClass="btn, btn-primary" text="Query" />
+               </children>
+            </Pane>
             <Pane fx:id="alerBoxPane" prefHeight="30.0" prefWidth="275.0">
                <children>
                   <Label fx:id="alerBoxLabel" layoutX="4.0" layoutY="2.0" prefHeight="26.0" prefWidth="267.0" />

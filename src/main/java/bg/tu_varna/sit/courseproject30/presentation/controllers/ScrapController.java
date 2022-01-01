@@ -65,6 +65,10 @@ public class ScrapController extends Controller{
         }
     }
 
+    public void queryBtOnAction(ActionEvent actionEvent){
+        loadStage(Constants.View.SCRAP_QUERY_VIEW, actionEvent);
+    }
+
     public void initializeScrapped(){
         //tuk trqbva da se redaktira da ne se pokazvat vsichki brakuvani produkti, a samo brakuvanite kum tozi moment (ili za denq?),
         //che inache stava kato nqkakva dulga spravka i e neudachno

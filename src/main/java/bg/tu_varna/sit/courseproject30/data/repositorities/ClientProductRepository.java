@@ -8,9 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.persistence.Query;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class ClientProductRepository implements DAORepository<ProductClient>{
     private static final Logger log = Logger.getLogger(ClientProductRepository.class);
@@ -139,6 +137,55 @@ public class ClientProductRepository implements DAORepository<ProductClient>{
         } finally {
             transaction.commit();
             //Connection.openSessionClose();
+        }
+        return productClients;
+    }
+
+    public List<ProductClient> searchClientProducts(String name, Date dateFrom, Date dateTo, int clientId) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<ProductClient> productClients = new LinkedList<>();
+
+        if(Objects.equals(name, "") && dateFrom == null && dateTo == null){
+            return  productClients;
+        }
+        if(dateFrom != null && dateTo != null){
+            String hql = "SELECT p FROM ProductClient p " + "WHERE (p.product.name LIKE :name) and (p.date_added BETWEEN :stDate AND :edDate) and (p.client.id = :id)";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", "%"+name+"%");
+            query.setParameter("stDate",dateFrom);
+            query.setParameter("edDate",dateTo);
+            query.setParameter("id",clientId);
+            productClients = query.getResultList();
+        } else if(dateFrom != null && dateTo == null){
+            String hql = "SELECT p FROM ProductClient p " + "WHERE (p.product.name LIKE :name) and (p.date_added > :stDate) and (p.client.id = :id)";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", "%"+name+"%");
+            query.setParameter("stDate",dateFrom);
+            query.setParameter("id",clientId);
+            productClients = query.getResultList();
+        } else if(dateFrom == null && dateTo != null){
+            String hql = "SELECT p FROM ProductClient p " + "WHERE (p.product.name LIKE :name) and (p.date_added < :stDate) and (p.client.id = :id)";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", "%"+name+"%");
+            query.setParameter("stDate",dateTo);
+            query.setParameter("id",clientId);
+            productClients = query.getResultList();
+        }  else if(dateFrom == null && dateTo == null){
+            String hql = "SELECT p FROM ProductClient p " + "WHERE p.product.name LIKE :name and p.client.id = :id";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", "%"+name+"%");
+            query.setParameter("id",clientId);
+            productClients = query.getResultList();
+        }
+
+        try {
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
         }
         return productClients;
     }

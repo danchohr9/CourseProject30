@@ -5,6 +5,7 @@ import bg.tu_varna.sit.courseproject30.data.repositorities.ClientProductReposito
 import bg.tu_varna.sit.courseproject30.data.repositorities.ProductRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ScrapRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.UserRepository;
+import bg.tu_varna.sit.courseproject30.presentation.models.ProductViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ScrapViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ToScrapViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;
@@ -63,4 +64,20 @@ public class ScrapService {
         scrapRepository.save(newScrap);
     }
 
+    public ObservableList<ScrapViewModel> searchScraps(String name, Date dateFrom, Date dateTo){
+        List<Scrap> scraps = scrapRepository.searchScraps(name,dateFrom,dateTo);
+
+        return FXCollections.observableList(
+                scraps
+                        .stream()
+                        .map(u -> new ScrapViewModel(
+                                Math.toIntExact(u.getId()),
+                                u.getScrap_date().toString(),
+                                u.getProduct().getId(),
+                                u.getProduct().getName(),
+                                u.getQuantity()
+                        )).collect(Collectors.toList()));
+
+
+    }
 }

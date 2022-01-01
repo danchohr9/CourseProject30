@@ -3,14 +3,13 @@ package bg.tu_varna.sit.courseproject30.data.repositorities;
 import bg.tu_varna.sit.courseproject30.data.access.Connection;
 import bg.tu_varna.sit.courseproject30.data.entities.City;
 import bg.tu_varna.sit.courseproject30.data.entities.Client;
+import bg.tu_varna.sit.courseproject30.data.entities.Scrap;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.persistence.Query;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class ClientRepository implements DAORepository<Client>{
 
@@ -93,5 +92,50 @@ public class ClientRepository implements DAORepository<Client>{
     public Long getTotalClients(){
         Session session = Connection.openSession();
         return (long)session.createQuery("SELECT COUNT(e) FROM Client e").getSingleResult();
+    }
+
+    public List<Client> searchClients(String name, Date dateFrom, Date dateTo) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Client> clients = new LinkedList<>();
+
+        if(Objects.equals(name, "") && dateFrom == null && dateTo == null){
+            return  clients;
+        }
+        if(dateFrom != null && dateTo != null){
+            String hql = "SELECT p FROM Client p " + "WHERE ((p.first_name LIKE :name) OR (p.last_name LIKE :name)) and (p.register_date BETWEEN :stDate AND :edDate)";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", "%"+name+"%");
+            query.setParameter("stDate",dateFrom);
+            query.setParameter("edDate",dateTo);
+            clients = query.getResultList();
+        } else if(dateFrom != null && dateTo == null){
+            String hql = "SELECT p FROM Client p " + "WHERE ((p.first_name LIKE :name) OR (p.last_name LIKE :name)) and (p.register_date > :stDate)";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", "%"+name+"%");
+            query.setParameter("stDate",dateFrom);
+            clients = query.getResultList();
+        } else if(dateFrom == null && dateTo != null){
+            String hql = "SELECT p FROM Client p " + "WHERE ((p.first_name LIKE :name) OR (p.last_name LIKE :name)) and (p.register_date < :stDate)";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", "%"+name+"%");
+            query.setParameter("stDate",dateTo);
+            clients = query.getResultList();
+        }  else if(dateFrom == null && dateTo == null){
+            String hql = "SELECT p FROM Client p " + "WHERE p.first_name LIKE :name OR p.last_name LIKE :name";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", "%"+name+"%");
+            clients = query.getResultList();
+        }
+
+        try {
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return clients;
     }
 }

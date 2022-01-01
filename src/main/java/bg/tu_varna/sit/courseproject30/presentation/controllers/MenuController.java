@@ -74,8 +74,8 @@ public class MenuController extends Controller{
         }else if(mouseEvent.getSource() == scrapBt) {
             loadStage(Constants.View.SCRAP_VIEW, mouseEvent);
         }else if(mouseEvent.getSource() == notificationsBt) {
-        loadStage(Constants.View.NOTIFICATIONS_VIEW, mouseEvent);
-    }
+            loadStage(Constants.View.NOTIFICATIONS_VIEW, mouseEvent);
+        }
     }
 
     public void  initialize(){
