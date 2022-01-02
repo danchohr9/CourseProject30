@@ -98,24 +98,35 @@ public class ClientProductController extends Controller{
 
     public void addBtOnAction(){
         selectedClient = clientsTable.getSelectionModel().getSelectedItem();
-        ProductViewModel selectedProduct = new ProductViewModel(availableProductsTable.getSelectionModel().getSelectedItem());
-        if(selectedClient!=null && selectedProduct !=null) {
-            clientProductService.addProduct(selectedClient, selectedProduct, 1);
+        ProductViewModel selectedProduct;
+        if(availableProductsTable.getSelectionModel().getSelectedItem() != null) {
+            selectedProduct = new ProductViewModel(availableProductsTable.getSelectionModel().getSelectedItem());
+            int quantity = 1;
+            if (selectedClient != null && selectedProduct != null && !quantityTf.getText().equals('0')) {
+                if (quantityTf.getText() != null) quantity = Integer.parseInt(quantityTf.getText());
+                clientProductService.addProduct(selectedClient, selectedProduct, quantity);
 
-            initializeClientProductTable();
-            initializeProductTable();
+                initializeClientProductTable();
+                initializeProductTable();
+            }
         }
     }
 
     public void removeBtOnAction(){
-        selectedClient = new ClientViewModel(clientsTable.getSelectionModel().getSelectedItem());
-        ClientProductViewModel selectedProduct = new ClientProductViewModel(clientProductsTable.getSelectionModel().getSelectedItem());
+        if(clientsTable.getSelectionModel().getSelectedItem() != null) {
+            selectedClient = new ClientViewModel(clientsTable.getSelectionModel().getSelectedItem());
+            if(clientProductsTable.getSelectionModel().getSelectedItem() != null) {
+                ClientProductViewModel selectedProduct = new ClientProductViewModel(clientProductsTable.getSelectionModel().getSelectedItem());
+                int quantity = 1;
+                if (selectedClient != null && selectedProduct != null && !quantityTf.getText().equals('0')) {
+                    quantity = Integer.parseInt(quantityTf.getText());
+                    if (quantity > selectedProduct.getQuantity()) quantity = selectedProduct.getQuantity();
+                    clientProductService.removeProduct(selectedProduct, quantity);
 
-        if(selectedClient!=null && selectedProduct !=null) {
-            clientProductService.removeProduct(selectedClient, selectedProduct,1);
-
-            initializeClientProductTable();
-            initializeProductTable();
+                    initializeClientProductTable();
+                    initializeProductTable();
+                }
+            }
         }
 
     }

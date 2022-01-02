@@ -8,6 +8,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.persistence.Query;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 public class ScrapRepository implements DAORepository<Scrap>{
@@ -50,10 +53,12 @@ public class ScrapRepository implements DAORepository<Scrap>{
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         List<Scrap> scraps = new LinkedList<>();
-
+        Date date = new Date();
+        System.out.println(date.toString());
         try {
             String jpql = "SELECT s FROM Scrap s";
-            scraps.addAll(session.createQuery(jpql, Scrap.class).getResultList());
+            Query query = session.createQuery(jpql, Scrap.class);
+            scraps.addAll(query.getResultList());
             log.info("Get all Scraps");
 
         } catch (Exception ex) {

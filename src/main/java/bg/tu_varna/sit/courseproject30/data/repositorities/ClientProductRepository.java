@@ -128,7 +128,7 @@ public class ClientProductRepository implements DAORepository<ProductClient>{
         Transaction transaction = session.beginTransaction();
         List<ProductClient> productClients = new LinkedList<>();
         try {
-            String jpql = "SELECT pc FROM ProductClient pc where pc.product.type = 0 and pc.date_removed = null"; //not wrong
+            String jpql = "SELECT pc FROM ProductClient pc where pc.product.type = 0 and pc.quantity != 0"; //not wrong
             Query query = session.createQuery(jpql, ProductClient.class);
             productClients.addAll(query.getResultList());
             log.info("Get all ProductClients");
@@ -188,5 +188,25 @@ public class ClientProductRepository implements DAORepository<ProductClient>{
             e.printStackTrace();
         }
         return productClients;
+    }
+
+
+    public void updateQuantity(ProductClient obj) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            String hql = "UPDATE ProductClient pc set pc.quantity = :quantity " + "WHERE pc.id = :id";
+            Query query = session.createQuery(hql);
+            query.setParameter("quantity", obj.getQuantity());
+            query.setParameter("id", obj.getId());
+            int result = query.executeUpdate();
+
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 }

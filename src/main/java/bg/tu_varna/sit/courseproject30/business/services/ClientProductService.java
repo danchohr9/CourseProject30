@@ -76,12 +76,22 @@ public class ClientProductService {
         updateProduct(product1);
     }
 
-    public void removeProduct(ClientViewModel client, ClientProductViewModel productClient, int quantity) {
-        Client client1 = findClient(client);
+    public void removeProduct(ClientProductViewModel productClient, int quantity) {
         ProductClient productClient1 = findProductClient(productClient);
         Date today = new Date();
-        productClient1.setDate_removed(today);
-        clientProductRepository.update(productClient1);
+        if(productClient.getQuantity() < quantity) quantity = productClient.getQuantity();
+        if(productClient.getQuantity() > quantity){
+            productClient1.setQuantity(productClient1.getQuantity() - quantity);
+            clientProductRepository.updateQuantity(productClient1);
+            ProductClient productClient2 = clientProductRepository.getById(productClient1.getId());
+            productClient2.setQuantity(quantity);
+            productClient2.setDate_removed(today);
+            clientProductRepository.save(productClient2);
+
+        }else if(productClient.getQuantity() == quantity){
+            productClient1.setDate_removed(today);
+            clientProductRepository.update(productClient1);
+        }
         Product product = productClient1.getProduct();
         product.setQuantity(product.getQuantity() + quantity);
         updateProduct(product);
