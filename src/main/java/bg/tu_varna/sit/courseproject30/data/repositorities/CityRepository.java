@@ -91,4 +91,10 @@ public class CityRepository implements DAORepository<City>{
         }
         return city;
     }
+    public int latestInsertedId(){
+        Session session = Connection.openSession();
+        int id = (Integer) session.createSQLQuery("SELECT c.id FROM City c ORDER BY c.id DESC LIMIT 1;").getSingleResult();
+        session.close();
+        return id;
+    }
 }

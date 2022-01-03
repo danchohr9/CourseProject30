@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import javax.persistence.Query;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -77,10 +76,11 @@ public class CategoryRepository implements DAORepository<Category> {
     public Category findById(Long id){
         Session session = Connection.openSession();
         Category cat = (Category) session.load(Category.class, id);
-        session.close();
         return cat;
     }
 
+/*
+    Not used and not working
     public Category find(int id){
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
@@ -106,6 +106,8 @@ public class CategoryRepository implements DAORepository<Category> {
         }
         return new Category();
     }
+
+ */
     public List<Category> getAll() {
 
         Session session = Connection.openSession();
@@ -125,5 +127,11 @@ public class CategoryRepository implements DAORepository<Category> {
         }
         System.out.println("First " + categories);
         return categories;
+    }
+    public int latestInsertedId(){
+        Session session = Connection.openSession();
+        int id = (Integer) session.createSQLQuery("SELECT c.id FROM Category c ORDER BY c.id DESC LIMIT 1;").getSingleResult();
+        session.close();
+        return id;
     }
 }

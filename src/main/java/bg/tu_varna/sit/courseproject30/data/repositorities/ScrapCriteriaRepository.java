@@ -154,7 +154,12 @@ public class ScrapCriteriaRepository implements DAORepository<ScrapCriteria> {
         }
         return scrapCriteria;
     }
-
+    public int latestInsertedId(){
+        Session session = Connection.openSession();
+        int id = (Integer) session.createSQLQuery("SELECT sc.id FROM scrap_criteria sc ORDER BY sc.id DESC LIMIT 1;").getSingleResult();
+        session.close();
+        return id;
+    }
 //    public ScrapCriteria findById(Long id){
 //        Session session = Connection.openSession();
 //        ScrapCriteria cat = (ScrapCriteria) session.load(ScrapCriteria.class, id);

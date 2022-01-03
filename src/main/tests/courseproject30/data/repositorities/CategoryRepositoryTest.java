@@ -62,9 +62,10 @@ class CategoryRepositoryTest {
         List<Category> categories = repo.getAll();
         boolean recordFound = false;
 
-        for (int i = 0; i < categories.size(); i++) {
-            if(Objects.equals(categories.get(i).getName(), "tests")){
+        for (Category category : categories) {
+            if (Objects.equals(category.getName(), "tests")) {
                 recordFound = true;
+                return;
             }
         }
         assertTrue(recordFound);

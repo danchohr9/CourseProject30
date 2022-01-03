@@ -36,7 +36,7 @@ public class ScrapService {
                         .map(u -> new ScrapViewModel(
                                 Math.toIntExact(u.getId()),
                                 u.getScrap_date().toString(),
-                                u.getProduct().getId(),
+                                Math.toIntExact(u.getProduct().getId()),
                                 u.getProduct().getName(),
                                 u.getQuantity()
                         )).collect(Collectors.toList()));
@@ -73,7 +73,7 @@ public class ScrapService {
                         .map(u -> new ScrapViewModel(
                                 Math.toIntExact(u.getId()),
                                 u.getScrap_date().toString(),
-                                u.getProduct().getId(),
+                                Math.toIntExact(u.getProduct().getId()),
                                 u.getProduct().getName(),
                                 u.getQuantity()
                         )).collect(Collectors.toList()));
