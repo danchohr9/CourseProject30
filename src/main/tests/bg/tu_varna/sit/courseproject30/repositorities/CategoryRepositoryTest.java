@@ -1,8 +1,9 @@
-package bg.tu_varna.sit.courseproject30.data.repositorities;
+package bg.tu_varna.sit.courseproject30.repositorities;
 
 import bg.tu_varna.sit.courseproject30.application.HelloApplication;
 import bg.tu_varna.sit.courseproject30.common.Constants;
 import bg.tu_varna.sit.courseproject30.data.entities.Category;
+import bg.tu_varna.sit.courseproject30.data.repositorities.CategoryRepository;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.jupiter.api.*;
 
@@ -50,7 +51,7 @@ class CategoryRepositoryTest {
     @Test
     @Order(4)
     @DisplayName("Testing if finding a category by id works.")
-    void getByIg() {
+    void getById() {
         Category category = repo.findById((long) repo.latestInsertedId());
         assertEquals("tests", category.getName());
     }

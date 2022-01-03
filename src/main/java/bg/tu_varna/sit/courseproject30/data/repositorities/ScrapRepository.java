@@ -3,6 +3,7 @@ package bg.tu_varna.sit.courseproject30.data.repositorities;
 import bg.tu_varna.sit.courseproject30.data.access.Connection;
 import bg.tu_varna.sit.courseproject30.data.entities.Product;
 import bg.tu_varna.sit.courseproject30.data.entities.Scrap;
+import bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteria;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -40,7 +41,21 @@ public class ScrapRepository implements DAORepository<Scrap>{
 
     @Override
     public void delete(Scrap obj) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
 
+        Scrap scrap = (Scrap) session.get(Scrap.class, obj.getId());
+        session.delete(scrap);
+
+        try{
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -121,5 +136,26 @@ public class ScrapRepository implements DAORepository<Scrap>{
         return scraps;
     }
 
+    public Scrap getLastInserted(){
+        Scrap scrap = null;
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            String hql = " FROM Scrap s WHERE s.id = (SELECT MAX(s2.id) FROM Scrap s2)";
+            Query query = session.createQuery(hql);
+            List results = query.getResultList();
+
+            if (results != null && !results.isEmpty()) {
+                scrap = (Scrap) results.get(0);
+                log.info("Get scrap");
+            }
+        }catch (Exception ex){
+            log.error("Get scrap error: "+ex.getMessage());
+        }finally {
+            transaction.commit();
+//            Connection.openSessionClose();           // pri zatvarqne dava greshka, akso iskame da se log out-nem
+        }
+        return scrap;
+    }
 }
 

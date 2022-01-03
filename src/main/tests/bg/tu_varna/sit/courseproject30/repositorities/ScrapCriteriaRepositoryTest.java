@@ -1,9 +1,10 @@
-package bg.tu_varna.sit.courseproject30.data.repositorities;
+package bg.tu_varna.sit.courseproject30.repositorities;
 
 import bg.tu_varna.sit.courseproject30.application.HelloApplication;
 import bg.tu_varna.sit.courseproject30.common.Constants;
 import bg.tu_varna.sit.courseproject30.data.entities.Category;
 import bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteria;
+import bg.tu_varna.sit.courseproject30.data.repositorities.ScrapCriteriaRepository;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.jupiter.api.*;
 

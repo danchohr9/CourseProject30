@@ -55,7 +55,23 @@ public class ClientProductRepository implements DAORepository<ProductClient>{
 
     @Override
     public void delete(ProductClient obj) {
-
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            String hql = "DELETE ProductClient pc WHERE pc.id = :id";
+            Query query = session.createQuery(hql);
+            query.setParameter("id", obj.getId());
+            int result = query.executeUpdate();
+            if (result > 0 ) {
+                log.info("ProductClient was successfully removed.");
+            }
+        }catch (Exception ex){
+            log.error("Delete ProductClient error: "+ex.getMessage());
+        }finally {
+            transaction.commit();
+            session.close();
+            //Connection.openSessionClose();
+        }
     }
 
     @Override
@@ -128,7 +144,7 @@ public class ClientProductRepository implements DAORepository<ProductClient>{
         Transaction transaction = session.beginTransaction();
         List<ProductClient> productClients = new LinkedList<>();
         try {
-            String jpql = "SELECT pc FROM ProductClient pc where pc.product.type = 0 and pc.quantity != 0"; //not wrong
+            String jpql = "SELECT pc FROM ProductClient pc where pc.product.type = 0 and pc.date_removed = null"; //not wrong
             Query query = session.createQuery(jpql, ProductClient.class);
             productClients.addAll(query.getResultList());
             log.info("Get all ProductClients");
@@ -208,5 +224,27 @@ public class ClientProductRepository implements DAORepository<ProductClient>{
             }
             e.printStackTrace();
         }
+    }
+
+    public ProductClient getLastInserted(){
+        ProductClient productClient = null;
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            String hql = " FROM ProductClient pc WHERE pc.id = (SELECT MAX(pc2.id) FROM ProductClient pc2)";
+            Query query = session.createQuery(hql);
+            List results = query.getResultList();
+
+            if (results != null && !results.isEmpty()) {
+                productClient = (ProductClient) results.get(0);
+                log.info("Get ProductClient");
+            }
+        }catch (Exception ex){
+            log.error("Get ProductClient error: "+ex.getMessage());
+        }finally {
+            transaction.commit();
+//            Connection.openSessionClose();
+        }
+        return productClient;
     }
 }

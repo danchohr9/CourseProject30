@@ -123,6 +123,9 @@ public class UserService {
         repository.update(user);
         return "User edited.";
     }
+
+    //TODO:Duplication. Maybe one function for validation.
+
     public boolean validatePassword(String password){
         Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
         Matcher matcher = pattern.matcher(password);

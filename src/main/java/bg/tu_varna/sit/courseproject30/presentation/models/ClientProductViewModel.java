@@ -13,6 +13,10 @@ public class ClientProductViewModel {
     StringProperty dateAdded;
     StringProperty dateRemoved;
 
+    public ClientProductViewModel() {
+
+    }
+
     public int getId() {
         return id.get();
     }

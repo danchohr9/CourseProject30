@@ -1,11 +1,9 @@
 package bg.tu_varna.sit.courseproject30.presentation.controllers;
 
-import bg.tu_varna.sit.courseproject30.business.services.ProductService;
+
 import bg.tu_varna.sit.courseproject30.business.services.ScrapService;
 import bg.tu_varna.sit.courseproject30.business.services.ToScrapSevice;
 import bg.tu_varna.sit.courseproject30.common.Constants;
-import bg.tu_varna.sit.courseproject30.presentation.models.ProductViewModel;
-import bg.tu_varna.sit.courseproject30.presentation.models.ScrapCriteriaViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ScrapViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ToScrapViewModel;
 import javafx.collections.ObservableList;
@@ -46,7 +44,6 @@ public class ScrapController extends Controller{
 
 
     public  void scrapBtOnAction(){
-        //TODO: Choose the quantity of a product to be scrapped
         alerBoxPane.getStyleClass().removeAll("alert-danger");
         alerBoxLabel.setText("");
         if(productsTable.getSelectionModel().getSelectedItem()==null) {

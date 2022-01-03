@@ -1267,3 +1267,7 @@ line 1:125: unexpected token: =
 	at java.base/java.lang.Thread.run(Thread.java:833)
 [JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.ScrapRepository  - Get Scrap error: org.hibernate.hql.internal.ast.QuerySyntaxException: Invalid path: 'p.scrap_date' [SELECT s FROM bg.tu_varna.sit.courseproject30.data.entities.Scrap s where p.scrap_date BETWEEN :date AND :date]
 [JavaFX Application Thread] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.ScrapRepository  - Get Scrap error: class java.lang.String cannot be cast to class java.util.Date (java.lang.String and java.util.Date are in module java.base of loader 'bootstrap')
+[main] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.NotificationRepository  - Get notification error: class java.lang.Long cannot be cast to class java.lang.Integer (java.lang.Long and java.lang.Integer are in module java.base of loader 'bootstrap')
+[main] ERROR bg.tu_varna.sit.courseproject30.data.repositorities.NotificationRepository  - Get notification error: class java.lang.Long cannot be cast to class java.lang.Integer (java.lang.Long and java.lang.Integer are in module java.base of loader 'bootstrap')
+[main] ERROR org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl  - Connection leak detected: there are 2 unclosed connections upon shutting down pool jdbc:mysql://localhost:3306/javaproject
+[main] ERROR org.hibernate.orm.connections.pooling  - Connection leak detected: there are 2 unclosed connections!

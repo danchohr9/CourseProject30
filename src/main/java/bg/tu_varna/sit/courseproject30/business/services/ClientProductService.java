@@ -50,13 +50,13 @@ public class ClientProductService {
     }
 
     public Client findClient(ClientViewModel client) {
-        Client client1 = new Client();
+        Client client1;
         client1 = clientRepository.getById(client.getId());
         return client1;
     }
 
     public ProductClient findProductClient(ClientProductViewModel productClient) {
-        ProductClient productClient1 = new ProductClient();
+        ProductClient productClient1;
         productClient1 = clientProductRepository.getById(productClient.getId());
         return productClient1;
     }

@@ -2,6 +2,7 @@ package bg.tu_varna.sit.courseproject30.data.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 
 @Table(name = "javaproject.notification")
@@ -70,5 +71,18 @@ public class Notification {
 
     public void setUserNotificationSet(Set<UserNotification> userNotificationSet) {
         this.userNotificationSet = userNotificationSet;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Notification that = (Notification) o;
+        return Objects.equals(title, that.title) && Objects.equals(message, that.message) && Objects.equals(date_created, that.date_created);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, message, date_created);
     }
 }

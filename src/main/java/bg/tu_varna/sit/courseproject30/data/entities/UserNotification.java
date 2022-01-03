@@ -47,4 +47,6 @@ public class UserNotification {
     }
 
     public UserNotification(){}
+
+
 }

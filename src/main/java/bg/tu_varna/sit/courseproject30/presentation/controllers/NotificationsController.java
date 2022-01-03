@@ -27,11 +27,13 @@ public class NotificationsController extends Controller{
     NotificationViewModel toRemove;
 
     public void deleteBtOnAction(){
-        toRemove = new NotificationViewModel(listView.getSelectionModel().getSelectedItem());
-        notificationViewModels.remove(toRemove);
-        service.deleteUserNotification(toRemove);
-        listView.getItems().removeAll(toRemove);
-        initializeListView();
+        if(listView.getSelectionModel().getSelectedItem() != null) {
+            toRemove = new NotificationViewModel(listView.getSelectionModel().getSelectedItem());
+            notificationViewModels.remove(toRemove);
+            service.deleteUserNotification(toRemove);
+            listView.getItems().removeAll(toRemove);
+            initializeListView();
+        }
     }
 
     public void deleteAllBtOnAction(ActionEvent actionEvent){

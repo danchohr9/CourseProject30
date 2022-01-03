@@ -74,10 +74,13 @@ public class ProductViewModel {
         }
         return result;
     }
+
+    public ProductViewModel() {
+
+    }
+
     public StringProperty getTypeName(){
         SimpleStringProperty type = new SimpleStringProperty();
-
-
         if(getType() == 0){
             type.set("MA");
         } else {

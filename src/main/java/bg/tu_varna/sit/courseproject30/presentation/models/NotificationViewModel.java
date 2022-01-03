@@ -65,5 +65,6 @@ public class NotificationViewModel {
     public String toString() {
         return this.getTitle() + "\n" + this.getMessage();
     }
+
 }
 

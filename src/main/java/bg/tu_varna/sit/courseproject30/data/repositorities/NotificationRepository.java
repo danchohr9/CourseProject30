@@ -41,7 +41,23 @@ public class NotificationRepository implements DAORepository<Notification>{
 
     @Override
     public void delete(Notification obj) {
-
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            String hql = "DELETE Notification un WHERE un.id = :id";
+            Query query = session.createQuery(hql);
+            query.setParameter("id", obj.getId());
+            int result = query.executeUpdate();
+            if (result > 0 ) {
+                log.info("Notification was successfully removed.");
+            }
+        }catch (Exception ex){
+            log.error("Delete Notification error: "+ex.getMessage());
+        }finally {
+            transaction.commit();
+            session.close();
+            //Connection.openSessionClose();           // pri zatvarqne dava greshka, akso iskame da se log out-nem
+        }
     }
 
     @Override

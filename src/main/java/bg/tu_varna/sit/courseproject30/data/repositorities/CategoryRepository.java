@@ -71,6 +71,7 @@ public class CategoryRepository implements DAORepository<Category> {
     public Optional<Category> getByIg(Long id) {
         return Optional.empty();
     }
+
     public Category findById(Long id){
         Session session = Connection.openSession();
         Category cat = (Category) session.load(Category.class, id);

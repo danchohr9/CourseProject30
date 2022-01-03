@@ -131,4 +131,28 @@ public class UserNotificationRepository implements DAORepository<UserNotificatio
 
         return userNotifications;
     }
+
+    public List<UserNotification> getAllOfNotification(int id){
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<UserNotification> userNotifications = new LinkedList<>();
+
+        try {
+            String jpql = "SELECT un FROM UserNotification un WHERE un.notification.id = :id";
+            Query query = session.createQuery(jpql, UserNotification.class);
+            query.setParameter("id",id);
+            userNotifications.addAll(query.getResultList());
+            log.info("Get all UserNotifications");
+
+        } catch (Exception ex) {
+            log.error("Get UserNotification error: " + ex.getMessage());
+        } finally {
+            transaction.commit();
+            //Connection.openSessionClose();
+        }
+        System.out.println("First " + userNotifications);
+
+        return userNotifications;
+    }
+
 }

@@ -1,9 +1,10 @@
-package bg.tu_varna.sit.courseproject30.data.repositorities;
+package bg.tu_varna.sit.courseproject30.repositorities;
 
 import bg.tu_varna.sit.courseproject30.application.HelloApplication;
 import bg.tu_varna.sit.courseproject30.business.services.CategoryService;
 import bg.tu_varna.sit.courseproject30.common.Constants;
 import bg.tu_varna.sit.courseproject30.data.entities.City;
+import bg.tu_varna.sit.courseproject30.data.repositorities.CityRepository;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.jupiter.api.*;
 
