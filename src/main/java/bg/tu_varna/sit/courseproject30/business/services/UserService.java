@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -54,28 +55,20 @@ public class UserService {
     public String registerUser(String username, String password, String email){
         User newUser = new User();
         Roles role = new Roles(2);
+        newUser.setUsername(username);
+        newUser.setPassword(password);
+        newUser.setEmail(email);
+        newUser.setRole(role);
         if(!username.isBlank() && !password.isBlank() && !email.isBlank()){
             if(repository.getUserByUsername(username)!=null){
                 return "Username is already taken";
             }
-            if(!validateUsername(username)){
-                return "Username is not acceptable.";
-            }
-            if(password.length()<4) {
-                return "Password is too short.";
-            }
-            if (!validatePassword(password)) {
-                return "Password uses disallowed characters.";
-            }
-
-            if(validateEmail(email)){
-                newUser.setUsername(username);
-                newUser.setPassword(password);
-                newUser.setEmail(email);
-                newUser.setRole(role);
+            if(!Objects.equals(validate(newUser), "OK")){
+                return validate(newUser);
+            } else {
                 repository.save(newUser);
                 return "User successfully registered.";
-            }else return "Incorrect email.";
+            }
         }else{
             return "Please fill each tab.";
         }
@@ -106,8 +99,7 @@ public class UserService {
         user.setId((long) obj.getId());
         repository.delete(user);
     }
-    //TODO:Duplication. Maybe one function for validation.
-    public String update(User user){
+    public String validate (User user){
         if(!validateUsername(user.getUsername())){
             return "Username is not acceptable.";
         }
@@ -119,6 +111,14 @@ public class UserService {
         }
         if (!validateEmail(user.getEmail())){
             return "Invalid Email";
+        }
+        return "OK";
+    }
+
+    public String update(User user){
+        validate(user);
+        if(!Objects.equals(validate(user), "OK")){
+            return validate(user);
         }
         repository.update(user);
         return "User edited.";

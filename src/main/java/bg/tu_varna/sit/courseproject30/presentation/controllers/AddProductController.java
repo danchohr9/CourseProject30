@@ -84,13 +84,12 @@ public class AddProductController extends Controller{
     }
 
     public boolean validator(){
-        //TODO:Make better validation
         alertPane.getStyleClass().add("alert-danger");
-        if(nameT.getLength() == 0){
-            alertLabel.setText("You must enter name");;
+        if(nameT.getLength() == 0 || nameT.getLength() > 45){
+            alertLabel.setText("You must enter name that is shorter than 45 characters");;
             alertPane.setVisible(true); return false;
         }
-        if(descriptionT.getLength() == 0){
+        if(descriptionT.getLength() == 0|| nameT.getLength() > 249){
             alertLabel.setText("You must enter description");;
             alertPane.setVisible(true); return false;
         }
@@ -102,11 +101,11 @@ public class AddProductController extends Controller{
             alertLabel.setText("Invalid Price");;
             alertPane.setVisible(true); return false;
         }
-        if(ageTf.getLength() == 0){
+        if(ageTf.getLength() == 0 || !ageTf.getText().matches("[0-9]+")){
             alertLabel.setText("Invalid Age");;
             alertPane.setVisible(true); return false;
         }
-        if(quantityTf.getLength() == 0){
+        if(quantityTf.getLength() == 0 || !quantityTf.getText().matches("[0-9]+")){
             alertLabel.setText("Invalid quantity");;
             alertPane.setVisible(true); return false;
         }
