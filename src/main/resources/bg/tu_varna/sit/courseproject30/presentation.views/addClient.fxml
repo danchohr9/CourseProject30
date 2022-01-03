@@ -3,38 +3,83 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="537.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.ClientController">
+<BorderPane prefHeight="537.0" prefWidth="935.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.ClientController">
     <left>
         <fx:include source="menu.fxml" />
     </left>
    <center>
-      <VBox spacing="5.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="titleLbl" prefHeight="40.0" prefWidth="391.0" styleClass="text-primary" text="Add a new client" textAlignment="CENTER">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
-            <TextField fx:id="nameTf" prefHeight="36.0" prefWidth="203.0" promptText="enter name" />
-            <TextField fx:id="surnameTf" prefHeight="36.0" prefWidth="202.0" promptText="enter surname" />
-            <TextField fx:id="phoneTf" prefHeight="36.0" prefWidth="202.0" promptText="enter phone" />
-            <TextField fx:id="addressTf" prefHeight="36.0" prefWidth="202.0" promptText="enter address" />
-            <TextField fx:id="egnTf" prefHeight="36.0" prefWidth="202.0" promptText="enter egn" />
-            <TextField fx:id="cityTf" prefHeight="36.0" prefWidth="202.0" promptText="enter city" />
-            <Button fx:id="addBt" mnemonicParsing="false" onAction="#addBtOnAction" prefHeight="26.0" prefWidth="87.0" styleClass="btn, btn-primary" text="Submit" />
-            <Label fx:id="warningLbl" prefHeight="18.0" prefWidth="351.0" />
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
+      <HBox BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
-      </VBox>
+         <children>
+            <VBox prefHeight="538.0" prefWidth="231.0" spacing="5.0">
+               <children>
+                  <Label fx:id="titleLbl" prefHeight="40.0" prefWidth="391.0" styleClass="text-primary" text="Add a new client" textAlignment="CENTER">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nameTf" prefHeight="36.0" prefWidth="203.0" promptText="enter name" />
+                  <TextField fx:id="surnameTf" prefHeight="36.0" prefWidth="202.0" promptText="enter surname" />
+                  <TextField fx:id="phoneTf" prefHeight="36.0" prefWidth="202.0" promptText="enter phone" />
+                  <TextField fx:id="addressTf" prefHeight="36.0" prefWidth="202.0" promptText="enter address" />
+                  <TextField fx:id="egnTf" prefHeight="36.0" prefWidth="202.0" promptText="enter egn" />
+                  <TextField fx:id="cityTf" prefHeight="36.0" prefWidth="202.0" promptText="enter city" />
+                  <Button fx:id="addBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="87.0" styleClass="btn, btn-primary" text="SAVE" />
+                  <Pane fx:id="alerBoxPane" prefHeight="24.0" prefWidth="406.0">
+                     <children>
+                        <Label fx:id="alerBoxLabel" layoutX="9.0" layoutY="3.0" prefHeight="17.0" prefWidth="330.0" />
+                     </children>
+                  </Pane>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="538.0" prefWidth="471.0">
+               <children>
+                  <Label text="List of Clients:">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin></Label>
+                  <TableView fx:id="clientsTable" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn fx:id="nameCol" prefWidth="109.60000741481781" text="name" />
+                        <TableColumn fx:id="phoneCol" prefWidth="81.59998321533203" text="phone" />
+                        <TableColumn fx:id="addressCol" prefWidth="111.20008850097656" text="address" />
+                        <TableColumn fx:id="egnCol" prefWidth="85.60009765625" text="EGN" />
+                        <TableColumn fx:id="cityCol" prefWidth="60.7999267578125" text="City" />
+                    </columns>
+                  </TableView>
+                  <HBox prefHeight="23.0" prefWidth="471.0" spacing="5.0">
+                     <children>
+                        <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleButtonClicks" text="Create" />
+                        <Button fx:id="editBtn" mnemonicParsing="false" onAction="#handleButtonClicks" text="Edit" />
+                        <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#handleButtonClicks" text="Delete" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
    </center>
 </BorderPane>

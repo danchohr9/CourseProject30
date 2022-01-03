@@ -9,10 +9,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="409.0" spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.LoginController">
+<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="461.0" prefWidth="409.0" spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.LoginController">
    <children>
       <Label fx:id="loginLbl" text="Login Menu">
          <font>
@@ -55,6 +56,11 @@
             <CheckBox fx:id="showPassChB" mnemonicParsing="false" text="Show Password" />
          </children>
       </HBox>
+      <Pane fx:id="alerBoxPane" prefHeight="24.0" prefWidth="349.0">
+         <children>
+            <Label fx:id="alerBoxLabel" layoutX="9.0" layoutY="3.0" prefHeight="17.0" prefWidth="330.0" />
+         </children>
+      </Pane>
       <Label fx:id="infoLbl" prefHeight="18.0" prefWidth="207.0" textAlignment="RIGHT" textFill="#d40022" />
    </children>
    <padding>

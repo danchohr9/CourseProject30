@@ -124,4 +124,10 @@ public class ClientService {
                                 c.getCity().getName()
                         )).collect(Collectors.toList()));
     }
+    public void edit(Client client){
+        clientRepository.update(client);
+    }
+    public void delete(Client client){
+        clientRepository.delete(client);
+    }
 }

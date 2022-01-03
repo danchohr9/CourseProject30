@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
@@ -24,6 +25,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable{
+    public Pane alerBoxPane;
+    public Label alerBoxLabel;
 //    private final TaskService service = TaskService.getInstance();
 
     @FXML
@@ -71,7 +74,7 @@ public class LoginController implements Initializable{
     }
     @FXML
     public void signInBtOnAction(ActionEvent actionEvent){
-
+        alerBoxPane.getStyleClass().add("alert-danger");
         if(!usernameTF.getText().isBlank() && !passwordPF.getText().isBlank()){
             Stage oldStage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
             //oldStage.close();
@@ -98,10 +101,10 @@ public class LoginController implements Initializable{
                     e.printStackTrace();
                 }
             }else{
-                infoLbl.setText("Invalid credentials.");
+                alerBoxLabel.setText("Invalid credentials.");
             }
         }else{
-            infoLbl.setText("Please enter username and password.");
+            alerBoxLabel.setText("Please enter username and password.");
         }
 
     }

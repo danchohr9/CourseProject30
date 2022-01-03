@@ -117,7 +117,7 @@ public class ClientProductController extends Controller{
             if(clientProductsTable.getSelectionModel().getSelectedItem() != null) {
                 ClientProductViewModel selectedProduct = new ClientProductViewModel(clientProductsTable.getSelectionModel().getSelectedItem());
                 int quantity = 1;
-                if (selectedClient != null && selectedProduct != null && !quantityTf.getText().equals('0')) {
+                if (selectedClient != null && selectedProduct != null && !quantityTf.getText().equals("")) {
                     quantity = Integer.parseInt(quantityTf.getText());
                     if (quantity > selectedProduct.getQuantity()) quantity = selectedProduct.getQuantity();
                     clientProductService.removeProduct(selectedProduct, quantity);

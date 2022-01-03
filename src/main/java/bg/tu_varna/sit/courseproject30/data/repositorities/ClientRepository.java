@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.courseproject30.data.repositorities;
 
 import bg.tu_varna.sit.courseproject30.data.access.Connection;
+import bg.tu_varna.sit.courseproject30.data.entities.Category;
 import bg.tu_varna.sit.courseproject30.data.entities.City;
 import bg.tu_varna.sit.courseproject30.data.entities.Client;
 import bg.tu_varna.sit.courseproject30.data.entities.Scrap;
@@ -37,12 +38,45 @@ public class ClientRepository implements DAORepository<Client>{
 
     @Override
     public void update(Client obj) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
 
+        Client client = (Client)session.get(Client.class, obj.getId());
+        client.setFirst_name(obj.getFirst_name());
+        client.setLast_name(obj.getLast_name());
+        client.setEgn(obj.getEgn());
+        client.setCity(obj.getCity());
+        client.setAddress(obj.getAddress());
+        client.setPhone(obj.getPhone());
+
+        try{
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void delete(Client obj) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
 
+        Client client = (Client)session.get(Client.class, obj.getId());
+        session.delete(client);
+
+        try{
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     @Override

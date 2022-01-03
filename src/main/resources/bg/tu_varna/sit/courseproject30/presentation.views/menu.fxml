@@ -23,8 +23,8 @@
          <Button fx:id="homeBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Dashboard" />
          <Button fx:id="addProductBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Products" />
             <Button fx:id="addCriteriaBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Criteria" />
-            <Button fx:id="addClientBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Add Client" />
-            <Button fx:id="clientProductBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Client Products" />
+            <Button fx:id="addClientBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Client" />
+            <Button fx:id="clientProductBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Adding Products to Client" />
          <Button fx:id="categoriesBtn" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Categories" />
             <Button fx:id="scrapBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="245.0" text="Scrap" />
          <Button fx:id="addMolBt" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="312.0" text="Users" visible="false" />
