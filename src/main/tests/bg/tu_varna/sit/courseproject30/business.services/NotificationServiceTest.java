@@ -3,6 +3,7 @@ package bg.tu_varna.sit.courseproject30.business.services;
 import bg.tu_varna.sit.courseproject30.application.HelloApplication;
 import bg.tu_varna.sit.courseproject30.common.Constants;
 import bg.tu_varna.sit.courseproject30.data.entities.Notification;
+import bg.tu_varna.sit.courseproject30.data.entities.User;
 import bg.tu_varna.sit.courseproject30.data.entities.UserNotification;
 import bg.tu_varna.sit.courseproject30.data.repositorities.NotificationRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.UserNotificationRepository;
@@ -40,16 +41,19 @@ class NotificationServiceTest {
     @Test
     @Order(2)
     void sendNotifications() {
-        List<UserNotification> userNotifications = userNotificationRepository.getAllOfUser("a");
+        UserNotification userNotification = userNotificationRepository.getLastInserted();
+        List<UserNotification> userNotifications = userNotificationRepository.getAllOfUser(userNotification.getUser().getUsername());
         Notification notification = repository.getLastInserted();
         service.sendNotifications(notification);
-        assertNotEquals(userNotifications, userNotificationRepository.getAllOfUser("a"));
+        assertNotEquals(userNotifications, userNotificationRepository.getAllOfUser(userNotification.getUser().getUsername()));
     }
 
     @Test
     @Order(4)
     void getAllOfUser() {
-        UserViewModel user = new UserViewModel(1,"admin","test","admin@gmail.com",1);
+        UserNotification userNotification = userNotificationRepository.getLastInserted();
+        UserViewModel user = new UserViewModel(Math.toIntExact(userNotification.getUser().getId()),userNotification.getUser().getUsername(),
+                userNotification.getUser().getPassword(),userNotification.getUser().getEmail(),1);
         List<NotificationViewModel> list = service.getAllOfUser(user);
         assertEquals(list.size(),service.getAllOfUser(user).size());
     }
@@ -57,15 +61,18 @@ class NotificationServiceTest {
     @Test
     @Order(3)
     void deleteUserNotification() {
-        NotificationViewModel notificationViewModel = new NotificationViewModel(repository.getLastInserted().getId(),"","");
+        int id = repository.getLastInserted().getId();
+        NotificationViewModel notificationViewModel = new NotificationViewModel(id,"","");
         service.deleteUserNotification(notificationViewModel);
-        assertNull(repository.getById(48));
+        assertNull(repository.getById(id));
     }
 
     @Test
     @Order(5)
     void deleteAllNotificationsOfUser() {
-        UserViewModel user = new UserViewModel(14,"mol5","test","test",1);
+        UserNotification userNotification = userNotificationRepository.getLastInserted();
+        UserViewModel user = new UserViewModel(Math.toIntExact(userNotification.getUser().getId()),userNotification.getUser().getUsername(),
+                userNotification.getUser().getPassword(),userNotification.getUser().getEmail(),1);
         service.deleteAllNotificationsOfUser(user);
         assertEquals("[]",service.getAllOfUser(user).toString());
         repository.delete(repository.getLastInserted());

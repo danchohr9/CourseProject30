@@ -1,10 +1,7 @@
 package bg.tu_varna.sit.courseproject30.data.repositorities;
 
 import bg.tu_varna.sit.courseproject30.data.access.Connection;
-import bg.tu_varna.sit.courseproject30.data.entities.Category;
-import bg.tu_varna.sit.courseproject30.data.entities.City;
-import bg.tu_varna.sit.courseproject30.data.entities.Client;
-import bg.tu_varna.sit.courseproject30.data.entities.Scrap;
+import bg.tu_varna.sit.courseproject30.data.entities.*;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -171,5 +168,27 @@ public class ClientRepository implements DAORepository<Client>{
             e.printStackTrace();
         }
         return clients;
+    }
+
+    public Client getLastInserted(){
+        Client client = null;
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            String hql = " FROM Client c WHERE c.id = (SELECT MAX(c2.id) FROM Client c2)";
+            Query query = session.createQuery(hql);
+            List results = query.getResultList();
+
+            if (results != null && !results.isEmpty()) {
+                client = (Client) results.get(0);
+                log.info("Get Client");
+            }
+        }catch (Exception ex){
+            log.error("Get Client error: "+ex.getMessage());
+        }finally {
+            transaction.commit();
+//            Connection.openSessionClose();
+        }
+        return client;
     }
 }

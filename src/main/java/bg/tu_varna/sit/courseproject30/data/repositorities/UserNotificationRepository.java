@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.courseproject30.data.repositorities;
 
 import bg.tu_varna.sit.courseproject30.data.access.Connection;
+import bg.tu_varna.sit.courseproject30.data.entities.Notification;
 import bg.tu_varna.sit.courseproject30.data.entities.User;
 import bg.tu_varna.sit.courseproject30.data.entities.UserNotification;
 import org.apache.log4j.Logger;
@@ -155,4 +156,25 @@ public class UserNotificationRepository implements DAORepository<UserNotificatio
         return userNotifications;
     }
 
+    public UserNotification getLastInserted(){
+        UserNotification userNotification = null;
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            String hql = " FROM UserNotification n WHERE n.id = (SELECT MAX(n2.id) FROM UserNotification n2)";
+            Query query = session.createQuery(hql);
+            List results = query.getResultList();
+
+            if (results != null && !results.isEmpty()) {
+                userNotification = (UserNotification) results.get(0);
+                log.info("Get UserNotification");
+            }
+        }catch (Exception ex){
+            log.error("Get UserNotification error: "+ex.getMessage());
+        }finally {
+            transaction.commit();
+//            Connection.openSessionClose();
+        }
+        return userNotification;
+    }
 }

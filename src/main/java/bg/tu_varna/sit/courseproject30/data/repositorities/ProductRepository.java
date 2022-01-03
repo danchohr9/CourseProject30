@@ -290,4 +290,26 @@ public class ProductRepository implements DAORepository<Product>{
             return (long)session.createQuery("SELECT COUNT(e) FROM Product e").getSingleResult();
 
         }
+
+    public Product getLastInserted(){
+        Product product = null;
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            String hql = " FROM Product p WHERE p.id = (SELECT MAX(p2.id) FROM Product p2)";
+            Query query = session.createQuery(hql);
+            List results = query.getResultList();
+
+            if (results != null && !results.isEmpty()) {
+                product = (Product) results.get(0);
+                log.info("Get Product");
+            }
+        }catch (Exception ex){
+            log.error("Get Product error: "+ex.getMessage());
+        }finally {
+            transaction.commit();
+//            Connection.openSessionClose();
+        }
+        return product;
     }
+}

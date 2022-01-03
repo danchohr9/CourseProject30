@@ -5,6 +5,7 @@ import bg.tu_varna.sit.courseproject30.common.Constants;
 import bg.tu_varna.sit.courseproject30.data.entities.Product;
 import bg.tu_varna.sit.courseproject30.data.entities.Scrap;
 import bg.tu_varna.sit.courseproject30.data.entities.User;
+import bg.tu_varna.sit.courseproject30.data.repositorities.ClientRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ProductRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ScrapRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.UserRepository;
@@ -41,15 +42,16 @@ class ScrapServiceTest {
     @Test
     void scrapProduct() {
         ProductRepository productRepository = ProductRepository.getInstance();
-        Product product = productRepository.getById(17);
-        ToScrapViewModel toScrapViewModel = new ToScrapViewModel(product.getId(),product.getName(),product.getQuantity(),null,"test");
+        ClientRepository clientRepository = ClientRepository.getInstance();
+        Product product = productRepository.getById(productRepository.getLastInserted().getId());
+        ToScrapViewModel toScrapViewModel = new ToScrapViewModel(product.getId(),product.getName(),product.getQuantity(),null,clientRepository.getLastInserted().getFirst_name());
         UserRepository userRepository = UserRepository.getInstance();
-        User user = userRepository.getUserByUsername("admin");
+        User user = userRepository.getUserByUsername(userRepository.getLastInserted().getUsername());
         UserViewModel userViewModel = new UserViewModel(Math.toIntExact(user.getId()),user.getUsername(),"test","test",1);
         service.ScrapProduct(toScrapViewModel,userViewModel);
         assertEquals(product.getId(),repository.getLastInserted().getProduct().getId());
         assertEquals(product.getQuantity(),repository.getLastInserted().getQuantity());
-        assertEquals(0,productRepository.getById(17).getQuantity());
+        assertEquals(0,productRepository.getById(productRepository.getLastInserted().getId()).getQuantity());
         Product product1 = repository.getLastInserted().getProduct();
         product1.setQuantity(product.getQuantity());
         productRepository.update(product1);
@@ -68,7 +70,7 @@ class ScrapServiceTest {
         myCal.set(Calendar.DAY_OF_MONTH, 23);
         Date date2 = myCal.getTime();
         System.out.println(date1.toString());
-        List<Scrap> scraps = repository.searchScraps("Laptop Legion", date1, date2);
-        assertEquals(scraps.get(0).getId(),service.searchScraps("Laptop Legion",date1, date2).get(0).getId());
+        List<Scrap> scraps = repository.searchScraps(repository.getLastInserted().getProduct().getName(), date1, date2);
+        assertEquals(scraps.get(0).getId(),service.searchScraps(repository.getLastInserted().getProduct().getName(),date1, date2).get(0).getId());
     }
 }

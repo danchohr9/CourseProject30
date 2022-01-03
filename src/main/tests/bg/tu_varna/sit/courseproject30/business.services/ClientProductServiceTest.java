@@ -40,7 +40,7 @@ class ClientProductServiceTest {
     @Order(1)
     void getClientProducts() {
         ClientViewModel client = new ClientViewModel();
-        client.setId(2);
+        client.setId(clientRepository.getLastInserted().getId());
         List<ProductClient> productClients = repository.getClientProducts(client.getId());
         assertEquals(productClients.size(),service.getClientProducts(client).size());
         assertEquals(productClients.get(0).getId(), service.getClientProducts(client).get(0).getId());
@@ -78,10 +78,10 @@ class ClientProductServiceTest {
         int quantity = product.getQuantity();
         product.setQuantity(quantity+1);
         service.updateProduct(product);
-        assertEquals(quantity+1,productRepository.getById(20).getQuantity());
+        assertEquals(quantity+1,productRepository.getById(productRepository.getLastInserted().getId()).getQuantity());
         product.setQuantity(quantity);
         service.updateProduct(product);
-        assertEquals(quantity,productRepository.getById(20).getQuantity());
+        assertEquals(quantity,productRepository.getById(productRepository.getLastInserted().getId()).getQuantity());
     }
 
     @Test
@@ -89,11 +89,11 @@ class ClientProductServiceTest {
     void addProduct() {
         ClientViewModel clientViewModel = new ClientViewModel();
         ProductViewModel productViewModel = new ProductViewModel();
-        productViewModel.setId(20);
+        productViewModel.setId(productRepository.getLastInserted().getId());
         Product product = service.findProduct(productViewModel);
         int oldQuantity = product.getQuantity();
         productViewModel.setQuantity(oldQuantity);
-        clientViewModel.setId(2);
+        clientViewModel.setId(clientRepository.getLastInserted().getId());
         int quantity = 1;
         service.addProduct(clientViewModel,productViewModel,quantity);
         assertEquals(oldQuantity-quantity,(service.findProduct(productViewModel)).getQuantity());
@@ -129,8 +129,8 @@ class ClientProductServiceTest {
         Date date2 = myCal.getTime();
         ClientViewModel clientViewModel = new ClientViewModel();
         clientViewModel.setId(2);
-        List<ProductClient> products = repository.searchClientProducts("Laptop Legion", date1, date2,clientViewModel.getId());
-        List<ClientProductViewModel> result = service.searchProducts("Laptop Legion",date1, date2,clientViewModel);
+        List<ProductClient> products = repository.searchClientProducts(repository.getLastInserted().getProduct().getName(), date1, date2,clientViewModel.getId());
+        List<ClientProductViewModel> result = service.searchProducts(repository.getLastInserted().getProduct().getName(),date1, date2,clientViewModel);
         assertEquals(products.get(0).getId(),result.get(0).getId());
         assertEquals(products.size(),result.size());
         assertEquals(products.get(products.size()-1).getId(),result.get(result.size()-1).getId());

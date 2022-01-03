@@ -34,13 +34,14 @@ class UserServiceTest {
     }
 
     @Test
-    @Order(5)
+    @Order(4)
     void validateLogin() {
         ObservableList<UserViewModel> allUsers = service.getAll();
-        UserViewModel userViewModel = new UserViewModel("admin","admin");
+        UserViewModel userViewModel = new UserViewModel(repository.getLastInserted().getUsername(),repository.getLastInserted().getPassword());
         boolean check = service.validateLogin(userViewModel,allUsers);
         assertTrue(check);
-        userViewModel.setUsername("test"); userViewModel.setPassword("sadasd");
+        userViewModel.setUsername("wrongUsername");
+        userViewModel.setPassword("wrongPass");
         check = service.validateLogin(userViewModel,allUsers);
         assertFalse(check);
     }
@@ -48,7 +49,7 @@ class UserServiceTest {
     @Test
     @Order(2)
     void registerUser() {
-        assertEquals("Username is already taken",service.registerUser("admin","sdsada","sdasd"));
+        assertEquals("Username is already taken",service.registerUser(repository.getLastInserted().getUsername(),"sdsada","sdasd"));
         assertEquals("Username is not acceptable.",service.registerUser("+-+dasj__","sdsada","sdasd"));
         assertEquals("Password is too short.",service.registerUser("test","a","sdasd"));
         assertEquals("Password uses disallowed characters.",service.registerUser("test","+sad-++","sdasd"));
@@ -74,7 +75,7 @@ class UserServiceTest {
     @Test
     @Order(3)
     void update() {
-        User user = repository.getUserByUsername("testUser1");
+        User user = repository.getUserByUsername(repository.getLastInserted().getUsername());
         user.setEmail("dasda123");
         assertEquals("Invalid Email",service.update(user));
         user.setPassword("*-/*2sad");
@@ -83,19 +84,19 @@ class UserServiceTest {
         assertEquals("Password is too short.",service.update(user));
         user.setUsername("21sad--");
         assertEquals("Username is not acceptable.",service.update(user));
-        user = repository.getUserByUsername("testUser1");
+        user = repository.getUserByUsername(repository.getLastInserted().getUsername());
         user.setUsername("testUser1edit"); user.setPassword("testYser1password"); user.setEmail("user1Edit@abv.bg");
         assertEquals("User edited.",service.update(user));
     }
 
     @Test
-    @Order(4)
+    @Order(5)
     void delete() {
-        User user = repository.getUserByUsername("testUser1Edit");
+        User user = repository.getUserByUsername(repository.getLastInserted().getUsername());
         assertNotNull(user);
         UserViewModel toDelete = new UserViewModel(Math.toIntExact(user.getId()), user.getUsername(), user.getPassword(), user.getEmail(),user.getRole().getId());
         service.delete(toDelete);
-        assertNull(repository.getUserByUsername("testUser1Edit"));
+        assertNull(repository.getUserByUsername(user.getUsername()));
     }
 
 

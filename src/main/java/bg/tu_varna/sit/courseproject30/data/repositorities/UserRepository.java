@@ -2,6 +2,7 @@ package bg.tu_varna.sit.courseproject30.data.repositorities;
 
 import bg.tu_varna.sit.courseproject30.data.access.Connection;
 import bg.tu_varna.sit.courseproject30.data.entities.Category;
+import bg.tu_varna.sit.courseproject30.data.entities.Product;
 import bg.tu_varna.sit.courseproject30.data.entities.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -129,4 +130,25 @@ public class UserRepository implements DAORepository<User> {
         return (long)session.createQuery("SELECT COUNT(e) FROM User e").getSingleResult();
     }
 
+    public User getLastInserted(){
+        User user = null;
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            String hql = " FROM User u WHERE u.id = (SELECT MAX(u2.id) FROM User u2)";
+            Query query = session.createQuery(hql);
+            List results = query.getResultList();
+
+            if (results != null && !results.isEmpty()) {
+                user = (User) results.get(0);
+                log.info("Get User");
+            }
+        }catch (Exception ex){
+            log.error("Get User error: "+ex.getMessage());
+        }finally {
+            transaction.commit();
+//            Connection.openSessionClose();
+        }
+        return user;
+    }
 }
