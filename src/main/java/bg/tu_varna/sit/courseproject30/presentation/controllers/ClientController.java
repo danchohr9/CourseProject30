@@ -1,7 +1,6 @@
 package bg.tu_varna.sit.courseproject30.presentation.controllers;
 
 import bg.tu_varna.sit.courseproject30.business.services.ClientService;
-import bg.tu_varna.sit.courseproject30.business.services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

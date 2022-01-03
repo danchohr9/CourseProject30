@@ -2,10 +2,8 @@ package bg.tu_varna.sit.courseproject30.business.services;
 
 import bg.tu_varna.sit.courseproject30.data.entities.Product;
 import bg.tu_varna.sit.courseproject30.data.entities.ProductClient;
-import bg.tu_varna.sit.courseproject30.data.repositorities.CategoryRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ClientProductRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ProductRepository;
-import bg.tu_varna.sit.courseproject30.presentation.models.ProductViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ToScrapViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

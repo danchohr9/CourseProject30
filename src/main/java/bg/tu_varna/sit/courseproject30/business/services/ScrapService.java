@@ -4,8 +4,6 @@ import bg.tu_varna.sit.courseproject30.data.entities.*;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ClientProductRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ProductRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ScrapRepository;
-import bg.tu_varna.sit.courseproject30.data.repositorities.UserRepository;
-import bg.tu_varna.sit.courseproject30.presentation.models.ProductViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ScrapViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ToScrapViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;

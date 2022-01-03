@@ -1,7 +1,6 @@
 package bg.tu_varna.sit.courseproject30.presentation.controllers;
 
 import bg.tu_varna.sit.courseproject30.business.services.ScrapService;
-import bg.tu_varna.sit.courseproject30.business.services.ToScrapSevice;
 import bg.tu_varna.sit.courseproject30.presentation.models.ScrapViewModel;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

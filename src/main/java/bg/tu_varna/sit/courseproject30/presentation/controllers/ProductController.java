@@ -1,26 +1,16 @@
 package bg.tu_varna.sit.courseproject30.presentation.controllers;
 
 import bg.tu_varna.sit.courseproject30.business.services.ProductService;
-import bg.tu_varna.sit.courseproject30.business.services.UserService;
 import bg.tu_varna.sit.courseproject30.common.Constants;
-import bg.tu_varna.sit.courseproject30.data.entities.Product;
-import bg.tu_varna.sit.courseproject30.data.repositorities.ProductRepository;
-import bg.tu_varna.sit.courseproject30.data.repositorities.UserRepository;
-import bg.tu_varna.sit.courseproject30.presentation.models.ClientViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ProductViewModel;
-import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;
-import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.List;
 
 public class ProductController extends Controller{
 

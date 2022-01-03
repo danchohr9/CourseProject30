@@ -7,15 +7,12 @@ import bg.tu_varna.sit.courseproject30.common.Constants;
 import bg.tu_varna.sit.courseproject30.presentation.models.ClientProductViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ClientViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ProductViewModel;
-import bg.tu_varna.sit.courseproject30.presentation.models.ScrapCriteriaViewModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.util.Date;
 
 public class ClientProductController extends Controller{
 

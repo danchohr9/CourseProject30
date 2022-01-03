@@ -2,22 +2,16 @@ package bg.tu_varna.sit.courseproject30.presentation.controllers;
 
 import bg.tu_varna.sit.courseproject30.business.services.CategoryService;
 import bg.tu_varna.sit.courseproject30.business.services.ProductService;
-import bg.tu_varna.sit.courseproject30.common.Constants;
 import bg.tu_varna.sit.courseproject30.data.entities.Category;
 import bg.tu_varna.sit.courseproject30.data.entities.Product;
 import bg.tu_varna.sit.courseproject30.presentation.models.CategoryViewModel;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
-
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.List;
 
 public class AddProductController extends Controller{
     public TextField quantityTf;

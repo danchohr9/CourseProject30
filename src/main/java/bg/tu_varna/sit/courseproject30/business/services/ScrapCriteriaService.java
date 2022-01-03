@@ -3,11 +3,9 @@ package bg.tu_varna.sit.courseproject30.business.services;
 
 import bg.tu_varna.sit.courseproject30.data.entities.Product;
 import bg.tu_varna.sit.courseproject30.data.entities.ScrapCriteria;
-import bg.tu_varna.sit.courseproject30.data.entities.User;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ProductRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ScrapCriteriaRepository;
 import bg.tu_varna.sit.courseproject30.presentation.models.ScrapCriteriaViewModel;
-import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.util.List;

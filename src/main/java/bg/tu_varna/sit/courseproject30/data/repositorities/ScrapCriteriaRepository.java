@@ -160,11 +160,5 @@ public class ScrapCriteriaRepository implements DAORepository<ScrapCriteria> {
         session.close();
         return id;
     }
-//    public ScrapCriteria findById(Long id){
-//        Session session = Connection.openSession();
-//        ScrapCriteria cat = (ScrapCriteria) session.load(ScrapCriteria.class, id);
-//        session.close();
-//        return cat;
-//    }
 
 }

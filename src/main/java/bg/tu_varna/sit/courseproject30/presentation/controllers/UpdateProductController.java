@@ -4,19 +4,13 @@ import bg.tu_varna.sit.courseproject30.business.services.CategoryService;
 import bg.tu_varna.sit.courseproject30.business.services.ProductService;
 import bg.tu_varna.sit.courseproject30.common.Constants;
 import bg.tu_varna.sit.courseproject30.data.entities.Product;
-import bg.tu_varna.sit.courseproject30.presentation.models.CategoryViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.ProductViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 
 public class UpdateProductController extends AddProductController{
     public BorderPane borderPane;

@@ -2,7 +2,6 @@ package bg.tu_varna.sit.courseproject30.business.services;
 
 import bg.tu_varna.sit.courseproject30.data.entities.City;
 import bg.tu_varna.sit.courseproject30.data.entities.Client;
-import bg.tu_varna.sit.courseproject30.data.entities.Scrap;
 import bg.tu_varna.sit.courseproject30.data.repositorities.CityRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.ClientRepository;
 import bg.tu_varna.sit.courseproject30.presentation.models.ClientViewModel;

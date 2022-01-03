@@ -1,7 +1,6 @@
 package bg.tu_varna.sit.courseproject30.presentation.controllers;
 
 import bg.tu_varna.sit.courseproject30.business.services.CategoryService;
-import bg.tu_varna.sit.courseproject30.common.Constants;
 import bg.tu_varna.sit.courseproject30.data.entities.Category;
 import bg.tu_varna.sit.courseproject30.presentation.models.CategoryViewModel;
 import javafx.collections.ObservableList;

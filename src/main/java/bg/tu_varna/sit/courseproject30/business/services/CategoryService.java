@@ -1,14 +1,10 @@
 package bg.tu_varna.sit.courseproject30.business.services;
 
-import bg.tu_varna.sit.courseproject30.data.access.Connection;
 import bg.tu_varna.sit.courseproject30.data.entities.Category;
 import bg.tu_varna.sit.courseproject30.data.repositorities.CategoryRepository;
-import bg.tu_varna.sit.courseproject30.data.repositorities.ProductRepository;
 import bg.tu_varna.sit.courseproject30.presentation.models.CategoryViewModel;
-import bg.tu_varna.sit.courseproject30.presentation.models.ProductViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.hibernate.Session;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,17 +45,6 @@ public class CategoryService {
     }
     public List<Category> getAll() {
         return repository.getAll();
-    }
-    public Category findById(String id){
-            return repository.findById(Long.parseLong(id));
-    }
-    public ObservableList<String> getObservableArrayListOfNames(){
-        List<Category> categories =  repository.getAll();
-        ObservableList<String> list = FXCollections.observableArrayList();
-        for (int i = 0; i <categories.stream().count() ; i++){
-            list.add(categories.get(i).getName());
-        }
-        return list;
     }
     public ObservableList<CategoryViewModel> getAllCategories() {
         List<Category> categories = repository.getAll();

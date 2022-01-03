@@ -3,11 +3,9 @@ package bg.tu_varna.sit.courseproject30.business.services;
 
 import bg.tu_varna.sit.courseproject30.data.entities.*;
 import bg.tu_varna.sit.courseproject30.data.repositorities.NotificationRepository;
-import bg.tu_varna.sit.courseproject30.data.repositorities.ProductRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.UserNotificationRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.UserRepository;
 import bg.tu_varna.sit.courseproject30.presentation.models.NotificationViewModel;
-import bg.tu_varna.sit.courseproject30.presentation.models.ProductViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
