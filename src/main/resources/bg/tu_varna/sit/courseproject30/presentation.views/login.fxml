@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="446.0" prefWidth="409.0" spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.LoginController">
+<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="409.0" spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.courseproject30.presentation.controllers.LoginController">
    <children>
       <Label fx:id="loginLbl" text="Login Menu">
          <font>
@@ -39,7 +39,7 @@
             </Label>
             <AnchorPane>
                <children>
-                  <TextField fx:id="visiblePassword" layoutX="22.0" text="" />
+                  <TextField fx:id="visiblePassword" layoutX="2.0" prefHeight="26.0" prefWidth="170.0" text="" />
                   <PasswordField fx:id="passwordPF" layoutX="2.0" prefHeight="26.0" prefWidth="170.0" />
                </children>
             </AnchorPane>

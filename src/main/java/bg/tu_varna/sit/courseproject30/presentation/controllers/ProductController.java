@@ -22,6 +22,7 @@ public class ProductController extends Controller{
     public DatePicker dateToDp;
     public DatePicker dateFromDp;
     public TextField searchNameTf;
+    public TableColumn<ProductViewModel, String> quantityCol;
     @FXML
     private Button addProductBt;
     @FXML
@@ -101,5 +102,6 @@ public class ProductController extends Controller{
         priceCol.setCellValueFactory(cellData -> cellData.getValue().currentPriceProperty().asString());
         dateOfTransCol.setCellValueFactory(cellData -> cellData.getValue().date_of_transformationProperty());
         typeCol.setCellValueFactory(cellData -> cellData.getValue().getTypeName());
+        quantityCol.setCellValueFactory(cellData -> cellData.getValue().getQuantityFormated());
     }
 }

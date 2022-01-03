@@ -65,7 +65,15 @@ public class ProductViewModel {
         depreciationGrowth = pvm.depreciationGrowthProperty();
     }
 
-
+    public SimpleStringProperty getQuantityFormated(){
+        SimpleStringProperty result = new SimpleStringProperty();
+        if(this.getQuantity() < 1){
+            result.set("Not Available");
+        } else {
+            result.set(String.valueOf(this.getQuantity()));
+        }
+        return result;
+    }
     public StringProperty getTypeName(){
         SimpleStringProperty type = new SimpleStringProperty();
 

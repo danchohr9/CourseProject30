@@ -58,12 +58,13 @@
                 <TableColumn fx:id="nameCol" prefWidth="109.59997713565826" text="Name" />
                 <TableColumn fx:id="descrCol" minWidth="4.79998779296875" prefWidth="124.79998016357422" text="Description" />
                   <TableColumn fx:id="fullDescrCol" minWidth="4.79998779296875" prefWidth="124.79998016357422" text="Full Description" />
-                  <TableColumn fx:id="rateOfDepCol" prefWidth="173.60003662109375" text="Rate of Depreciation" />
-                  <TableColumn fx:id="dateOfRegCol" prefWidth="170.40005493164062" text="Date of Registration" />
-                  <TableColumn fx:id="ageCol" minWidth="2.4000244140625" prefWidth="58.400146484375" text="Age" />
-                  <TableColumn fx:id="priceCol" prefWidth="58.4000244140625" text="Price" />
-                  <TableColumn fx:id="dateOfTransCol" prefWidth="184.800048828125" text="Date of Transformation" />
-                  <TableColumn fx:id="typeCol" prefWidth="85.5999755859375" text="Type" />
+                  <TableColumn fx:id="rateOfDepCol" prefWidth="124.800048828125" text="Rate of Depreciation" />
+                  <TableColumn fx:id="dateOfRegCol" prefWidth="142.40005493164062" text="Date of Registration" />
+                  <TableColumn fx:id="ageCol" minWidth="2.4000244140625" prefWidth="56.0" text="Age" />
+                  <TableColumn fx:id="priceCol" prefWidth="70.39990234375" text="Price" />
+                  <TableColumn fx:id="dateOfTransCol" prefWidth="145.5999755859375" text="Date of Transformation" />
+                  <TableColumn fx:id="typeCol" prefWidth="90.39990234375" text="Type" />
+                  <TableColumn fx:id="quantityCol" prefWidth="103.2000732421875" text="Quantity" />
               </columns>
             </TableView>
          </children>
