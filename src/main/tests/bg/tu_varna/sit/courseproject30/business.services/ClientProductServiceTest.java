@@ -51,7 +51,7 @@ class ClientProductServiceTest {
     @Order(2)
     void findProduct() {
         ProductViewModel productViewModel = new ProductViewModel();
-        productViewModel.setId(20);
+        productViewModel.setId(productRepository.getLastInserted().getId());
         assertEquals(productRepository.getById(productViewModel.getId()).getId(),service.findProduct(productViewModel).getId());
     }
 
@@ -59,7 +59,7 @@ class ClientProductServiceTest {
     @Order(3)
     void findClient() {
         ClientViewModel clientViewModel = new ClientViewModel();
-        clientViewModel.setId(5);
+        clientViewModel.setId(clientRepository.getLastInserted().getId());
         assertEquals(clientRepository.getById(clientViewModel.getId()).getId(),service.findClient(clientViewModel).getId());
     }
 
@@ -67,7 +67,7 @@ class ClientProductServiceTest {
     @Order(4)
     void findProductClient() {
         ClientProductViewModel model = new ClientProductViewModel();
-        model.setId(4);
+        model.setId(repository.getLastInserted().getId());
         assertEquals(repository.getById(model.getId()).getId(),service.findProductClient(model).getId());
     }
 

@@ -7,6 +7,7 @@ import bg.tu_varna.sit.courseproject30.data.entities.User;
 import bg.tu_varna.sit.courseproject30.data.entities.UserNotification;
 import bg.tu_varna.sit.courseproject30.data.repositorities.NotificationRepository;
 import bg.tu_varna.sit.courseproject30.data.repositorities.UserNotificationRepository;
+import bg.tu_varna.sit.courseproject30.data.repositorities.UserRepository;
 import bg.tu_varna.sit.courseproject30.presentation.models.NotificationViewModel;
 import bg.tu_varna.sit.courseproject30.presentation.models.UserViewModel;
 import org.apache.log4j.PropertyConfigurator;
@@ -41,11 +42,13 @@ class NotificationServiceTest {
     @Test
     @Order(2)
     void sendNotifications() {
+        UserRepository userRepository = UserRepository.getInstance();
+        User user = userRepository.getLastInserted();
         UserNotification userNotification = userNotificationRepository.getLastInserted();
-        List<UserNotification> userNotifications = userNotificationRepository.getAllOfUser(userNotification.getUser().getUsername());
+        List<UserNotification> userNotifications = userNotificationRepository.getAllOfUser(user.getUsername());
         Notification notification = repository.getLastInserted();
         service.sendNotifications(notification);
-        assertNotEquals(userNotifications, userNotificationRepository.getAllOfUser(userNotification.getUser().getUsername()));
+        assertNotEquals(userNotifications.size(), userNotificationRepository.getAllOfUser(user.getUsername()).size());
     }
 
     @Test

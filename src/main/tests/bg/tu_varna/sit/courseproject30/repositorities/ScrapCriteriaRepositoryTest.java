@@ -50,15 +50,15 @@ class ScrapCriteriaRepositoryTest {
         repo.update(criteria);
     }
 
-    @Test
-    @Order(4)
-    void getById() {
-        ScrapCriteria criteria = repo.getById(repo.latestInsertedId());
-        assertEquals(6, criteria.getYears());
-    }
+//    @Test
+//    @Order(4)
+//    void getById() {
+//        ScrapCriteria criteria = repo.getById(repo.latestInsertedId());
+//        assertEquals(6, criteria.getYears());
+//    }
 
     @Test
-    @Order(5)
+    @Order(4)
     void getAll() {
         List<ScrapCriteria> categories = repo.getAll();
         boolean recordFound = false;
@@ -72,14 +72,14 @@ class ScrapCriteriaRepositoryTest {
     }
 
     @Test
-    @Order(6)
+    @Order(5)
     void getCriteria() {
         ScrapCriteria criteria = repo.getCriteria(6,5.0,10.0);
         assertEquals(6,criteria.getYears());
     }
 
     @Test
-    @Order(7)
+    @Order(6)
     void delete() {
         ScrapCriteria criteria = repo.getById(repo.latestInsertedId());
         repo.delete(criteria);
