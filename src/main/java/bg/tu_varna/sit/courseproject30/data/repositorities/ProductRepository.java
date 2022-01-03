@@ -68,7 +68,7 @@ public class ProductRepository implements DAORepository<Product>{
         product.setDate_of_transformation(obj.getDate_of_transformation());
         product.setDate_of_registration(obj.getDate_of_registration());
         product.setCriteria(obj.getCriteria());
-        product.setCurrentPrice(obj.getCurrentPrice());
+        //product.setCurrentPrice(obj.getCurrentPrice());
         product.setDeprGrowth(obj.getDeprGrowth());
 
         try{

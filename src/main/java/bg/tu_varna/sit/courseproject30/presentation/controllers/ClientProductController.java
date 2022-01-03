@@ -14,6 +14,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.Objects;
+
 public class ClientProductController extends Controller{
 
     private ClientService clientService;
@@ -100,7 +102,7 @@ public class ClientProductController extends Controller{
             selectedProduct = new ProductViewModel(availableProductsTable.getSelectionModel().getSelectedItem());
             int quantity = 1;
             if (selectedClient != null && selectedProduct != null && !quantityTf.getText().equals('0')) {
-                if (quantityTf.getText() != null) quantity = Integer.parseInt(quantityTf.getText());
+                if (!Objects.equals(quantityTf.getText(), "")) quantity = Integer.parseInt(quantityTf.getText());
                 clientProductService.addProduct(selectedClient, selectedProduct, quantity);
 
                 initializeClientProductTable();
